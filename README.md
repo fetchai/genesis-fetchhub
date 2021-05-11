@@ -1,4 +1,4 @@
-# Cosmos Hub Mainnet
+# Fetch.ai Hub Mainnet
 
 The current Gaia Version of the Cosmos Hub mainnet: [v4.2.1](https://github.com/cosmos/gaia/releases/tag/v4.2.1)
 
