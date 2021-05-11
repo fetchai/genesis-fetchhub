@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+eth-brownie = "*"
+pandas = "*"
+google-cloud-bigquery = "*"
+ipython = "*"
+
+[requires]
+python_version = "3.7"

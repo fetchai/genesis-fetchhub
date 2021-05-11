@@ -1,0 +1,4 @@
+eth-brownie
+pandas
+google-cloud-bigquery 
+ipython 
