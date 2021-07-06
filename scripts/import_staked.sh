@@ -22,10 +22,12 @@ TARGET_VALIDATORS=(
 BOND_DENOM="afet"
 # minimum amount required to create a delegation, below, no delegation is 
 # created and everything is transferred on the user account
-MIN_DELEGATED_AMOUNT="2000000000000000000${BOND_DENOM}"
+# value is in units of BOND_DENOM
+MIN_DELEGATED_AMOUNT="2000000000000000000"
 # amount subtracted from the delegated amount and transferred 
 # on the user account when a delegation is created 
-ACCOUNT_RESERVED_AMOUNT="1000000000000000000${BOND_DENOM}"
+# value is in units of BOND_DENOM
+ACCOUNT_RESERVED_AMOUNT="1000000000000000000"
 # Number of expected fields per line in the CSV file
 EXPECTED_NUMFIELDS="6"
 
@@ -77,9 +79,13 @@ while read -r line; do
     AMOUNT=$(echo "${line}" | awk -F',' '{print $4}')
     fetchd add-genesis-delegation \
         --home "${FETCHD_HOME}" \
-        --account-reserved-amount ${ACCOUNT_RESERVED_AMOUNT} \
-        --min-delegated-amount ${MIN_DELEGATED_AMOUNT} \
+        --account-reserved-amount "${ACCOUNT_RESERVED_AMOUNT}${BOND_DENOM}" \
+        --min-delegated-amount "${MIN_DELEGATED_AMOUNT}${BOND_DENOM}" \
         "${FETCH_ADDR}" "${VALIDATOR}" "${AMOUNT}${BOND_DENOM}" 
-    echo "Added delegation from ${FETCH_ADDR} to ${VALIDATOR} of ${AMOUNT}${BOND_DENOM}"
-    COUNTER=$((COUNTER + 1))
+    if (( $(echo "${AMOUNT} >= ${MIN_DELEGATED_AMOUNT}" |bc -l) )); then
+        echo "Added delegation from ${FETCH_ADDR} to ${VALIDATOR} of ${AMOUNT}${BOND_DENOM}"
+        COUNTER=$((COUNTER + 1))
+    else
+        echo "Added ${AMOUNT}${BOND_DENOM} to ${FETCH_ADDR}"
+    fi
 done <<<"$(sort "${CSV_FILE}")"
