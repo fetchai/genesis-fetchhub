@@ -40,10 +40,9 @@ VAL_KEYS=($(find "${SEARCH_DIR}" -name priv_validator_key.json 2>/dev/null))
 #echo "Found ${#VAL_KEYS[@]} potential FETCHD_HOME folders in ${SEARCH_DIR}"
 
 HEX_ADDR=$(fetchd debug addr "${LOOKUP_ADDR}" 2>&1 | grep -oE "\s[A-Z0-9]{40}$")
-
-for valKeyPath in ${VAL_KEYS[@]}; do
-    PUBKEY_ADDR=$(fetchd debug pubkey $(jq -r '.pub_key.value' "${valKeyPath}" 2>/dev/null) 2>&1 | grep -oE "\s[A-Z0-9]{40}$")
+for valKeyPath in "${VAL_KEYS[@]}"; do
+    PUBKEY_ADDR=$(fetchd debug pubkey "$(jq -r '.pub_key.value' "${valKeyPath}" 2>/dev/null)" 2>&1 | grep -oE "\s[A-Z0-9]{40}$")
     if [ "${PUBKEY_ADDR}" == "${HEX_ADDR}" ]; then
-        echo $(realpath "$(dirname "${valKeyPath}")/../")
+        realpath "$(dirname "${valKeyPath}")/../"
     fi
 done
