@@ -8,6 +8,7 @@ const EthTx = require('ethereumjs-tx')
 const { bech32 } = require('bech32')
 const { createHash } = require('crypto');
 const secp256k1 = require('secp256k1');
+const assert = require('assert');
 
 const decimalPrecision = 100;
 const fetErc20CanonicalMultiplier = new Decimal('1e18');
@@ -198,8 +199,15 @@ class UserAssets {
 
 class User {
     constructor(address, pubkey) {
+        const addrFromPubkey = EthUtil.pubToAddress('0x' + pubkey);
+        assert(
+            addrFromPubkey.equals(EthUtil.toBuffer(address)),
+            `pubkey ${pubkey} does not match address, got ${addrFromPubkey.toString('hex')}, want ${address}.`
+        );
+
         this.address = address;
         this.pubkey = pubkey;
+        this.fetchAddr = secp256k1UncompressedPubkeyToFetchAddress(this.pubkey);
         this.events = [];
         this.assets = null;
         this.principalFET_whole = null;
@@ -214,7 +222,6 @@ class User {
         [this.compoundInterestFET_whole, this.compoundInterestFET_staked] = this.assets.calcCompoundInterest(interestRates, untilBlock);
     }
 }
-
 
 async function getPublicKeyFromTxHash(txHash) {
     const tx = await web3http.eth.getTransaction(txHash)
@@ -299,7 +306,7 @@ async function main() {
             const principal = fetToCanonicalFet(user.principalFET_whole);
             const compound = fetToCanonicalFet(user.compoundInterestFET_whole);
 
-            console.log(`${key},${user.pubkey},${secp256k1UncompressedPubkeyToFetchAddress(user.pubkey)},${principal.add(compound).toFixed()},${principal.toFixed()},${compound.toFixed()}`);
+            console.log(`${key},${user.pubkey},${user.fetchAddr},${principal.add(compound).toFixed()},${principal.toFixed()},${compound.toFixed()}`);
         }
     } finally {
         web3.currentProvider.connection.close();
