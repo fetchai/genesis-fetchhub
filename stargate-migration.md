@@ -28,7 +28,7 @@ Before starting, make sure to locate the following files on your validator host:
 > ```
 > (if no match, rerun it with `sudo` to allow it traversing directories owned by other users)
 
-For the rest of the document, FETCHD_HOME is assumed to be at the default `~/.fetchd` location. If your installation is different, replace `~/.fetchd` path in all the commands with your actual `FETCHD_HOME` path, and add the `--home <your_fetchd_home>` flag to all fetchd commands.
+For the rest of the document, FETCHD_HOME is assumed to be at the default `~/.fetchd/` location. If your installation is different, replace `~/.fetchd/` path in all the commands with your actual `FETCHD_HOME` path.
 
 ### Join discord channel
 
@@ -58,7 +58,7 @@ This would allow to revert back to your starting state in case something goes wr
 ## Export network state
 
 ```bash
-fetchd export --height TODO_MIGRATION_BLOCK_HEIGHT > genesis_export_TODO_MIGRATION_BLOCK_HEIGHT.json
+fetchd --home ~/.fetchd/ export --height TODO_MIGRATION_BLOCK_HEIGHT > genesis_export_TODO_MIGRATION_BLOCK_HEIGHT.json
 ```
 
 Generate a hash of this file and validate it with others:
@@ -76,7 +76,7 @@ Now we have exported the state properly, we can drop the fetchd database:
 > **Double check you have proper backups** of your FETCHD_HOME, and that the exported genesis is the correct one. `fetchd export` won't have anything to export anymore after this step!
 
 ```bash
-fetchd unsafe-reset-all
+fetchd --home ~/.fetchd/ unsafe-reset-all
 ```
 
 ## Install new fetchd version
@@ -126,7 +126,7 @@ Now you can edit `~/.fetchd/config/app.toml` and `~/.fetchd/config/config.toml` 
 Now the new version of `fetchd` have proper configuration, we're ready to upgrade the genesis file to Stargate:
 
 ```bash
-fetchd stargate-migrate \
+fetchd --home ~/.fetchd/ stargate-migrate \
     --chain-id TODO_NEW_CHAIN_ID \
     --genesis-time TODO_NEW_GENESIS_TIME \
     --initial-height TODO_MIGRATION_RESTART_BLOCK_HEIGHT \
@@ -146,7 +146,7 @@ Next, we'll introduce some changes in the genesis before restarting, to include 
 ### Add MOBX genesis account
 
 ```bash
-fetchd add-genesis-account TODO_MOBX_GENESIS_ACCOUNT 100000000000000000nanomobx
+fetchd --home ~/.fetchd/ add-genesis-account TODO_MOBX_GENESIS_ACCOUNT 100000000000000000nanomobx
 ```
 
 ### Migrate staked ERC20 tokens
@@ -156,5 +156,5 @@ To ease the migration, we've extracted the staked ERC20 accounts and tokens into
 To add the delegations to the genesis file, run:
 
 ```bash
-./scripts/import_staked.sh ./data/staked_export.csv
+FETCHD_HOME=~/.fetchd/ ./scripts/import_staked.sh ./data/staked_export.csv
 ```
