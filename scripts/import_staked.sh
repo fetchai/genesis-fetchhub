@@ -83,9 +83,9 @@ while read -r line; do
         --min-delegated-amount "${MIN_DELEGATED_AMOUNT}${BOND_DENOM}" \
         "${FETCH_ADDR}" "${VALIDATOR}" "${AMOUNT}${BOND_DENOM}" 
     if [[ `echo "${AMOUNT} ${MIN_DELEGATED_AMOUNT}" | awk '{print ($1 >= $2)}'` == 1 ]]; then
-        echo "Added ${ACCOUNT_RESERVED_AMOUNT}${BOND_DENOM} to ${FETCH_ADDR} and delegated $(echo "${AMOUNT} ${ACCOUNT_RESERVED_AMOUNT}" | awk '{print $1-$2}')${BOND_DENOM} to ${VALIDATOR}"
+        echo "Added ${ACCOUNT_RESERVED_AMOUNT}${BOND_DENOM} to ${FETCH_ADDR} and delegated $(echo "${AMOUNT} ${ACCOUNT_RESERVED_AMOUNT}" | awk '{printf "%d", $1-$2}')${BOND_DENOM} to ${VALIDATOR}"
         COUNTER=$((COUNTER + 1))
     else
-        echo "Added ${AMOUNT}${BOND_DENOM} to ${FETCH_ADDR}"
+        echo "Added ${AMOUNT%.*}${BOND_DENOM} to ${FETCH_ADDR}"
     fi
 done <<<"$(sort "${CSV_FILE}")"
