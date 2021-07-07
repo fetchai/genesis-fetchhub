@@ -11,6 +11,9 @@ usage() {
     exit 1
 }
 
+# some systems default to mawk, which can't do 64bits maths, so make sure gawk is here.
+which gawk >/dev/null 2>&1 || (echo "gawk is required and not installed. Install it with 'sudo apt-get install gawk'" && exit 1)
+
 FETCHD_HOME="${FETCHD_HOME:=~/.fetchd/}"
 # Validators that will receive delegations, in a round-robin fashion
 TARGET_VALIDATORS=(
@@ -43,7 +46,7 @@ if [ ! -f "${CSV_FILE}" ]; then
     exit 1
 fi
 
-NUMFIELDS=$(head -n1 "${CSV_FILE}" | awk -F',' '{print NF}')
+NUMFIELDS=$(head -n1 "${CSV_FILE}" | gawk -F',' '{print NF}')
 if [ "${NUMFIELDS}" -ne "${EXPECTED_NUMFIELDS}" ]; then 
     echo "invalid CSV file, expected ${EXPECTED_NUMFIELDS}, got ${NUMFIELDS}"
     exit 1
@@ -74,16 +77,17 @@ trap cleanup EXIT
 
 COUNTER=0
 while read -r line; do
-    FETCH_ADDR=$(echo "${line}" | awk -F',' '{print $3}')
+    FETCH_ADDR=$(echo "${line}" | gawk -F',' '{print $3}')
     VALIDATOR=${TARGET_VALIDATORS[$((COUNTER % ${#TARGET_VALIDATORS[@]}))]}
-    AMOUNT=$(echo "${line}" | awk -F',' '{print $4}')
+    AMOUNT=$(echo "${line}" | gawk -F',' '{print $4}')
     fetchd add-genesis-delegation \
         --home "${FETCHD_HOME}" \
         --account-reserved-amount "${ACCOUNT_RESERVED_AMOUNT}${BOND_DENOM}" \
         --min-delegated-amount "${MIN_DELEGATED_AMOUNT}${BOND_DENOM}" \
         "${FETCH_ADDR}" "${VALIDATOR}" "${AMOUNT}${BOND_DENOM}" 
-    if [[ `echo "${AMOUNT} ${MIN_DELEGATED_AMOUNT}" | awk '{print ($1 >= $2)}'` == 1 ]]; then
-        echo "Added ${ACCOUNT_RESERVED_AMOUNT}${BOND_DENOM} to ${FETCH_ADDR} and delegated $(echo "${AMOUNT} ${ACCOUNT_RESERVED_AMOUNT}" | awk '{printf "%d", $1-$2}')${BOND_DENOM} to ${VALIDATOR}"
+    if [[ `echo "${AMOUNT} ${MIN_DELEGATED_AMOUNT}" | gawk '{print ($1 >= $2)}'` == 1 ]]; then
+        echo "Added ${ACCOUNT_RESERVED_AMOUNT}${BOND_DENOM} to ${FETCH_ADDR}"
+        echo "Delegated $(echo "${AMOUNT} ${ACCOUNT_RESERVED_AMOUNT}" | gawk '{printf "%.0f", $1-$2}')${BOND_DENOM} from ${FETCH_ADDR} to ${VALIDATOR}"
         COUNTER=$((COUNTER + 1))
     else
         echo "Added ${AMOUNT%.*}${BOND_DENOM} to ${FETCH_ADDR}"
