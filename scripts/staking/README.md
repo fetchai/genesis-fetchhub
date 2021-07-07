@@ -35,5 +35,5 @@ Keep this `staked_export.csv` file path as this will be the input required to ad
 You can verify you have the correct file by hashing it and comparing with our provided hash. Remember to sort it first.
 
 ```bash
-cat staked_export.csv | sort | sha256sum
+cat staked_export.csv | LC_ALL=C sort | sha256sum
 ```
