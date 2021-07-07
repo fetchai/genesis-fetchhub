@@ -22,7 +22,7 @@ Before starting, make sure to locate the following files on your validator host:
 - FETCHD_HOME/config/**app.toml**: this configuration allows to tune the cosmos application, such as enabled apis, telemetry, pruning...
 - FETCHD_HOME/config/**client.toml**: this file stores the client config, equivalent to the legacy `fetchcli config` which is now replaced by `fetchd config`.
 
-> If needed, use the [./scripts/locate_home.sh](./scripts/locate_home.sh) script to help find the right folder, giving it your validator operator address and a search path:  
+> If needed, clone this repo and use the [./scripts/locate_home.sh](./scripts/locate_home.sh) script to help find the right folder, giving it your validator operator address and a search path:  
 > ```
 > ./scripts/locate_home.sh fetchvaloper1fvcepqdw4lcc4s0gmxxfhkptyasfceg69x9gsc /home/
 > ```
@@ -84,7 +84,7 @@ fetchd --home ~/.fetchd/ unsafe-reset-all
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
 
 ```bash
-git clone --depth 1 --branch TODO_FETCHD_LATEST_TAG https://github.com/fetchai/fetchd.git fetchd_TODO_FETCHD_LATEST_TAG
+git clone --branch TODO_FETCHD_LATEST_TAG https://github.com/fetchai/fetchd.git fetchd_TODO_FETCHD_LATEST_TAG
 cd fetchd_TODO_FETCHD_LATEST_TAG
 ``` 
 
@@ -101,8 +101,8 @@ Now you can install the new fetchd version:
 make install
 
 # and verify you now have the correct version:
-fetchd version
-# must print `TODO_FETCHD_LATEST_TAG`
+fetchd -h
+# must print fetchd help message
 ```
 
 ## Update configuration
@@ -115,11 +115,14 @@ rm ~/.fetchd/config/app.toml ~/.fetchd/config/config.toml
 
 # fetchd will detect missing config files and regenerate new ones
 fetchd version
+# must print `TODO_FETCHD_LATEST_TAG`
 ```
 
 Now you can edit `~/.fetchd/config/app.toml` and `~/.fetchd/config/config.toml` to add back any changes you made previously, or have a look at all the new settings.
 
-> The new configuration include a lots of new comments and descriptions of the parameters, so worth reviewing in any cases.
+> You'll need to at least set your `moniker` back in `~/.fetchd/config/config.toml`.
+
+> The new configuration include a lots of new comments and descriptions of the parameters, so worth reviewing them in any cases.
 
 ## Migrate genesis
 
@@ -156,5 +159,34 @@ To ease the migration, we've extracted the staked ERC20 accounts and tokens into
 To add the delegations to the genesis file, run:
 
 ```bash
+git clone https://github.com/fetchai/genesis-fetchhub.git
+cd genesis-fetchhub/
 FETCHD_HOME=~/.fetchd/ ./scripts/import_staked.sh ./data/staked_export.csv
 ```
+
+> If you opted to regenerate the staked_export.csv youself, make sure to replace it with your own path above.
+
+Again, ensure everything went well hashing the genesis and verify it matches the expected hash with other people:
+
+```bash
+sha256sum ~/.fetchd/config/genesis.json
+``` 
+
+## Restart your node
+
+You're now ready to restart your fully migrated node!
+
+Run:
+
+```bash
+fetchd --home ~/.fetchd/ start --p2p.seeds TODO_STARGATE_MAINNET_SEED
+```
+
+> If you have errors at launch, first try to `fetchd --home ~/.fetchd/ unsafe-reset-all` first and restart. If no changes, reach out on Discord for help!
+
+After starting, some messages will be printed in the console, and no activity will happen until 2/3 of the voting power come back online. When enough validators are online, you should see some activity in logs with messages like:
+```
+8:40AM INF executed block height=XYZ module=state num_invalid_txs=0 num_valid_txs=0
+```
+
+Meaning we're back producing blocks on the new network.
