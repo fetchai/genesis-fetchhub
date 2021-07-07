@@ -92,4 +92,4 @@ while read -r line; do
     else
         echo "Added ${AMOUNT%.*}${BOND_DENOM} to ${FETCH_ADDR}"
     fi
-done <<<"$(sort "${CSV_FILE}")"
+done <<<"$(LC_ALL=C sort "${CSV_FILE}")"
