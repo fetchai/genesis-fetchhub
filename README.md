@@ -12,7 +12,7 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 
 ## Starting from now
 
-1) Create validators running on Launchpad testnet: https://docs.fetch.ai/ledger_v2/networks/#stargate-testnet-stargateworld
+1) Create validators running on Launchpad testnet: https://docs.fetch.ai/ledger_v2/networks/#testnet-v2-fetchhubtest
     > The faucet now gives 1TESTFET, should be easy to get enough funds to proceed
     > There's some block history to catch up, so syncing may take a while
 
