@@ -1,6 +1,6 @@
 # Stargate migration test
 
-This repository contains steps and documentation aimed to **current mainnet validators** in order to repeat migrating their nodes and upgrade the network the Stargate version.
+This repository contains steps and documentation aimed to **current mainnet validators** in order to do a rehearsal run of migrating their nodes and upgrading the network to the Stargate version.
 
 
 Validators can have a review on this repo docs and scripts, this should give a good idea what will happen. 
@@ -12,7 +12,7 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 
 ## Starting from now
 
-1) Create validators running on Launchpad testnet: https://docs.fetch.ai/ledger_v2/networks/#testnet-v2-fetchhubtest
+1) Create validators running on Launchpad testnet: https://docs.fetch.ai/ledger_v2/networks/#stargate-testnet-stargateworld
     > The faucet now gives 1TESTFET, should be easy to get enough funds to proceed
     > There's some block history to catch up, so syncing may take a while
 
@@ -20,10 +20,10 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 
 2) Agree on some block height to stop the network
 3) Share the repo with the migration docs & scripts, adapted to this network
-> The migration repo include an extract of ERC20 staked tokens we made, that we will import as TESTFET on the migrated test network.
+> The migration repo includes an extract of ERC20 staked tokens we made, that we will import as TESTFET on the migrated test network.
 > 
 
-4) Everyone migrate their validator
+4) Everyone migrates their validator
 
 ## On Friday, July, 16th
 
@@ -31,4 +31,4 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 
 # Post migration
 
-We're expecting validators to keep their test node running a little while, to give a chance to fetch users having their stake migrated to verify they can access properly their funds on testnet. But we'll then proceed with mainnet migration, and those test nodes can then be salvaged.
+We're expecting validators to keep their test node running a little while, to give a chance to fetch users having their stake migrated to verify they can properly access their funds on testnet. But we'll then proceed with mainnet migration, and those test nodes can then be salvaged.
