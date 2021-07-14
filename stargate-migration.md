@@ -1,6 +1,6 @@
 # Stargate migration
 
-This document describe the steps needed in order to upgrade a validator node running on `fetchd v0.7.x` to the `fetchd TODO_FETCHD_LATEST_TAG`.
+This document describe the steps needed in order to upgrade a validator node running on `fetchd v0.7.x` to the `fetchd 0.8.2`.
 It is **advised to read the whole document before starting applying this procedure**, in order to avoid your validator node being unable to restart.
 In case anything is unclear or if you have any questions, feel free to reach us out or ask in the Discord #validator channel.
 
@@ -8,7 +8,7 @@ In case anything is unclear or if you have any questions, feel free to reach us 
 
 ### Get familiar with the new version
 
-The stargate upgrade introduce many changes in the application, most notably, the `fetchcli` binary have disappeared, and all commands its can now be ran on `fetchd` directly. You can test this new version by following the install instructions for the `fetchd TODO_FETCHD_LATEST_TAG` and interact with our `stargateworld` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)).
+The stargate upgrade introduce many changes in the application, most notably, the `fetchcli` binary have disappeared, and all commands its can now be ran on `fetchd` directly. You can test this new version by following the install instructions for the `fetchd 0.8.2` and interact with our `stargateworld` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)).
 
 
 ### Locate your files
@@ -36,7 +36,7 @@ We'll setup a dedicated discord channel for the migration, where we'll share imp
 
 ## Stop your validator
 
-First, make sure your node have reached at least the `TODO_MIGRATION_BLOCK_HEIGHT` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
+First, make sure your node have reached at least the `955800` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
 Also ensure that **no process managers (such as `systemd`) will attempt to restart it.**
 
 The exact procedure to stop your node depends on how you configured it so we can't really give a generic way here.
@@ -58,13 +58,13 @@ This would allow to revert back to your starting state in case something goes wr
 ## Export network state
 
 ```bash
-fetchd --home ~/.fetchd/ export --height TODO_MIGRATION_BLOCK_HEIGHT > genesis_export_TODO_MIGRATION_BLOCK_HEIGHT.json
+fetchd --home ~/.fetchd/ export --height 955800 > genesis_export_955800.json
 ```
 
 Generate a hash of this file and validate it with others:
 
 ```bash
-sha256sum genesis_export_TODO_MIGRATION_BLOCK_HEIGHT.json
+sha256sum genesis_export_955800.json
 ```
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
@@ -84,15 +84,15 @@ fetchd --home ~/.fetchd/ unsafe-reset-all
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
 
 ```bash
-git clone --branch TODO_FETCHD_LATEST_TAG https://github.com/fetchai/fetchd.git fetchd_TODO_FETCHD_LATEST_TAG
-cd fetchd_TODO_FETCHD_LATEST_TAG
+git clone --branch 0.8.2 https://github.com/fetchai/fetchd.git fetchd_0.8.2
+cd fetchd_0.8.2
 ``` 
 
 If you already have an existing clone, place yourself in and:
 
 ```bash
 git fetch
-git checkout TODO_FETCHD_LATEST_TAG
+git checkout 0.8.2
 ```
 
 Now you can install the new fetchd version:
@@ -115,7 +115,7 @@ rm ~/.fetchd/config/app.toml ~/.fetchd/config/config.toml
 
 # fetchd will detect missing config files and regenerate new ones
 fetchd version
-# must print `TODO_FETCHD_LATEST_TAG`
+# must print `0.8.2`
 ```
 
 Now you can edit `~/.fetchd/config/app.toml` and `~/.fetchd/config/config.toml` to add back any changes you made previously, or have a look at all the new settings.
@@ -130,10 +130,10 @@ Now the new version of `fetchd` have proper configuration, we're ready to upgrad
 
 ```bash
 fetchd --home ~/.fetchd/ stargate-migrate \
-    --chain-id TODO_NEW_CHAIN_ID \
-    --genesis-time TODO_NEW_GENESIS_TIME \
-    --initial-height TODO_MIGRATION_RESTART_BLOCK_HEIGHT \
-    genesis_export_TODO_MIGRATION_BLOCK_HEIGHT.json > ~/.fetchd/config/genesis.json
+    --chain-id andromeda-1 \
+    --genesis-time 2021-07-15T14:00:00Z \
+    --initial-height 955801 \
+    genesis_export_955800.json > ~/.fetchd/config/genesis.json
 ```
 
 We're setting here the new chainID, the time where the network will restart, and the initial block number 
@@ -149,7 +149,7 @@ Next, we'll introduce some changes in the genesis before restarting, to include 
 ### Add MOBX genesis account
 
 ```bash
-fetchd --home ~/.fetchd/ add-genesis-account TODO_MOBX_GENESIS_ACCOUNT 100000000000000000nanomobx
+fetchd --home ~/.fetchd/ add-genesis-account fetch1gkugwmd4tet2h02mr3c8p6nmcvuuj7nvg48uef 100000000000000000nanomobx
 ```
 
 ### Migrate staked ERC20 tokens
@@ -161,6 +161,10 @@ To add the delegations to the genesis file, run:
 ```bash
 git clone https://github.com/fetchai/genesis-fetchhub.git
 cd genesis-fetchhub/
+
+# this script requies gawk
+sudo apt-get update && sudo apt-get install -y gawk
+
 FETCHD_HOME=~/.fetchd/ ./scripts/import_staked.sh ./data/staked_export.csv
 ```
 
@@ -179,7 +183,7 @@ You're now ready to restart your fully migrated node!
 Run:
 
 ```bash
-fetchd --home ~/.fetchd/ start --p2p.seeds TODO_STARGATE_MAINNET_SEED
+fetchd --home ~/.fetchd/ start --p2p.seeds f14fc7f2e6e2fabe9b11406333252f30973e0af1@connect-andromeda.fetch.ai:36856,081cff329a456e05a7b0ea7fc523c0d597b04522@connect-andromeda.fetch.ai:36857,0a8a161fe0f43f4cb5594c95276a162c30a24acd@connect-andromeda.fetch.ai:36858
 ```
 
 > If you have errors at launch, first try to `fetchd --home ~/.fetchd/ unsafe-reset-all` first and restart. If no changes, reach out on Discord for help!

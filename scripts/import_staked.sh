@@ -17,12 +17,12 @@ which gawk >/dev/null 2>&1 || (echo "gawk is required and not installed. Install
 FETCHD_HOME="${FETCHD_HOME:=~/.fetchd/}"
 # Validators that will receive delegations, in a round-robin fashion
 TARGET_VALIDATORS=(
-    "fetchvaloper1xrlqqepyfl64mjr8x837y5slxfzlywe57rwdta" # novus1
-    "fetchvaloper1w8659233jlf42n68xsqw9w3ssjquyr8jha64hy" # novus2
-    "fetchvaloper14w6a4al72uc3fpfy4lqtg0a7xtkx3w7hda0vel" # uvue1
-    "fetchvaloper1ufarthku3aw4rjeexdwk9r2wj20evdnw86ceee" # uvue2
+"fetchvaloper15x27jkea0h9gz5jdegu39j3393aqvrkdhg7r3v"
+"fetchvaloper1qypf5ulfttynmt25wcvrh7zl7nwzgpg9kwsr4e"
+"fetchvaloper1gdpc66xnunmsgpf0s7qe26sxl7dp3meky3kerd"
+"fetchvaloper1gqj3wjn7dds043npes6yndt9vymqs5zyz6qck6"
 )
-BOND_DENOM="afet"
+BOND_DENOM="atestfet"
 # minimum amount required to create a delegation, below, no delegation is 
 # created and everything is transferred on the user account
 # value is in units of BOND_DENOM
