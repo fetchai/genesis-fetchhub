@@ -36,7 +36,7 @@ We'll setup a dedicated discord channel for the migration, where we'll share imp
 
 ## Stop your validator
 
-First, make sure your node have reached at least the `955800` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
+First, make sure your node have reached at least the `953700` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
 Also ensure that **no process managers (such as `systemd`) will attempt to restart it.**
 
 The exact procedure to stop your node depends on how you configured it so we can't really give a generic way here.
@@ -58,13 +58,13 @@ This would allow to revert back to your starting state in case something goes wr
 ## Export network state
 
 ```bash
-fetchd --home ~/.fetchd/ export --height 955800 > genesis_export_955800.json
+fetchd --home ~/.fetchd/ export --height 953700 > genesis_export_953700.json
 ```
 
 Generate a hash of this file and validate it with others:
 
 ```bash
-sha256sum genesis_export_955800.json
+sha256sum genesis_export_953700.json
 ```
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
@@ -131,9 +131,9 @@ Now the new version of `fetchd` have proper configuration, we're ready to upgrad
 ```bash
 fetchd --home ~/.fetchd/ stargate-migrate \
     --chain-id andromeda-1 \
-    --genesis-time 2021-07-15T14:00:00Z \
-    --initial-height 955801 \
-    genesis_export_955800.json > ~/.fetchd/config/genesis.json
+    --genesis-time 2021-07-16T14:00:00Z \
+    --initial-height 953701 \
+    genesis_export_953700.json > ~/.fetchd/config/genesis.json
 ```
 
 We're setting here the new chainID, the time where the network will restart, and the initial block number 
