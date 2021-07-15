@@ -84,7 +84,7 @@ fetchd --home ~/.fetchd/ unsafe-reset-all
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
 
 ```bash
-git clone --branch 0.8.2 https://github.com/fetchai/fetchd.git fetchd_0.8.2
+git clone --branch v0.8.2 https://github.com/fetchai/fetchd.git fetchd_0.8.2
 cd fetchd_0.8.2
 ``` 
 
