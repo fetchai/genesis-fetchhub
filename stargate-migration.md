@@ -92,7 +92,7 @@ If you already have an existing clone, place yourself in and:
 
 ```bash
 git fetch
-git checkout 0.8.2
+git checkout v0.8.2
 ```
 
 Now you can install the new fetchd version:
