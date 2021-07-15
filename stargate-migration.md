@@ -69,6 +69,7 @@ sha256sum genesis_export_953700.json
 
 
 > Expected hash here: `619006a43a6bd0ff4fc274593e8a7b6c5d712a6c01c02481701c9d05eba2d522`
+> File available at [./data/genesis_export_953700.json](./data/genesis_export_953700.json)
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
 
