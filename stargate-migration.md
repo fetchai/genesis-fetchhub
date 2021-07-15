@@ -67,6 +67,9 @@ Generate a hash of this file and validate it with others:
 sha256sum genesis_export_953700.json
 ```
 
+
+> Expected hash here: `619006a43a6bd0ff4fc274593e8a7b6c5d712a6c01c02481701c9d05eba2d522`
+
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
 
 ## Reset the fetchd database
@@ -144,6 +147,8 @@ Again, we'll hash the created genesis and ensure it matches the expected hash wi
 sha256sum ~/.fetchd/config/genesis.json
 ``` 
 
+> Expected hash `5b37dc36a0d8a412b4f9763118932bb86de5c615ea072574107e1553e1c4c513`
+
 Next, we'll introduce some changes in the genesis before restarting, to include MOBX tokens and migrate staked ERC20 tokens.
 
 ### Add MOBX genesis account
@@ -151,6 +156,8 @@ Next, we'll introduce some changes in the genesis before restarting, to include 
 ```bash
 fetchd --home ~/.fetchd/ add-genesis-account fetch1gkugwmd4tet2h02mr3c8p6nmcvuuj7nvg48uef 100000000000000000nanomobx
 ```
+
+> Expected hash `ad8cbca5523a501aedf7c56ab9801d19d299ebf1eea311dda345a260c1abb6d2`
 
 ### Migrate staked ERC20 tokens
 
@@ -160,6 +167,9 @@ To add the delegations to the genesis file, run:
 
 ```bash
 git clone https://github.com/fetchai/genesis-fetchhub.git
+
+git checkout testmigrate # for test run only
+
 cd genesis-fetchhub/
 
 # this script requies gawk
@@ -175,6 +185,10 @@ Again, ensure everything went well hashing the genesis and verify it matches the
 ```bash
 sha256sum ~/.fetchd/config/genesis.json
 ``` 
+
+> Expected hash here: `253fedb0bf026edc3e44937a2b4cb5746d80e4b3f3c75897e77238f04bc0cd58`
+
+If needed, the final genesis is available in [./data/genesis.json](./data/genesis.json)
 
 ## Restart your node
 
