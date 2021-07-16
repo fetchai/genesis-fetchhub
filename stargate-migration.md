@@ -10,7 +10,6 @@ In case anything is unclear or if you have any questions, feel free to reach us 
 
 The stargate upgrade introduce many changes in the application, most notably, the `fetchcli` binary have disappeared, and all commands its can now be ran on `fetchd` directly. You can test this new version by following the install instructions for the `fetchd 0.8.2` and interact with our `stargateworld` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)).
 
-
 ### Locate your files
 
 Before starting, make sure to locate the following files on your validator host:
@@ -22,10 +21,12 @@ Before starting, make sure to locate the following files on your validator host:
 - FETCHD_HOME/config/**app.toml**: this configuration allows to tune the cosmos application, such as enabled apis, telemetry, pruning...
 - FETCHD_HOME/config/**client.toml**: this file stores the client config, equivalent to the legacy `fetchcli config` which is now replaced by `fetchd config`.
 
-> If needed, clone this repo and use the [./scripts/locate_home.sh](./scripts/locate_home.sh) script to help find the right folder, giving it your validator operator address and a search path:  
+> If needed, clone this repo and use the [./scripts/locate_home.sh](./scripts/locate_home.sh) script to help find the right folder, giving it your validator operator address and a search path:
+>
 > ```
 > ./scripts/locate_home.sh fetchvaloper1fvcepqdw4lcc4s0gmxxfhkptyasfceg69x9gsc /home/
 > ```
+>
 > (if no match, rerun it with `sudo` to allow it traversing directories owned by other users)
 
 For the rest of the document, FETCHD_HOME is assumed to be at the default `~/.fetchd/` location. If your installation is different, replace `~/.fetchd/` path in all the commands with your actual `FETCHD_HOME` path.
@@ -67,7 +68,6 @@ Generate a hash of this file and validate it with others:
 sha256sum genesis_export_953700.json
 ```
 
-
 > Expected hash here: `619006a43a6bd0ff4fc274593e8a7b6c5d712a6c01c02481701c9d05eba2d522`
 > File available at [./data/genesis_export_953700.json](./data/genesis_export_953700.json)
 
@@ -90,7 +90,7 @@ You may already have the fetchd repository on your machine from the previous ins
 ```bash
 git clone --branch v0.8.2 https://github.com/fetchai/fetchd.git fetchd_0.8.2
 cd fetchd_0.8.2
-``` 
+```
 
 If you already have an existing clone, place yourself in and:
 
@@ -115,7 +115,7 @@ Configuration files received a lot of updates between versions, with quite a few
 
 ```bash
 # safe to drop existing configs since we have made backups earlier
-rm ~/.fetchd/config/app.toml ~/.fetchd/config/config.toml 
+rm ~/.fetchd/config/app.toml ~/.fetchd/config/config.toml
 
 # fetchd will detect missing config files and regenerate new ones
 fetchd version
@@ -140,13 +140,13 @@ fetchd --home ~/.fetchd/ stargate-migrate \
     genesis_export_953700.json > ~/.fetchd/config/genesis.json
 ```
 
-We're setting here the new chainID, the time where the network will restart, and the initial block number 
+We're setting here the new chainID, the time where the network will restart, and the initial block number
 
 Again, we'll hash the created genesis and ensure it matches the expected hash with other people:
 
 ```bash
 sha256sum ~/.fetchd/config/genesis.json
-``` 
+```
 
 > Expected hash `5b37dc36a0d8a412b4f9763118932bb86de5c615ea072574107e1553e1c4c513`
 
@@ -185,7 +185,7 @@ Again, ensure everything went well hashing the genesis and verify it matches the
 
 ```bash
 sha256sum ~/.fetchd/config/genesis.json
-``` 
+```
 
 > Expected hash here: `253fedb0bf026edc3e44937a2b4cb5746d80e4b3f3c75897e77238f04bc0cd58`
 
@@ -204,8 +204,120 @@ fetchd --home ~/.fetchd/ start --p2p.seeds f14fc7f2e6e2fabe9b11406333252f30973e0
 > If you have errors at launch, first try to `fetchd --home ~/.fetchd/ unsafe-reset-all` first and restart. If no changes, reach out on Discord for help!
 
 After starting, some messages will be printed in the console, and no activity will happen until 2/3 of the voting power come back online. When enough validators are online, you should see some activity in logs with messages like:
+
 ```
 8:40AM INF executed block height=XYZ module=state num_invalid_txs=0 num_valid_txs=0
 ```
 
 Meaning we're back producing blocks on the new network.
+
+## Troubleshooting help
+
+### CLI config
+
+Fetch 0.8.x version has included all the fetchcli functionality inside the fetchd command, but as with fetchli it must be configured to point to the corresponding chain and node. So if you are getting errors when using old cli commands it may be misconfigured.
+
+Error example:
+
+```bash
+fetchd query account ${your_fetch_account_hash}
+Error: error unmarshalling result: unknown field "proof" in types.ResponseQuery
+```
+
+> Check your fetchd config
+
+```bash
+fetchd config
+```
+
+expected output should be something like the following
+
+```json
+{
+  "chain-id": "andromeda-1",
+  "keyring-backend": "os",
+  "output": "text",
+  "node": "https://rpc-andromeda.fetch.ai:443",
+  "broadcast-mode": "sync"
+}
+```
+
+if not config fetchd as you would with fetchcli
+
+```bash
+fetchd config chain-id andromeda-1
+fetchd config node https://rpc-andromeda.fetch.ai:443
+```
+
+### Import your node keys
+
+If your keys are not showing when listing them with the following command
+
+```bash
+fetchd keys list
+```
+
+you'll have to import them with the following command and provide the mnemonic phrase for the account to recover:
+
+```bash
+fetchd keys add ${your-key-name} --recover
+```
+
+\* Repeat the process for as many keys as you need to import
+
+### KMS with tmkms library
+
+If having the following error maybe caused by your kms server misconfigured due to the change of the network and the Tendermint version
+
+```
+Error:
+Error: error with private validator socket client: can't get pubkey: send: endpoint connection timed out
+```
+
+Before migration Tendermint version was v0.33 and now it's v0.34, so it has to be changed. Changing chain-id identifier to andromeda-1 may also be needed. And deleting the tmkms state file.
+
+> Check Tendermint version (on your validator node)
+
+```bash
+fetchd tendermint version
+```
+
+```
+tendermint: 0.34.11
+abci: 0.17.0
+blockprotocol: 11
+p2pprotocol: 8
+```
+
+> Edit your tmkms config file tmkms.toml
+
+```bash
+vi tmkms/tmkms.toml
+```
+
+```
+[[chain]]
+id = "andromeda-1"
+...
+
+[[providers.your_type_of_provider]]
+// change the chain-id config if needed here also
+
+[[validator]]
+chain_id = "andromeda-1"
+...
+protocol_version = "v0.34"
+reconnect = true
+```
+
+> Also the Tmkms state file should be deleted to recreate a new one when the service is restarted.
+
+```bash
+rm ./your_tmks_service_folder/state/${your-consensus-file-name}.json
+```
+
+Restart your tmkms service and launch again your validator. A log like the one below should appear:
+
+```
+_Jul 15 16:12:40 your-host-name tmkms[40001]: 2021-07-15T16:12:40.402128Z INFO tmkms::session: [andromeda-1@tcp://your-host-ip:your-host-port] connected to validator successfully_
+```
