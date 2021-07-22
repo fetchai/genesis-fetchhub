@@ -272,7 +272,7 @@ async function main() {
         retval.staking.events_list = [];
         retval.staking.users = {};
 
-        const staking_event_names = ["BindStake"];
+        const staking_event_names = ["LiquidityDeposited"];
         for (let i = 0; i < staking_event_names.length; ++i) {
             const evt_name = staking_event_names[i];
             events = await staking.contract.getPastEvents(evt_name, { fromBlock: staking.startBlock, toBlock: staking.endBlock });
