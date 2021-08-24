@@ -310,7 +310,7 @@ async function main() {
         const current_block = await web3.eth.getBlockNumber();
 
         const curr_time = new Date();
-        const end_time = new Date("2021-07-15T12:00:00Z");
+        const end_time = new Date("2021-09-15T14:00:00Z");
         if (end_time < curr_time) {
             console.error(
                 `Current time ${curr_time} passed expected decommission time ${end_time} for FET Staking contract.`
@@ -322,6 +322,7 @@ async function main() {
                 (end_time - curr_time) /
                     (average_block_generation_time_secs * 1000)
         );
+        console.error(`Estimated end block: ${estimated_end_block}`);
 
         const interestRates = await InterestRates.queryFromContract();
 
