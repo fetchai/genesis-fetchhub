@@ -4,7 +4,7 @@ const { BN } = require("bn.js");
 const { Decimal } = require("decimal.js");
 const path = require("path");
 const EthUtil = require("ethereumjs-util");
-const EthTx = require("ethereumjs-tx");
+const EthTx = require("@ethereumjs/tx");
 const { bech32 } = require("bech32");
 const { createHash } = require("crypto");
 const secp256k1 = require("secp256k1");
@@ -234,7 +234,9 @@ class UserAssets {
 
 class User {
     constructor(address, pubkey) {
-        const addrFromPubkey = EthUtil.pubToAddress("0x" + pubkey);
+        const addrFromPubkey = EthUtil.pubToAddress(
+            EthUtil.toBuffer(EthUtil.addHexPrefix(pubkey))
+        );
         assert(
             addrFromPubkey.equals(EthUtil.toBuffer(address)),
             `pubkey ${pubkey} does not match address, got ${addrFromPubkey.toString(
@@ -265,19 +267,22 @@ class User {
 async function getPublicKeyFromTxHash(txHash) {
     const tx = await web3http.eth.getTransaction(txHash);
     const txDetails = {
+        chainId: tx.chainId,
+        accessList: tx.accessList,
         nonce: tx.nonce,
-        gasPrice: EthUtil.bufferToHex(new EthUtil.BN(tx.gasPrice)),
+        maxPriorityFeePerGas: tx.maxPriorityFeePerGas,
+        maxFeePerGas: tx.maxFeePerGas,
         gasLimit: tx.gas,
+        gasPrice: EthUtil.bufferToHex(new EthUtil.BN(tx.gasPrice)),
         to: tx.to,
         value: EthUtil.bufferToHex(new EthUtil.BN(tx.value)),
         data: tx.input,
-        chainId: web3http.version.network,
+        v: tx.v,
         r: tx.r,
         s: tx.s,
-        v: tx.v,
+        type: tx.type,
     };
-
-    const txObj = new EthTx.Transaction(txDetails);
+    const txObj = EthTx.TransactionFactory.fromTxData(txDetails);
     return txObj.getSenderPublicKey().toString("hex");
 }
 
@@ -322,7 +327,6 @@ async function main() {
                 (end_time - curr_time) /
                     (average_block_generation_time_secs * 1000)
         );
-        console.error(`Estimated end block: ${estimated_end_block}`);
 
         const interestRates = await InterestRates.queryFromContract();
 
