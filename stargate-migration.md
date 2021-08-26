@@ -1,6 +1,6 @@
 # Stargate migration
 
-This document describe the steps needed in order to upgrade a validator node running on `fetchd v0.7.x` to the `fetchd 0.8.6`.
+This document describe the steps needed in order to upgrade a validator node running on `fetchd v0.7.x` to the `fetchd 0.8.7`.
 It is **advised to read the whole document before starting applying this procedure**, in order to avoid your validator node being unable to restart.
 In case anything is unclear or if you have any questions, feel free to reach us out or ask in the Discord #validator channel.
 
@@ -8,7 +8,7 @@ In case anything is unclear or if you have any questions, feel free to reach us 
 
 ### Get familiar with the new version
 
-The stargate upgrade introduce many changes in the application, most notably, the `fetchcli` binary have disappeared, and all its commands can now be ran on `fetchd` directly. You can test this new version by following the install instructions for the `fetchd 0.8.6` and interact with our `stargateworld` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)).
+The stargate upgrade introduce many changes in the application, most notably, the `fetchcli` binary have disappeared, and all its commands can now be ran on `fetchd` directly. You can test this new version by following the install instructions for the `fetchd 0.8.7` and interact with our `stargateworld` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)).
 
 ### Locate your files
 
@@ -88,15 +88,15 @@ fetchd --home ~/.fetchd/ unsafe-reset-all
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
 
 ```bash
-git clone --branch v0.8.6 https://github.com/fetchai/fetchd.git fetchd_0.8.6
-cd fetchd_0.8.6
+git clone --branch v0.8.7 https://github.com/fetchai/fetchd.git fetchd_0.8.7
+cd fetchd_0.8.7
 ```
 
 If you already have an existing clone, place yourself in and:
 
 ```bash
 git fetch
-git checkout v0.8.6
+git checkout v0.8.7
 ```
 
 Now you can install the new fetchd version:
@@ -119,7 +119,7 @@ rm ~/.fetchd/config/app.toml ~/.fetchd/config/config.toml
 
 # fetchd will detect missing config files and regenerate new ones
 fetchd version
-# must print `0.8.6`
+# must print `0.8.7`
 ```
 
 Now you can edit `~/.fetchd/config/app.toml` and `~/.fetchd/config/config.toml` to add back any changes you made previously, or have a look at all the new settings.
