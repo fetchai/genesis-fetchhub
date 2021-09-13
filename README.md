@@ -18,7 +18,7 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 ## On Wednesday September, 15th
 
 1) Pause the bridge contract
-2) Stop the network at around 14:00 UTC (height: 2440500)
+2) Stop the network at around 14:00 UTC (height: 2436700)
 3) Begin migration, exporting genesis state from current mainnet
 4) Export staked tokens CSV and upload the result to this repository
 5) Finish the migration procedure and share hashes with the community
