@@ -136,7 +136,7 @@ Now the new version of `fetchd` have proper configuration, we're ready to upgrad
 fetchd --home ~/.fetchd/ stargate-migrate \
     --chain-id fetchhub-2 \
     --genesis-time 2021-09-16T14:00:00Z \
-    --initial-height 2440501 \
+    --initial-height 2436701 \
     genesis_export_2436700.json > ~/.fetchd/config/genesis.json
 ```
 
@@ -155,7 +155,7 @@ Next, we'll introduce some changes in the genesis before restarting, to include 
 ### Add MOBX genesis account
 
 ```bash
-fetchd --home ~/.fetchd/ add-genesis-account TODO_MOBX_GENESIS_ACCOUNT 100000000000000000nanomobx
+fetchd --home ~/.fetchd/ add-genesis-account fetch1m3evl6dqkhmwtp597wq8hhr9vtdasaktaq6wlj 100000000000000000nanomobx
 ```
 
 > Expected hash `TODO_HASH_TBA`
