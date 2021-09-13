@@ -155,7 +155,7 @@ Next, we'll introduce some changes in the genesis before restarting, to include 
 ### Add MOBX genesis account
 
 ```bash
-fetchd --home ~/.fetchd/ add-genesis-account fetch1m3evl6dqkhmwtp597wq8hhr9vtdasaktaq6wlj 100000000000000000nanomobx
+genesis=$(jq '((.app_state.bank.balances[] | select(.address == "fetch1m3evl6dqkhmwtp597wq8hhr9vtdasaktaq6wlj").coins) += [{"amount":"100000000000000000", "denom": "nanomobx"}]) | (.app_state.bank.supply += [{"amount":"100000000000000000", "denom": "nanomobx"}])' ~/.fetchd/config/genesis.json) && echo $genesis > ~/.fetchd/config/genesis.json
 ```
 
 > Expected hash `TODO_HASH_TBA`
