@@ -26,7 +26,10 @@ BOND_DENOM="afet"
 # minimum amount required to create a delegation, below, no delegation is 
 # created and everything is transferred on the user account
 # value is in units of BOND_DENOM
-MIN_DELEGATED_AMOUNT="2000000000000000000"
+# 2021-09-13 update:
+# it was decided to NOT create any delegation but just transfer all funds 
+# to the users wallets. The min-delegation is now set to the total supply.
+MIN_DELEGATED_AMOUNT="1067305583779492842119609694"
 # amount subtracted from the delegated amount and transferred 
 # on the user account when a delegation is created 
 # value is in units of BOND_DENOM
