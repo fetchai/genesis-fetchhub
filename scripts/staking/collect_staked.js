@@ -144,7 +144,7 @@ class Stake {
         const _1 = new Decimal("1");
 
         for (
-            let i = this.sinceInterestRateIndex;
+            let i = parseInt(this.sinceInterestRateIndex);
             i < interestRates.nextIdx;
             ++i
         ) {
