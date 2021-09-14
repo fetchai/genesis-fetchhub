@@ -144,7 +144,7 @@ class Stake {
         const _1 = new Decimal("1");
 
         for (
-            let i = this.sinceInterestRateIndex;
+            let i = parseInt(this.sinceInterestRateIndex);
             i < interestRates.nextIdx;
             ++i
         ) {
@@ -312,21 +312,24 @@ const staking = new Contract(
 
 async function main() {
     try {
-        const current_block = await web3.eth.getBlockNumber();
+        //const current_block = await web3.eth.getBlockNumber();
 
-        const curr_time = new Date();
-        const end_time = new Date("2021-09-15T14:00:00Z");
-        if (end_time < curr_time) {
-            console.error(
-                `Current time ${curr_time} passed expected decommission time ${end_time} for FET Staking contract.`
-            );
-        }
-        const average_block_generation_time_secs = 13.17; // [sec/block]
-        const estimated_end_block = Math.ceil(
-            current_block +
-                (end_time - curr_time) /
-                    (average_block_generation_time_secs * 1000)
-        );
+        //const curr_time = new Date();
+        //const end_time = new Date("2021-09-15T14:00:00Z");
+        //if (end_time < curr_time) {
+        //    console.error(
+        //        `Current time ${curr_time} passed expected decommission time ${end_time} for FET Staking contract.`
+        //    );
+        //}
+        //const average_block_generation_time_secs = 13.17; // [sec/block]
+        //const end_block = Math.ceil(
+        //    current_block +
+        //        (end_time - curr_time) /
+        //            (average_block_generation_time_secs * 1000)
+        //);
+
+        /* End block hight carved in the stone */
+        const end_block = 13224000;
 
         const interestRates = await InterestRates.queryFromContract();
 
@@ -370,7 +373,7 @@ async function main() {
 
         //console.log(`USER ADDRESS, USER PUBKEY, USER FETCH ADDRESS, TOTAL[afet], PRINCIPAL WHOLE[afet], COMPOUND INTEREST(LIQUID + LOCKED + STAKED)[afet]`);
         for (const [key, user] of Object.entries(retval.staking.users)) {
-            await user.init(interestRates, estimated_end_block);
+            await user.init(interestRates, end_block);
 
             const principal = fetToCanonicalFet(user.principalFET_whole);
             const compound = fetToCanonicalFet(user.compoundInterestFET_whole);
