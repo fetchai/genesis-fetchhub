@@ -188,7 +188,7 @@ Again, ensure everything went well hashing the genesis and verify it matches the
 sha256sum ~/.fetchd/config/genesis.json
 ```
 
-> Expected hash here: `TODO_HASH_TBA`
+> Expected hash here: `ffa8403435be257d3b602d0577cd698b9909290da3c6cfb3f60c691312769c5d`
 
 
 ### Token Bridge Fix
@@ -206,7 +206,7 @@ cp ~/.fetchd/config/genesis.json ~/.fetchd/config/genesis-pre-bridge-fix.json
 > Expected hash `acd29b951d59313b9356cc794cb00e4f53d7b26e34e5249485cf5b3a7b3e41ed`
 
 
-If needed, the final genesis is available in `TODO_MIGRATED_GENESIS_TBA`
+If needed, the final genesis is available in [./data/genesis.json](./data/genesis.json)
 
 ## Restart your node
 
@@ -215,7 +215,7 @@ You're now ready to restart your fully migrated node!
 Run:
 
 ```bash
-fetchd --home ~/.fetchd/ start --p2p.seeds TODO_STARGATE_MAINNET_SEEDS
+fetchd --home ~/.fetchd/ start --p2p.seeds 240ca38b990a7d3f25621eb848d0222d5b50278@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36656,3e19e092c5ddd19a6aa8ba87fa8a37566d4f7f38@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36657,b75b1ed0a1257e99d41b48d0704a605854d80514@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36658
 ```
 
 > If you have errors at launch, first try to `fetchd --home ~/.fetchd/ unsafe-reset-all` first and restart. If no changes, reach out on Discord for help!
