@@ -6,6 +6,8 @@ import copy
 TOKEN_BRIDGE_CONTRACT_ADDRESS = 'fetch18vd8fpwxzck93qlwghaj6arh4p7c5n890l3amr'
 FOUNDATION_ADDRESS = 'fetch1m3evl6dqkhmwtp597wq8hhr9vtdasaktaq6wlj'
 EXPECTED_TOKEN_BRIDGE_BALANCE = 141545184189144473545456630
+EXPECTED_FOUNDATION_BALANCE_BEFORE = 770682319211155846610403085
+EXPECTED_FOUNDATION_BALANCE_AFTER = 912227503400300320155859715
 
 def parse_commandline():
     parser = argparse.ArgumentParser()
@@ -45,6 +47,9 @@ def main():
             # update the balance from the funds from the foundation
             current_amount = int(entry['coins'][0]['amount'])
             next_amount = current_amount + EXPECTED_TOKEN_BRIDGE_BALANCE
+
+            assert current_amount == EXPECTED_FOUNDATION_BALANCE_BEFORE
+            assert next_amount == EXPECTED_FOUNDATION_BALANCE_AFTER
 
             entry['coins'][0]['amount'] = str(next_amount)
 
