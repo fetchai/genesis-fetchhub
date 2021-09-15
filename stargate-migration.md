@@ -160,6 +160,7 @@ genesis=$(jq '((.app_state.bank.balances[] | select(.address == "fetch1m3evl6dqk
 
 > Expected hash `5e7f041e7408fdafa67a14550696e1f743dea8ec70f3e9aea4c57e11568100ea`
 
+
 ### Migrate staked ERC20 tokens
 
 To ease the migration, we've extracted the staked ERC20 accounts and tokens into the [staked_erc20.csv file](./data/staked_export.csv). However, you can still replay the generation of this file and verify our scripts if you'd want to, by checking the [staking](./scripts/staking/) folder which contains the code and instructions needed.
@@ -188,6 +189,22 @@ sha256sum ~/.fetchd/config/genesis.json
 ```
 
 > Expected hash here: `TODO_HASH_TBA`
+
+
+### Token Bridge Fix
+
+An issue was detected with the Token Bridge contract that the remaining contract funds were not sent back the the foundation address (ready for the redeployment of the token bridge). In order to resolve this the following python script needs to be run on the exported genesis in order to correct this mistake.
+
+To apply the fix 
+
+```bash
+cp ~/.fetchd/config/genesis.json ~/.fetchd/config/genesis-pre-bridge-fix.json
+
+./scripts/return-bridge-funds.py ~/.fetchd/config/genesis-pre-bridge-fix.json ~/.fetchd/config/genesis.json
+```
+
+> Expected hash `acd29b951d59313b9356cc794cb00e4f53d7b26e34e5249485cf5b3a7b3e41ed`
+
 
 If needed, the final genesis is available in `TODO_MIGRATED_GENESIS_TBA`
 
