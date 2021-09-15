@@ -68,8 +68,8 @@ Generate a hash of this file and validate it with others:
 sha256sum genesis_export_2436700.json
 ```
 
-> Expected hash `TODO_HASH_TBA`
-> File available at `TODO_EXPORTED_GENESIS_TBA`
+> Expected hash `cd75ff7b8700f7c670df4305de42cff799bd617062b8dd5484fde87957903eff`
+> File available at `[./data/genesis_export_2436700.json](./data/genesis_export_2436700.json)`
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
 
@@ -148,7 +148,7 @@ Again, we'll hash the created genesis and ensure it matches the expected hash wi
 sha256sum ~/.fetchd/config/genesis.json
 ```
 
-> Expected hash `TODO_HASH_TBA`
+> Expected hash `1ade7cbaf5cb2fb071390c5ea5164ac0c0488c0bd943b51ba6b7b3d9ac2e2fa6`
 
 Next, we'll introduce some changes in the genesis before restarting, to include MOBX tokens and migrate staked ERC20 tokens.
 
@@ -158,7 +158,7 @@ Next, we'll introduce some changes in the genesis before restarting, to include 
 genesis=$(jq '((.app_state.bank.balances[] | select(.address == "fetch1m3evl6dqkhmwtp597wq8hhr9vtdasaktaq6wlj").coins) += [{"amount":"100000000000000000", "denom": "nanomobx"}]) | (.app_state.bank.supply += [{"amount":"100000000000000000", "denom": "nanomobx"}])' ~/.fetchd/config/genesis.json) && echo $genesis > ~/.fetchd/config/genesis.json
 ```
 
-> Expected hash `TODO_HASH_TBA`
+> Expected hash `5e7f041e7408fdafa67a14550696e1f743dea8ec70f3e9aea4c57e11568100ea`
 
 ### Migrate staked ERC20 tokens
 
