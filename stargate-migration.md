@@ -215,7 +215,7 @@ You're now ready to restart your fully migrated node!
 Run:
 
 ```bash
-fetchd --home ~/.fetchd/ start --p2p.seeds 240ca38b990a7d3f25621eb848d0222d5b50278@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36656,3e19e092c5ddd19a6aa8ba87fa8a37566d4f7f38@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36657,b75b1ed0a1257e99d41b48d0704a605854d80514@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36658
+fetchd --home ~/.fetchd/ start --p2p.seeds c240ca38b990a7d3f25621eb848d0222d5b50278@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36656,3e19e092c5ddd19a6aa8ba87fa8a37566d4f7f38@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36657,b75b1ed0a1257e99d41b48d0704a605854d80514@connect-fetchhub2.m-v2-london-c.fetch-ai.com:36658
 ```
 
 > If you have errors at launch, first try to `fetchd --home ~/.fetchd/ unsafe-reset-all` first and restart. If no changes, reach out on Discord for help!
