@@ -1,6 +1,6 @@
 # Capricorn Upgrade  
 
-This repository contains steps and documentation aimed to **current mainnet validators** in order to migrate their nodes and upgrading the network to latest (Capricorn) version of the [Fetch.ai](https://fetch.ai).
+This repository contains steps and documentation aimed at **current mainnet validators** to migrate their nodes and upgrade the [Fetch.ai](https://fetch.ai) network to the latest (Capricorn) version of the software. 
 
 Validators can have a review on this repo docs and scripts, this should give a good idea what will happen. 
 We'll still need to update few placeholders once we'll have the network ready to migrate but that's it.
