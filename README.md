@@ -1,29 +1,48 @@
-# Stargate migration
+# Capricorn Upgrade  
 
-This repository contains steps and documentation aimed to **current mainnet validators** in order to migrate their nodes and upgrading the network to the Stargate version.
-
+This repository contains steps and documentation aimed to **current mainnet validators** in order to migrate their nodes and upgrading the network to latest (Capricorn) version of the  
 
 Validators can have a review on this repo docs and scripts, this should give a good idea what will happen. 
 We'll still need to update few placeholders once we'll have the network ready to migrate but that's it.
 
 In case of questions or issues, feel free to reach me on discord (@daeMOn).
 
-# Timeline
+## Timeline
 
-## Pre migration
+### Pre migration
 
-1) Share this repository with the mainnet validators
-2) Replace and adjust the last remaining placeholders in the procedure (`TODO_` items)
+- Share this repository with validators on mainnet (chain-id=fetchhub-2)
+- Replace and adjust the last remaining placeholders in the procedure (`TODO_` items)
 
-## On Wednesday September, 15th
+### Tuesday, January 11th 2022
 
-1) Pause the bridge contract
-2) Stop the network at around 14:00 UTC (height: 2436700)
-3) Begin migration, exporting genesis state from current mainnet
-4) Export staked tokens CSV and upload the result to this repository
-5) Finish the migration procedure and share hashes with the community
+- Submit a governance proposal for upgrading the [Fetch.ai](https://fetch.ai) main-net. 
 
-## On Thursday, September, 16th
+### Tuesday, January 25th 2022
 
-1) Restart the migrated network at around 14:00 UTC
-2) ensure everything works fine. 
+- Governance proposal for upgrading the network closes. If the proposal is passed, proceed with the upgrade steps below 
+- Pause the smart contracts on both sides of the Fetch-Ethereum token bridge and shut-down relayer
+
+### Wednesday, January 26th 2020
+
+- The network will pause at: `2022-01-26T14:00:00Z`
+- The genesis state from existing mainnet (fetchhub-2) will be exported
+- The following network parameters will be modified to enable IBC transfers on the upgraded mainnet, which will have a chain-id of fetchhub-3. 
+
+```
+{
+    "app_state": {
+        "staking": {
+            "params": {
+                "historical_entries": 10000
+            }
+        },
+        "transfer": {
+            "params": {
+                "send_enabled": true,
+                "receive_enabled": true
+            }
+        }
+    }
+}
+```
