@@ -169,9 +169,8 @@ Now we have the new version of `fetchd` and the contract binaries, we're ready t
 fetchd --home ~/.fetchd/ capricorn-migrate \
     --chain-id fetchhub-3 \
     --genesis-time TODO_NEW_GENESIS_TIME \
-    --initial-height TODO_START_BLOCK_HEIGHT \
-    --bridge-new-contract-path ./bridge.wasm 
-    --mobix-new-contract-path ./mobix_staking.wasm 
+    --bridge-new-contract-path ./bridge.wasm \
+    --mobix-new-contract-path ./mobix_staking.wasm \
     genesis_export_TODO_STOP_BLOCK_HEIGHT.json > genesis_migrated_TODO_STOP_BLOCK_HEIGHT.json
 ```
 
