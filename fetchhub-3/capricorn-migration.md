@@ -30,7 +30,7 @@ We will provide you the correct data on the migration day, but you are also able
 
 > Note: the contract pause is currently planned on **Friday 4th Febuary @ 12:00 UTC**.
 
-For exporting the data, you can run the following. This must be executed **with the current fetchd v0.8.7** version.
+For exporting the data, you can clone this repository and run the following. This must be executed **with the current fetchd v0.8.7** version still installed.
 
 ```bash
 ./scripts/query_all_reconciliation_registrations.sh > ./reconciliation_export.json
