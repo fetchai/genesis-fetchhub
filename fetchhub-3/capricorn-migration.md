@@ -227,10 +227,14 @@ fetchd --home ~/.fetchd/ stake-reconciliation-migrate ./genesis_migrated_TODO_ST
 
 You're now ready to restart your fully migrated node!
 
+> Caution!
+
+> To avoid errors here, make sure to wait for a confirmation on Fiscord from me (@daeMOn) that the seeds are up and running. Otherwise, unexpected startup errors might occur.
+
 Run:
 
 ```bash
-fetchd --home ~/.fetchd/ start --p2p.seeds c240ca38b990a7d3f25621eb848d0222d5b50278@connect-fetchhub.fetch.ai:36656,3e19e092c5ddd19a6aa8ba87fa8a37566d4f7f38@connect-fetchhub.fetch.ai:36657,b75b1ed0a1257e99d41b48d0704a605854d80514@connect-fetchhub.fetch.ai:36658
+fetchd --home ~/.fetchd/ start --p2p.seeds 5f3fa6404a67b664be07d0e133a00c1600967396@connect-fetchhub3.m-v2-london-c.fetch-ai.com:36756,8272b70e1986e2080ca328309a5aad3bb932fcab@connect-fetchhub3.m-v2-london-c.fetch-ai.com:36757,81f479ad9b4b1d25bceedb2a13139187792442bf@connect-fetchhub3.m-v2-london-c.fetch-ai.com:36758
 ```
 
 > If you have errors at launch, first try to `fetchd --home ~/.fetchd/ unsafe-reset-all` first and restart. If no changes, reach out on Discord for help!
