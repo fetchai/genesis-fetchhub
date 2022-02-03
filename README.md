@@ -14,17 +14,18 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 - Share this repository with validators on mainnet.
 - Replace and adjust the last remaining placeholders in the procedure (`TODO_` items).
 
-### Tuesday, January 11th 2022
+### Tuesday, January 25th 2022
 
 - Submit a governance proposal for upgrading main-net.
 
-### Tuesday, January 25th 2022
+### Friday, February 4th 2022
+
+- Pause the smart contracts on both sides of the Fetch-Ethereum token bridge and shut-down relayer.
+- Pause the reconciliation program contract.
+
+### Tuesday, February 8th 2022
 
 - Governance proposal for upgrading the network closes. If the proposal is passed, proceed with the upgrade steps below.
-- Pause the smart contracts on both sides of the Fetch-Ethereum token bridge and shut-down relayer.
-
-### Wednesday, January 26th 2020
-
 - The network will pause at 14:00 UTC time (exact block height will be announced).
 - The state from existing mainnet (`fetchhub-2`) will be exported, and used to create the base genesis file for the network upgrade.
 - The following network parameters will be modified to enable IBC transfers on the upgraded mainnet, which will have a chain-id of `fetchhub-3`.
