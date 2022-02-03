@@ -229,7 +229,7 @@ You're now ready to restart your fully migrated node!
 
 > Caution!
 
-> To avoid errors here, make sure to wait for a confirmation on Fiscord from me (@daeMOn) that the seeds are up and running. Otherwise, unexpected startup errors might occur.
+> To avoid errors here, make sure to wait for a confirmation on Discord from me (@daeMOn) that the seeds are up and running. Otherwise, unexpected startup errors might occur.
 
 Run:
 
