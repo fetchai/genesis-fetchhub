@@ -68,7 +68,7 @@ We'll setup a dedicated discord channel for the migration, where we'll share imp
 
 ## Stop your validator
 
-First, make sure your node have reached at least the `TODO_STOP_BLOCK_HEIGHT` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
+First, make sure your node have reached at least the `4504600` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
 Also ensure that **no process managers (such as `systemd`) will attempt to restart it.**
 
 The exact procedure to stop your node depends on how you configured it so we can't really give a generic way here.
@@ -90,17 +90,17 @@ This would allow to revert back to your starting state in case something goes wr
 ## Export network state
 
 ```bash
-fetchd --home ~/.fetchd/ export --height TODO_STOP_BLOCK_HEIGHT > genesis_export_TODO_STOP_BLOCK_HEIGHT.json
+fetchd --home ~/.fetchd/ export --height 4504600 > genesis_export_4504600.json
 ```
 
 Generate a hash of this file and validate it with others:
 
 ```bash
-sha256sum genesis_export_TODO_STOP_BLOCK_HEIGHT.json
+sha256sum genesis_export_4504600.json
 ```
 
 > Expected hash `TODO_EXPECTED_HASH`
-> File available at [./data/genesis_export_TODO_STOP_BLOCK_HEIGHT.json](./data/genesis_export_TODO_STOP_BLOCK_HEIGHT.json)
+> File available at [./data/genesis_export_4504600.json](./data/genesis_export_4504600.json)
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
 
@@ -171,7 +171,7 @@ fetchd --home ~/.fetchd/ capricorn-migrate \
     --genesis-time TODO_NEW_GENESIS_TIME \
     --bridge-new-contract-path ./bridge.wasm \
     --mobix-new-contract-path ./mobix_staking.wasm \
-    genesis_export_TODO_STOP_BLOCK_HEIGHT.json > genesis_migrated_TODO_STOP_BLOCK_HEIGHT.json
+    genesis_export_4504600.json > genesis_migrated_4504600.json
 ```
 
 We're setting here the new chainID, the time when the network will restart, and the initial block number as well as the 2 contract paths.
@@ -179,11 +179,11 @@ We're setting here the new chainID, the time when the network will restart, and 
 Again, we'll hash the created genesis and ensure it matches the expected hash with other people:
 
 ```bash
-sha256sum genesis_migrated_TODO_STOP_BLOCK_HEIGHT.json
+sha256sum genesis_migrated_4504600.json
 ```
 
 > Expected hash `TODO_EXPECTED_HASH`
-> File available at [./data/genesis_migrated_TODO_STOP_BLOCK_HEIGHT.json](./data/genesis_migrated_TODO_STOP_BLOCK_HEIGHT.json)
+> File available at [./data/genesis_migrated_4504600.json](./data/genesis_migrated_4504600.json)
 
 Once done, the contract files can be safely deleted from your filesystem
 
@@ -214,7 +214,7 @@ Again, those files are only provided for convenience. You can generate them your
 With those files, we can now run the reconciliation command and write the final genesis:
 
 ```bash
-fetchd --home ~/.fetchd/ stake-reconciliation-migrate ./genesis_migrated_TODO_STOP_BLOCK_HEIGHT.json \
+fetchd --home ~/.fetchd/ stake-reconciliation-migrate ./genesis_migrated_4504600.json \
     --stakes-csv ./staked_export.csv \
     --registrations ./reconciliation_export.json > ~/.fetchd/config/genesis.json
 ```

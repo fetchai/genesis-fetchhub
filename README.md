@@ -26,7 +26,7 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 ### Tuesday, February 8th 2022
 
 - Governance proposal for upgrading the network closes. If the proposal is passed, proceed with the upgrade steps below.
-- The network will pause at 14:00 UTC time (exact block height will be announced).
+- The network will pause at around 14:00 UTC time (when `block height = 4504600`).
 - The state from existing mainnet (`fetchhub-2`) will be exported, and used to create the base genesis file for the network upgrade.
 - The upgraded mainnet will have a chain-id of `fetchhub-3`, with IBC transfers enabled.
 
