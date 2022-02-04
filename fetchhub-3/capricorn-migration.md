@@ -33,7 +33,7 @@ We will provide you the correct data on the migration day, but you are also able
 For exporting the data, you can clone this repository and run the following. This must be executed **with the current fetchd v0.8.7** version still installed.
 
 ```bash
-./scripts/query_all_reconciliation_registrations.sh > ./reconciliation_export.json
+./scripts/query_all_reconciliation_registrations.sh fetch1k0jntykt7e4g3y88ltc60czgjuqdy4c9gl50xa > ./reconciliation_export.json
 sha256sum ./reconciliation_export.json
 # must print TODO_EXPECTED_HASH
 ```
