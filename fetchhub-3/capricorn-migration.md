@@ -35,7 +35,7 @@ For exporting the data, you can clone this repository and run the following. Thi
 ```bash
 ./scripts/query_all_reconciliation_registrations.sh fetch1k0jntykt7e4g3y88ltc60czgjuqdy4c9gl50xa > ./reconciliation_export.json
 sha256sum ./reconciliation_export.json
-# must print TODO_EXPECTED_HASH
+# must print 7877367e00e758663e227e98bba85a101effd5f11d09ad64020b54abb0d3d8c6
 ```
 
 In case the contract is not yet paused, an error will be reported and the `./reconciliation_export.json` will be empty.
@@ -202,9 +202,10 @@ curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/main/fetchhub-3/
 sha256sum staked_export.csv
 # must print cbe48027309bd7969a7929bece94b4003819a3e0ed671d7e4bac6d265f7945e4
 
+# only if you haven't exported this file yourself already
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/main/fetchhub-3/data/reconciliation_export.json --output reconciliation_export.json
 sha256sum reconciliation_export.json
-# must print TODO_RECONCILIATION_EXPORT_HASH
+# must print 7877367e00e758663e227e98bba85a101effd5f11d09ad64020b54abb0d3d8c6
 ```
 
 Again, those files are only provided for convenience. You can generate them yourself.
