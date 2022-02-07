@@ -167,8 +167,7 @@ Now we have the new version of `fetchd` and the contract binaries, we're ready t
 
 ```bash
 fetchd --home ~/.fetchd/ capricorn-migrate \
-    --chain-id fetchhub-3 \
-    --genesis-time TODO_NEW_GENESIS_TIME \
+    --genesis-time "2022-02-08T18:00:00Z" \
     --bridge-new-contract-path ./bridge.wasm \
     --mobix-new-contract-path ./mobix_staking.wasm \
     genesis_export_4504600.json > genesis_migrated_4504600.json

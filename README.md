@@ -29,6 +29,7 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn).
 - The network will pause at around 14:00 UTC time (when `block height = 4504600`).
 - The state from existing mainnet (`fetchhub-2`) will be exported, and used to create the base genesis file for the network upgrade.
 - The upgraded mainnet will have a chain-id of `fetchhub-3`, with IBC transfers enabled.
+- The new genesis time will be set on `2022-02-08T18:00:00Z`, this is when the network will restart, assuming 2/3 of the validators have migrated.
 
 In addition to this, `80616475991676767023462315` afet (around 80 million FET) will be burned from the foundation wallet address [fetch1c2wlfqn6eqqknpwcr0na43m9k6hux94dp6fx4y](https://explore-fetchhub.fetch.ai/account/fetch1c2wlfqn6eqqknpwcr0na43m9k6hux94dp6fx4y) to correct for tokens mistakenly minted at the previous network upgrade event.
 
