@@ -156,10 +156,13 @@ sha256sum ./bridge.wasm
 
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/main/fetchhub-3/data/contracts/mobix_staking.wasm --output ./mobix_staking.wasm
 sha256sum ./mobix_staking.wasm
-# must print TODO_NEW_MOBIX_CONTRACT_HASH
+# must print c703ab928966b287ecb4cce804cfcf896ae9714c4619adac130053fe043b9321
 ```
 
-TODO_CONTRACT_BUILD_INFOS
+Alternatively, contracts can also be compiled from their sources, simply check their respective repositories:
+
+- Token Bridge: https://github.com/fetchai/fetch-ethereum-bridge-v1/tree/v0.2.0
+- Mobix Staking: https://github.com/MOBIX-ai/staking/tree/MOBIX-Staking-capricorn-0.1.0
 
 ## Migrate genesis
 
