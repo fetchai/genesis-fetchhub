@@ -229,9 +229,12 @@ fetchd --home ~/.fetchd/ stake-reconciliation-migrate ./genesis_migrated_4504600
 
 You're now ready to restart your fully migrated node!
 
-> Caution!
+### Caution!
 
-> To avoid errors here, make sure to wait for a confirmation on Discord from me (@daeMOn) that the seeds are up and running. Otherwise, unexpected startup errors might occur.
+- To avoid errors here, make sure to wait for a confirmation on Discord from me (@daeMOn) that the seeds are up and running. Otherwise, unexpected startup errors might occur.
+
+- If you have set a halt-height in your FETCHD_HOME/config/app.toml earlier to stop your node, remember to retore it to `halt-height = 0` to allow your node to start!
+
 
 Run:
 
