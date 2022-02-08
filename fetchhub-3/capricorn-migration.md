@@ -184,7 +184,7 @@ Again, we'll hash the created genesis and ensure it matches the expected hash wi
 sha256sum genesis_migrated_4504600.json
 ```
 
-> Expected hash `TODO_EXPECTED_HASH`
+> Expected hash `9f4463177c06a9a8053c0742d4ef2373509acbf1752fb1ba3016270191fdacaa`
 > File available at [./data/genesis_migrated_4504600.json](./data/genesis_migrated_4504600.json)
 
 Once done, the contract files can be safely deleted from your filesystem
