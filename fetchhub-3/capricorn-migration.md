@@ -152,7 +152,7 @@ For convenience, the new contracts have been pre-compiled and added to this repo
 ```bash
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/main/fetchhub-3/data/contracts/bridge.wasm --output ./bridge.wasm
 sha256sum ./bridge.wasm
-# must print ba4676a2f8ddf43d3d8ed7f12743b26885579422b96331690879202e6adfd27f
+# must print 8fd6cb905745b388bbd3b605d9152f9f8728ccafaafd849ae1aa60ca81c04ba9
 
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/main/fetchhub-3/data/contracts/mobix_staking.wasm --output ./mobix_staking.wasm
 sha256sum ./mobix_staking.wasm
