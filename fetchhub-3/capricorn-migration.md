@@ -222,7 +222,7 @@ fetchd --home ~/.fetchd/ stake-reconciliation-migrate ./genesis_migrated_4504600
     --registrations ./reconciliation_export.json > ~/.fetchd/config/genesis.json
 ```
 
-> Expected hash `TODO_EXPECTED_HASH`
+> Expected hash `7f829286c6906b487e636a8c27e09e1fb321d6700b50a221dc88f0c8424a208d`
 > File available at [./data/genesis.json](./data/genesis.json)
 
 ## Restart your node
