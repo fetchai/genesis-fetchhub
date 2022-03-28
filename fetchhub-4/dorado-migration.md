@@ -137,7 +137,7 @@ Again, we'll hash the created genesis and ensure it matches the expected hash wi
 sha256sum genesis_migrated_TODO_STOP_HEIGHT.json
 ```
 
-> Expected hash `9f4463177c06a9a8053c0742d4ef2373509acbf1752fb1ba3016270191fdacaa`
+> Expected hash `TODO_STEP2_HASH`
 > File available at [./data/genesis_migrated_TODO_STOP_HEIGHT.json](./data/genesis_migrated_TODO_STOP_HEIGHT.json)
 
 ## Restart your node
