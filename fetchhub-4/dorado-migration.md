@@ -154,7 +154,7 @@ You're now ready to restart your fully migrated node!
 Run:
 
 ```bash
-fetchd --home ~/.fetchd/ start --p2p.seeds TODO_SEEDS
+fetchd --home ~/.fetchd/ start --p2p.seeds 17693da418c15c95d629994a320e2c4f51a8069b@connect-fetchhub4.m-v2-london-c.fetch-ai.com:36456,a575c681c2861fe945f77cb3aba0357da294f1f2@connect-fetchhub4.m-v2-london-c.fetch-ai.com:36457,d7cda986c9f59ab9e05058a803c3d0300d15d8da@connect-fetchhub4.m-v2-london-c.fetch-ai.com:36458
 ```
 
 If you did not configure yet a `min-gas-prices` in your `app.toml` configuration, you will see the following warning message on startup:
