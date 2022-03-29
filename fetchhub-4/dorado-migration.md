@@ -124,7 +124,7 @@ Now we have the new version of `fetchd`, we're ready to upgrade the genesis file
 
 ```bash
 fetchd --home ~/.fetchd/ dorado-migrate \
-    --genesis-time "2022-04-05T17:00:00Z" \
+    --genesis-time "2022-04-05T16:00:00Z" \
     genesis_export_TODO_STOP_HEIGHT.json > genesis_migrated_TODO_STOP_HEIGHT.json
 ```
 
