@@ -1,6 +1,6 @@
 # Dorado migration
 
-This document describe the steps needed in order to upgrade a validator node running on `fetchd v0.9.x` to the `fetchd v0.10.0` version.
+This document describe the steps needed in order to upgrade a validator node running on `fetchd v0.9.x` to the `fetchd v0.10.2` version.
 It is **advised to read the whole document before starting applying this procedure**, in order to avoid your validator node being unable to restart.
 In case anything is unclear or if you have any questions, feel free to reach us out or ask in the Discord #mainnet channel.
 
@@ -15,7 +15,7 @@ This upgrade mostly aim on upgrading the network genesis to:
 
 ### Get familiar with the new version
 
-This time, the Dorado upgrade doesn't introduce many changes on `fetchd` itself. The main breaking change is comming from ibc-go new version and the new cosmos-sdk version. You can test this new version by following the install instructions for the [`fetchd v0.10.0` version](https://github.com/fetchai/fetchd/releases/tag/v0.10.0) and interact with our `Dorado` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)). 
+This time, the Dorado upgrade doesn't introduce many changes on `fetchd` itself. The main breaking change is comming from ibc-go new version and the new cosmos-sdk version. You can test this new version by following the install instructions for the [`fetchd v0.10.2` version](https://github.com/fetchai/fetchd/releases/tag/v0.10.2) and interact with our `Dorado` testnet (get the connections settings on [our networks documentation page](https://docs.fetch.ai/ledger_v2/networks/)). 
 
 ### Locate your files
 
@@ -95,15 +95,15 @@ fetchd --home ~/.fetchd/ unsafe-reset-all
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
 
 ```bash
-git clone --branch v0.10.0 https://github.com/fetchai/fetchd.git fetchd_0.10.0
-cd fetchd_0.10.0
+git clone --branch v0.10.2 https://github.com/fetchai/fetchd.git fetchd_0.10.2
+cd fetchd_0.10.2
 ```
 
 If you already have an existing clone, place yourself in and:
 
 ```bash
 git fetch
-git checkout v0.10.0
+git checkout v0.10.2
 ```
 
 Now you can install the new fetchd version:
@@ -116,7 +116,7 @@ fetchd -h
 # must print fetchd help message
 
 fetchd verion
-# must print v0.10.0
+# must print v0.10.2
 ```
 
 ## Migrate genesis
