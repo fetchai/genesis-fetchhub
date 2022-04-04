@@ -9,6 +9,7 @@ This upgrade mostly aim on upgrading the network genesis to:
 - support ibc-go v2.2.0
 - support wasmd v0.24
 - mint a new `nanonomx` token
+- mint a new `ulrn` token
 
 ## Before starting
 
@@ -43,7 +44,7 @@ We'll use a dedicated discord channel (`#mainnet`) for the migration, where we'l
 
 ## Stop your validator
 
-First, make sure your node have reached at least the `TODO_STOP_HEIGHT` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
+First, make sure your node have reached at least the `5300200` block height we will use to export the network state and restart from. You can configure your node in advance to stop at this height by setting the `halt-height` parameter in the `app.toml` file and restarting your node.
 Also ensure that **no process managers (such as `systemd`) will attempt to restart it.**
 
 The exact procedure to stop your node depends on how you configured it so we can't really give a generic way here.
@@ -65,17 +66,17 @@ This would allow to revert back to your starting state in case something goes wr
 ## Export network state
 
 ```bash
-fetchd --home ~/.fetchd/ export --height TODO_STOP_HEIGHT > genesis_export_TODO_STOP_HEIGHT.json
+fetchd --home ~/.fetchd/ export --height 5300200 > genesis_export_5300200.json
 ```
 
 Generate a hash of this file and validate it with others:
 
 ```bash
-sha256sum genesis_export_TODO_STOP_HEIGHT.json
+sha256sum genesis_export_5300200.json
 ```
 
 > Expected hash `TODO_STEP1_HASH`
-> File available at [./data/genesis_export_TODO_STOP_HEIGHT.json](./data/genesis_export_TODO_STOP_HEIGHT.json)
+> File available at [./data/genesis_export_5300200.json](./data/genesis_export_5300200.json)
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
 
@@ -125,7 +126,7 @@ Now we have the new version of `fetchd`, we're ready to upgrade the genesis file
 ```bash
 fetchd --home ~/.fetchd/ dorado-migrate \
     --genesis-time "2022-04-05T16:00:00Z" \
-    genesis_export_TODO_STOP_HEIGHT.json > genesis_migrated_TODO_STOP_HEIGHT.json
+    genesis_export_5300200.json > genesis_migrated_5300200.json
 ```
 
 We're setting here the time when the network will restart. 
@@ -134,11 +135,11 @@ The new chainID, initial block number and other important parameters are automat
 Again, we'll hash the created genesis and ensure it matches the expected hash with other people:
 
 ```bash
-sha256sum genesis_migrated_TODO_STOP_HEIGHT.json
+sha256sum genesis_migrated_5300200.json
 ```
 
 > Expected hash `TODO_STEP2_HASH`
-> File available at [./data/genesis_migrated_TODO_STOP_HEIGHT.json](./data/genesis_migrated_TODO_STOP_HEIGHT.json)
+> File available at [./data/genesis_migrated_5300200.json](./data/genesis_migrated_5300200.json)
 
 ## Restart your node
 
