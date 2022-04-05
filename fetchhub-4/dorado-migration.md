@@ -115,7 +115,7 @@ make install
 fetchd -h
 # must print fetchd help message
 
-fetchd verion
+fetchd version
 # must print v0.10.2
 ```
 
