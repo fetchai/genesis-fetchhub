@@ -138,8 +138,17 @@ Again, we'll hash the created genesis and ensure it matches the expected hash wi
 sha256sum genesis_migrated_5300200.json
 ```
 
-> Expected hash `TODO_STEP2_HASH`
+> Expected hash `fe5fe42dc375ae33268c88cb03fe0c030c96f08ad96ad21921c58fd02fe711c9`
 > File available at [./data/genesis_migrated_5300200.json](./data/genesis_migrated_5300200.json)
+
+
+## Copy genesis to your node home
+
+Run the following:
+
+```
+cp genesis_migrated_5300200.json ~/.fetchd/config/genesis.json
+```
 
 ## Restart your node
 
