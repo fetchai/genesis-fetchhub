@@ -14,6 +14,19 @@ This is a backward compatible - non consesus breaking change, meaning we don't n
 This is required for all your node (validators, sentries and any other you may have)
 
 
+## Backup FETCHD_HOME
+
+Before making any changes, it's prefered to create a backup copy of your current `FETCHD_HOME` directory.
+
+The following command can be used, assuming your `FETCHD_HOME` is `~/.fetchd/`:
+
+```bash
+cp -R ~/.fetchd/ ~/.fetchd_old/
+```
+
+This would allow to revert back to your starting state in case something goes wrong on the way.
+
+
 ## Install new fetchd version
 
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
