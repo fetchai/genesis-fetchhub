@@ -14,3 +14,4 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn#5105).
     - [Initial upgrade (v0.10.2)](./fetchhub-4/1-dorado-migration-v0.10.2.md)
     - [Security update (v0.10.3)](./fetchhub-4/2-security-update-v0.10.3.md)
     - [Security update (v0.10.4)](./fetchhub-4/3-security-update-v0.10.4.md)
+    - [Security update (v0.10.4)](./fetchhub-4/4-security-update-v0.10.5.md)
