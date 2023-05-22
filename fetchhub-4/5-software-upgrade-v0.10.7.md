@@ -1,7 +1,7 @@
 
 # Software upgrade
 
-This guide is describing the procedure to upgrade to [fetchd v0.10.7](https://github.com/fetchai/fetchd/releases/tag/v0.10.7) following the [software-upgrade proposal #6](https://explore-fetchhub.fetch.ai/proposals/6).
+This guide is describing the procedure to upgrade to [fetchd v0.10.7](https://github.com/fetchai/fetchd/releases/tag/v0.10.7) following the [software-upgrade proposal #19](https://explore-fetchhub.fetch.ai/proposals/19).
 
 We kindly ask all the validators to read through the following document once, and then wait for the upgrade height (block #11235813) to be reached before executing the steps in order to upgrade their nodes.
 

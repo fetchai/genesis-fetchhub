@@ -15,4 +15,4 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn#5105).
     - [Security update (v0.10.3)](./fetchhub-4/2-security-update-v0.10.3.md)
     - [Software upgrade (v0.10.4)](./fetchhub-4/3-software-upgrade-v0.10.4.md)
     - [Software upgrade (v0.10.5)](./fetchhub-4/4-software-upgrade-v0.10.5.md)
-    - [Security update (v0.10.7)](./fetchhub-4/5-security-update-v0.10.7.md)
+    - [Software upgrade (v0.10.7)](./fetchhub-4/5-software-upgrade-v0.10.7.md)
