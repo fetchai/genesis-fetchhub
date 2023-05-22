@@ -5,7 +5,7 @@ This guide is describing the procedure to upgrade to [fetchd v0.10.7](https://gi
 
 We kindly ask all the validators to read through the following document once, and then wait for the upgrade height (block #11235813) to be reached before executing the steps in order to upgrade their nodes.
 
-In case of questions or issues, feel free to reach me on discord (@MissingNO57  - Jiří Vestfál#3589).
+In case of questions or issues, feel free to reach me on discord (@MissingNO57#3589).
 
 ## About the upgrade
 
