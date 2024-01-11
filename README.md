@@ -16,3 +16,4 @@ In case of questions or issues, feel free to reach me on discord (@daeMOn#5105).
     - [Software upgrade (v0.10.4)](./fetchhub-4/3-software-upgrade-v0.10.4.md)
     - [Software upgrade (v0.10.5)](./fetchhub-4/4-software-upgrade-v0.10.5.md)
     - [Software upgrade (v0.10.7)](./fetchhub-4/5-software-upgrade-v0.10.7.md)
+    - [Software upgrade (v0.11.3)](./fetchhub-4/6-software-upgrade-v0.11.3.md)
