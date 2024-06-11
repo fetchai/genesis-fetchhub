@@ -54,13 +54,13 @@ fetchd export > genesis.json
 ## 6. Install NEW version `v0.12.LATEST` of `fetchd` node
 There are two options, the correct choice depends on how you normally run your node: 
 > NOTE: The `LATEST` value in the version tag will be decided & publicised here when it will become known.
-### 6.1. Build & install LOCAL version of new node
+### 6.1. EITHER Build & install LOCAL version of new node
 #### 6.1.1. Install go lang
 We highly recommend to install `go1.18.10`, which is the latest version supported by go modules `fetchd` node
 depends on.
 Installation procedure depends on the OS you are using.
 
-#### 6.1.2. EITHER Build & install LOCAL version of new node
+#### 6.1.2. Build & install LOCAL version of new node
 ```shell
 git clone --depth --branch v0.12.LATEST https://github.com/fetchai/fetchd
 cd fetchd
