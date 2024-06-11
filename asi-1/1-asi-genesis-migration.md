@@ -9,8 +9,6 @@ process:
 - **CPU**: 1 core on the cloud **or** 4 cores on a local machine
 - **Disk Space**: 2GB free space
 
-[//]: # (TODO: INSERT REFERENCE TO GENESIS.JSON FILE)
-
 #### *In the event that these requirements are not met*
 
 - download the `genesis.json` file provided  **INSERT PATH HERE**
