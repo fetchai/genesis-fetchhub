@@ -45,7 +45,7 @@ fetchd export > genesis.json
 ```
 
 - after the chevron symbol `>`, specify the path and/or filename where the `genesis.json` file should be saved.
-    - The example provided will override/create the `genesis.json` file to the **default** node directory (which is
+    - The example provided will override/create the `genesis.json` file to the **default** home node directory (which is
       the `~/.fetchd/config`).
 - **REMINDER**: Ensure that the system where this command is executed has at least 32GB of memory.
 - **REMINDER**: Ensure that the system has the required free space and expect the output file to be approximately 3GB.
