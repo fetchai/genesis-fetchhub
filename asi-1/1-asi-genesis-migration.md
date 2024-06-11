@@ -24,20 +24,28 @@ upgrade procedure. There are two options for obtaining such a node:
 - **Newly Created Node**: Set up a new node specifically for this purpose. This node should be dedicated solely to
   syncing with the network and should not serve any other function, such as RPC, Sentry, or Validator.
 
-## 3. Stop the Node at Desired Time:
+## 3. Stop the Node at Desired Time or Wait for Halt:
 
-Stop the node at the desired time to capture the state at a specific block height. The last block height at the time of
-stopping the node will be used to export the genesis state.
+Stop the node at the desired time to capture the state at a specific block height.
+
+> During the official upgrade process, the network will temporarily halt to perform a self-update.   
+> - All connected nodes
+> will pause at the same block height until they are upgraded.   
+> - The latest halted state will be used to export the genesis
+> state.  
+> - After the restart, all nodes wishing to reconnect **must** match the new network parameters.
 
 ## 4. Not mandatory but HIGHLY recommended: Backup your node:
+
 Strictly speaking this step is **NOT** mandatory, it is just for safety reasons if something goes wrong.
+
 ```shell
 cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 ```
 
 ## 5. Export `genesis.json` File:
 
-Execute the following command to export the `genesis.json` file at the latest block height using the **current** 
+Execute the following command to export the `genesis.json` file at the latest block height using the **current**
 `fetchd v0.11.3` version:
 
 ```bash
@@ -47,20 +55,27 @@ fetchd export > genesis.json
 - after the chevron symbol `>`, specify the path and/or filename where the `genesis.json` file should be saved.
     - The example provided will override/create the `genesis.json` file to the **default** home node directory (which is
       the `~/.fetchd/config`).
-- **REMINDER**: Ensure that the system where this command is executed has at least 32GB of memory.
-- **REMINDER**: Ensure that the system has the required free space and expect the output file to be approximately 3GB.
 - The process may take around 10 minutes, depending on the system.
 
+> **REMINDER**: Ensure that the system where this command is executed has at least 32GB of memory.
+
+> **REMINDER**: Ensure that the system has the required free space and expect the output file to be approximately 3GB.
+
 ## 6. Install NEW version `v0.12.LATEST` of `fetchd` node
-There are two options, the correct choice depends on how you normally run your node: 
+
+There are two options, the correct choice depends on how you normally run your node:
 > NOTE: The `LATEST` value in the version tag will be decided & publicised here when it will become known.
+
 ### 6.1. Build & install LOCAL version of new node
+
 #### 6.1.1. Install go lang
+
 We highly recommend to install `go1.18.10`, which is the latest version supported by go modules `fetchd` node
 depends on.
 Installation procedure depends on the OS you are using.
 
 #### 6.1.2. EITHER Build & install LOCAL version of new node
+
 ```shell
 git clone --depth --branch v0.12.LATEST https://github.com/fetchai/fetchd
 cd fetchd
@@ -68,10 +83,12 @@ make install
 ```
 
 ### 6.2. OR Use official docker image `fetchai/fetchd:0.12.LATEST`
+
 This is for advanced users who are familiar with docker and related higher level infrastructure, like k8s, Helm Charts,
 docker-compose, etc. ...
 
 ## 7. **EXCLUSIVELY for TESTNET** (\*NOT\* for mainnet) Prune Contract Bytecodes:
+
 Execute the pruning script provided **INSERT PRUNING SCRIPT PATH HERE** to remove redundant contract bytecodes from the
 genesis.json file:
 
@@ -88,29 +105,39 @@ python3 prune_genesis_codes.py latest-dorado-genesis-exported.json --output_file
 - The pruned output `genesis_pruned.json` file will be roughly 850MB.
 
 The `genesis_pruned.json` file is the resulting genesis file and ultimately should be copied to location expected by
-node: 
+node:
 > NOTE: This will **OVERRIDE** your original `genesis.json`.
 > If you executed the point 4. above, you should have a backup.
+
 ```shell
 mv ~/.fetchd/config/genesis_pruned.json ~/.fetchd/config/genesis.json
 ```
 
 ## 8. Execute the ASI Upgrade Command:
+
 Execute the ASI upgrade command to modify the genesis.json file in place:
 
 > NOTE: The timestamp value below will be provided later when the exact upgrade time will become known.
+
 ```bash
 fetchd asi-genesis-upgrade --genesis-time TIMESTAMP_WILL_BE_SPECIFIED_LATER
 ```
 
+This command will iterate through your newly-exported genesis file, updating each relevant network parameter to align
+with the network consensus.
+
 ## 9. Execute Complete Cleanup of fetchd Databases/Storage:
+
 Perform a complete cleanup of fetchd databases and storage:
 > NOTE: This command will IRREVERSIBLY clean/erase all data from node's storage databases.
 > If you executed the point 4. above, you should have a backup.
+
 ```bash
 fetchd tendermint unsafe-reset-all
 ```
+
 ## 9. Start the upgraded node:
+
 ```bash
 fetchd start
 ```
