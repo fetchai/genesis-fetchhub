@@ -28,7 +28,7 @@ upgrade procedure. There are two options for obtaining such a node:
 
 Stop the node at the desired time to capture the state at a specific block height.
 
-> During the official upgrade process, the network will temporarily halt to perform a self-update.   
+> During the **official upgrade process**, the network will temporarily halt to perform a self-update.   
 > - All connected nodes
 > will pause at the same block height until they are upgraded.   
 > - The latest halted state will be used to export the genesis
