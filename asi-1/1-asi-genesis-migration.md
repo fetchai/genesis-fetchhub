@@ -36,9 +36,7 @@ Stop the node at the desired time to capture the state at a specific block heigh
 > - After the restart, all nodes wishing to reconnect **must** match the new network parameters.
 
 ## 4. Not mandatory but HIGHLY recommended: Backup your node:
-
 Strictly speaking this step is **NOT** mandatory, it is just for safety reasons if something goes wrong.
-
 ```shell
 cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 ```
@@ -48,8 +46,11 @@ cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 Execute the following command to export the `genesis.json` file at the latest block height using the **current**
 `fetchd v0.11.3` version:
 
+> NOTE: This will **OVERRIDE** your original `genesis.json`.
+> If you executed the point 4. above, you should have a backup.
+
 ```bash
-fetchd export > genesis.json
+fetchd export > ~/.fetchd/config/genesis.json
 ```
 
 - after the chevron symbol `>`, specify the path and/or filename where the `genesis.json` file should be saved.
@@ -62,20 +63,15 @@ fetchd export > genesis.json
 > **REMINDER**: Ensure that the system has the required free space and expect the output file to be approximately 3GB.
 
 ## 6. Install NEW version `v0.12.LATEST` of `fetchd` node
-
-There are two options, the correct choice depends on how you normally run your node:
+There are two options, the correct choice depends on how you normally run your node: 
 > NOTE: The `LATEST` value in the version tag will be decided & publicised here when it will become known.
-
 ### 6.1. Build & install LOCAL version of new node
-
 #### 6.1.1. Install go lang
-
 We highly recommend to install `go1.18.10`, which is the latest version supported by go modules `fetchd` node
 depends on.
 Installation procedure depends on the OS you are using.
 
 #### 6.1.2. EITHER Build & install LOCAL version of new node
-
 ```shell
 git clone --depth --branch v0.12.LATEST https://github.com/fetchai/fetchd
 cd fetchd
@@ -83,26 +79,25 @@ make install
 ```
 
 ### 6.2. OR Use official docker image `fetchai/fetchd:0.12.LATEST`
-
 This is for advanced users who are familiar with docker and related higher level infrastructure, like k8s, Helm Charts,
 docker-compose, etc. ...
 
 ## 7. **EXCLUSIVELY for TESTNET** (\*NOT\* for mainnet) Prune Contract Bytecodes:
-
 Execute the pruning script provided **INSERT PRUNING SCRIPT PATH HERE** to remove redundant contract bytecodes from the
 genesis.json file:
 
-> **Do NOT execute this for mainnet!**
+**==> Do NOT execute this for mainnet! <==**
 
 ```bash
 cd ./scripts
 poetry install
 poetry shell
-python3 prune_genesis_codes.py latest-dorado-genesis-exported.json --output_file genesis_pruned.json
+python3 prune_genesis_codes.py ~/.fetchd/config/genesis.json --output_file ~/.fetchd/config/genesis_pruned.json
 ```
 
 - This will reduce the size of the `genesis.json` by removing redundant and/or repeated contract bytecodes.
-- The pruned output `genesis_pruned.json` file will be roughly 850MB.
+- The resulting pruned `genesis_pruned.json` file will be roughly 850MB (given the current size of the exported genesis.json
+- from current Dorado testnet).
 
 The `genesis_pruned.json` file is the resulting genesis file and ultimately should be copied to location expected by
 node:
@@ -110,15 +105,14 @@ node:
 > If you executed the point 4. above, you should have a backup.
 
 ```shell
+rm ~/.fetchd/config/genesis.json
 mv ~/.fetchd/config/genesis_pruned.json ~/.fetchd/config/genesis.json
 ```
 
 ## 8. Execute the ASI Upgrade Command:
-
 Execute the ASI upgrade command to modify the genesis.json file in place:
 
 > NOTE: The timestamp value below will be provided later when the exact upgrade time will become known.
-
 ```bash
 fetchd asi-genesis-upgrade --genesis-time TIMESTAMP_WILL_BE_SPECIFIED_LATER
 ```
@@ -127,17 +121,13 @@ This command will iterate through your newly-exported genesis file, updating eac
 with the network consensus.
 
 ## 9. Execute Complete Cleanup of fetchd Databases/Storage:
-
 Perform a complete cleanup of fetchd databases and storage:
 > NOTE: This command will IRREVERSIBLY clean/erase all data from node's storage databases.
 > If you executed the point 4. above, you should have a backup.
-
 ```bash
 fetchd tendermint unsafe-reset-all
 ```
-
 ## 9. Start the upgraded node:
-
 ```bash
 fetchd start
 ```
