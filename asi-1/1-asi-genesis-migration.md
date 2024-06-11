@@ -13,7 +13,7 @@ process:
 
 - download the `genesis.json` file provided  **INSERT PATH HERE**
 - replace the current `genesis.json` file in the `~/.fetchd/config/` directory with the downloaded file
-- [proceed to Step 6](#6-execute-the-asi-upgrade-command)
+- [proceed to Step 6](#6-install-new-version-v012latest-of-fetchd-node)
 
 ## 2. Obtain a Fully Synced Node:
 
@@ -30,7 +30,7 @@ Stop the node at the desired time to capture the state at a specific block heigh
 stopping the node will be used to export the genesis state.
 
 ## 4. Not mandatory but HIGHLY recommended: Backup your node:
-Strictly speaking this step is **NOT** mandatory, it is just for safety reasons if somthing goes wrong.
+Strictly speaking this step is **NOT** mandatory, it is just for safety reasons if something goes wrong.
 ```shell
 cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 ```
@@ -52,7 +52,7 @@ fetchd export > genesis.json
 - The process may take around 10 minutes, depending on the system.
 
 ## 6. Install NEW version `v0.12.LATEST` of `fetchd` node
-You have 2 options, the picks ill depend on how you normally run your node: 
+There are two options, the correct choice depends on how you normally run your node: 
 > NOTE: The `LATEST` value in the version tag will be decided & publicised here when it will become known.
 ### 6.1. Build & install LOCAL version of new node
 #### 6.1.1. Install go lang
