@@ -40,8 +40,11 @@ cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 Execute the following command to export the `genesis.json` file at the latest block height using the **current** 
 `fetchd v0.11.3` version:
 
+> NOTE: This will **OVERRIDE** your original `genesis.json`.
+> If you executed the point 4. above, you should have a backup.
+
 ```bash
-fetchd export > genesis.json
+fetchd export > ~/.fetchd/config/genesis.json
 ```
 
 - after the chevron symbol `>`, specify the path and/or filename where the `genesis.json` file should be saved.
@@ -75,23 +78,25 @@ docker-compose, etc. ...
 Execute the pruning script provided **INSERT PRUNING SCRIPT PATH HERE** to remove redundant contract bytecodes from the
 genesis.json file:
 
-> **Do NOT execute this for mainnet!**
+**==> Do NOT execute this for mainnet! <==**
 
 ```bash
 cd ./scripts
 poetry install
 poetry shell
-python3 prune_genesis_codes.py latest-dorado-genesis-exported.json --output_file genesis_pruned.json
+python3 prune_genesis_codes.py ~/.fetchd/config/genesis.json --output_file ~/.fetchd/config/genesis_pruned.json
 ```
 
 - This will reduce the size of the `genesis.json` by removing redundant and/or repeated contract bytecodes.
-- The pruned output `genesis_pruned.json` file will be roughly 850MB.
+- The resulting pruned `genesis_pruned.json` file will be roughly 850MB (given the current size of the exported genesis.json
+- from current Dorado testnet).
 
 The `genesis_pruned.json` file is the resulting genesis file and ultimately should be copied to location expected by
-node: 
+node:
 > NOTE: This will **OVERRIDE** your original `genesis.json`.
 > If you executed the point 4. above, you should have a backup.
 ```shell
+rm ~/.fetchd/config/genesis.json
 mv ~/.fetchd/config/genesis_pruned.json ~/.fetchd/config/genesis.json
 ```
 
