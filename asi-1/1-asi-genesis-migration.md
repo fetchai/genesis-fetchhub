@@ -221,11 +221,12 @@ command.
 The upgrade manifest details all important parameter changes within the `genesis.json` file which the upgrade command
 carried out.
 
-### 6.1 Verify Genesis Checksum
 
-After executing the ASI upgrade command, it's important to verify the integrity of both the updated `genesis.json`
-file and the `asi_upgrade_manifest.json` output file by comparing checksums. This ensures that the upgrade process was
-completed successfully.
+> After executing the ASI upgrade command, it's important to verify the integrity of both the updated `genesis.json`
+> file and the `asi_upgrade_manifest.json` output file by comparing checksums - see the following sections. This ensures
+> that the upgrade process was completed successfully.
+
+### 6.1 Verify Genesis Checksum
 
 Check the SHA-256 checksum of the updated `genesis.json` file:
 
