@@ -38,9 +38,46 @@ process:
 
 ---
 
+### Verification Checksums
+
+**NOTE**: During this upgrade, checksum verification is **highly recommended** at three critical instances:
+- After exporting or downloading the un-upgraded `genesis.json` file.
+- The `genesis.json` file **after** the upgrade process.
+- The `asi_upgrade_manifest.json` file created by the upgrade process.
+
+> Comparing these checksum values provides a reliable method to confirm whether the upgrade was executed correctly or not.
+
+For each instance, use the following command to calculate the checksum:
+
+```bash
+sha256sum <path to file>
+```
+
+The output should somewhat resemble this:
+
+```bash
+fe5fe42dc375ae33268c88cb03fe0c030c96f08ad96ad21921c58fd02fe711c9  /home/.fetchd/config/genesis.json
+```
+
+The first set of characters is the SHA-256 checksum. This checksum should match the provided value to ensure the file
+exactly matches the expected state. If the checksums do not match, the file may be corrupted, altered or otherwise
+unsuitable.
+
+Compare the generated checksum against the provided values at each checkpoint:
+
+[//]: # (TODO: update with checksums)
+
+| Checkpoint            | Filename                                     | SHA-256 Checksum Value |
+|-----------------------|----------------------------------------------|------------------------|
+| **Between steps 4-6** | `~/.fetchd/config/genesis.json`              | `123abc...`            |
+| **After step 6**      | `~/.fetchd/config/genesis.json`              | `456def...`            |
+| **After step 6**      | `~/.fetchd/config/asi_upgrade_manifest.json` | `789ghi...`            |
+
+---
+
 ## 1. Obtain a Fully Synced Node:
 
-Ensure you have a node that is completely synchronized with the mainnet network. This node must be capable of being
+Ensure you have a node that is completely synchronised with the mainnet network. This node must be capable of being
 temporarily halted for the upgrade process. There are two ways to do so:
 
 ### 1.1 Existing Node:
@@ -50,7 +87,8 @@ height.
 
 This can be accomplished in two ways: either by halting the currently running `fetchd` process or by pre-setting the
 `halt-height` parameter in the `~/.fetchd/config/app.toml` file to the desired height and restarting the node.
-> Ensure there is no active process manager, such as `systemd`, that will attempt to restart the node at this stage.
+> NOTE: Ensure there is no active process manager, such as `systemd`, that will attempt to restart the node at this
+> stage.
 
 Once the node is halted at the specified height, it is synced and ready for the upgrade.
 
@@ -147,40 +185,27 @@ The process will take roughly 5-10 minutes, depending on the system.
 fetchd --home ~/.fetchd/ export > ~/.fetchd/config/genesis.json
 ```
 
-### 4.1 Verify Genesis Checksum
+## 5. Execute Complete Cleanup of fetchd Databases/Storage:
 
-After exporting the genesis.json file, verify its integrity by checking the SHA-256 checksum. Execute the following
-command:
+Perform a complete cleanup of fetchd databases and storage:
+> NOTE: This command will **IRREVERSIBLY** clean/erase all data from node's storage databases.
+> If you executed the [point above](#3-not-mandatory-but-highly-recommended-backup-your-node), you should have a backup.
 
-```Bash
-sha256sum ~/.fetchd/config/genesis.json
-```
-
-> In order to verify the success of the network state export, the command output **must** match the following:
-
-[//]: # (TODO: Fill in checksum here)
-
-```Bash
-<Checksum will be filled in before upgrade>  ~/.fetchd/config/genesis.json
-```
-
-[//]: # (TODO: Update with latest git tag)
-
-## 5. Install NEW version `v0.12.LATEST` of `fetchd` node
+## 6. Install NEW version `v0.12.LATEST` of `fetchd` node
 
 There are two options, the correct choice depends on how you normally run your node:
 > NOTE: The `LATEST` value in the version tag will be decided & published here when it will become known.
 
-### 5.1. Build & install LOCAL version of new node
+### 6.1 Build & install LOCAL version of new node
 
-#### 5.1 Install Golang
+#### 6.1.1 Install Golang
 
 We highly recommend to install `Go 1.18.10`, which is the latest version supported by go modules `fetchd` node
 depends on.
 Installation procedure depends on the OS you are using.
 > All Golang releases are available [here](https://go.dev/dl/).
 
-#### 5.2.1 EITHER Build & install LOCAL version of new node
+#### 6.1.2 EITHER Build & install LOCAL version of new node
 
 [//]: # (TODO: Update with latest git tag)
 
@@ -192,13 +217,13 @@ make install
 
 [//]: # (TODO: Update with latest Docker image)
 
-#### 5.2.2 OR Use official docker image
+### 6.2 OR Use official docker image
 
 This is for advanced users who are familiar with docker and related higher level infrastructure, like k8s, Helm Charts,
 docker-compose, etc.
 `fetchai/fetchd:0.12.LATEST`
 
-## 6. Execute the ASI Upgrade Command:
+## 7. Execute the ASI Upgrade Command:
 
 Execute the ASI upgrade command to modify the genesis.json file in place:
 
@@ -221,52 +246,10 @@ command.
 The upgrade manifest details all important parameter changes within the `genesis.json` file which the upgrade command
 carried out.
 
-
 > After executing the ASI upgrade command, it's important to verify the integrity of both the updated `genesis.json`
-> file and the `asi_upgrade_manifest.json` output file by comparing checksums - see the following sections. This ensures
+> file and the `asi_upgrade_manifest.json` output file by comparing checksums -
+> see the [checksum verification](#verification-checksums) section. This ensures
 > that the upgrade process was completed successfully.
-
-### 6.1 Verify Genesis Checksum
-
-Check the SHA-256 checksum of the updated `genesis.json` file:
-
-```Bash
-sha256sum ~/.fetchd/config/genesis.json
-```
-
-> In order to verify the success of the network upgrade, the command output **must** match the following:
-
-[//]: # (TODO: Fill in checksum here)
-
-```Bash
-<Checksum will be filled in before upgrade>  ~/.fetchd/config/genesis.json
-```
-
-### 6.2 Verify ASI Manifest Checksum
-
-Check the SHA-256 checksum of the new `asi_upgrade_manifest.json` file:
-
-```Bash
-sha256sum ~/.fetchd/config/asi_upgrade_manifest.json
-```
-
-> The command output **must** match the following output snippet:
-
-[//]: # (TODO: Fill in checksum here)
-
-```Bash
-<Checksum will be filled in before upgrade>  ~/.fetchd/config/asi_upgrade_manifest.json
-```
-
-## 7. Execute Complete Cleanup of fetchd Databases/Storage:
-
-Perform a complete cleanup of fetchd databases and storage:
-> NOTE: This command will **IRREVERSIBLY** clean/erase all data from node's storage databases.
-> If you executed the [point above](#3-not-mandatory-but-highly-recommended-backup-your-node), you should have a backup.
-
-```bash
-fetchd --home ~/.fetchd tendermint unsafe-reset-all
-```
 
 ## 8. Prepare and Start the Upgraded Node:
 
