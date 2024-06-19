@@ -23,10 +23,9 @@ in this guide in other contexts than just shell commands.
 
 [//]: # (TODO: Replace HALT_BLOCK_HEIGHT and GOVENRANCE_PROPOSAL_NUMBER placeholders)
 When mainnet blockchain reaches the target upgrade block height `HALT_BLOCK_HEIGHT` defined by the ASI software upgrade
-governance proposal #GOVENRANCE_PROPOSAL_NUMBER.
-All nodes will halt - it is **\*expected\*** to have an error logged
+governance proposal #GOVENRANCE_PROPOSAL_NUMBER, all nodes will automatically halt.
 
-by the node, similar to:
+It is **expected** to have an error logged by the node, similar to:
 
 [//]: # (TODO: Replace v0.12.XX and HALT_BLOCK_HEIGHT placeholders)
 ```bash
@@ -38,18 +37,46 @@ by the node, similar to:
 
 Strictly speaking this step is **not** mandatory, however it is **HIGHLY** recommended to do.
 
-**IMPORTANT:** It is close to certainty, that if something goes wrong during the upgrade procedure (e.g. executing
-wrong command, or executing commands in wrong order, etc. ...), it will **NOT** be possible to recover without backup
-= it will NOT be possible re-execute upgrade process again, forcing you to wait until Fetch.ai executes the upgrade
-and makes upgraded `genesis.json` file available for download. 
-
 ```shell
 cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 ```
 
-## 3. Choose the upgrade process
+## 3. Choose the upgrade path
+There are two paths node operator can choose from to upgrade the node - see the 3.1 and 3.2 sections below.
+These paths are mutually exclusive.
 
-## 3. Export `genesis.json` file
+### 3.1. \*EITHER\* Simplified approach
+
+This is the simplest method how to upgrade the node, since it bypasses execution of the whole upgrade procedure locally,
+and rather waits until Fetch.ai executes the upgrade procedure, and then downloads the resulting (upgraded)
+`genesis.json` file.
+
+This procedure does **NOT** require to have fully synced node, in fact the node can be freshly initialised.
+
+> NOTE: At the end, all what is actually really necessary is to get the upgraded `genesis.json` file and upgrade
+> `fetchd` node binary.<br/>
+> It does not matter who actually executes the full upgrade procedure (detailed in the 
+> [3.2. \*OR\* Execute upgrade procedure](#32-or-execute-the-whole-upgrade-procedure-locally) section), and so 
+> generates resulting upgraded `genesis.json` file, every execution of the full upgrade procedure **MUST ALWAYS**
+> lead to the very same resulting `genesis.json` file.
+
+### 3.1.1. Execute the [5. Reset of fetchd node storage](#5-reset-of-fetchd-node-storage)
+### 3.1.2. Download upgraded files
+
+[//]: # (TODO: Replace the "https://genesis-v0_12_0.assets.fetch.ai" with final URL)
+```shell
+curl https://genesis-v0_12_0.asi-upgrade.fetch.ai -o ~/.fetchd/config/genesis.json 
+```
+
+Download upgraded `genesis.json` file created & published by Fetch.ai:
+> NOTE: The following command will **OVERRIDE** your original `genesis.json`.
+
+and also `asi_upgrade_manifest`: 
+
+
+### 3.2. \*OR\* Execute the whole upgrade procedure locally
+This pat describes how to execute upgrade procedure locally using your local node. 
+#### 3.2.1 Export `genesis.json` file
 
 Execute the following command to export the `genesis.json` file using the **current** `fetchd v0.11.3` version:
 
@@ -71,7 +98,7 @@ If you executed the [backup point above](#2-backup-your-node-highly-recommended-
 cp -p ~/.fetchd/config/genesis.exported.json ~/.fetchd/config/genesis.json
 ```
 
-## 4. Verify sha256 hashes of `genesis.exported.json` and `genesis.json` files:
+#### 3.2.2. Verify sha256 hashes of `genesis.exported.json` and `genesis.json` files:
 Run the following command to generate sha256 hashes for both files:
 ```bash
 ❯ shasum -a 256 ~/.fetchd_asi_mainnet_upgrade_test/config/genesis.exported.json ~/.fetchd_asi_mainnet_upgrade_test/config/genesis.json
@@ -81,6 +108,7 @@ Run the following command to generate sha256 hashes for both files:
 [SHA256 hashes of essential files at given checkpoints](#sha256-hashes-of-essential-files-at-given-checkpoints) section
 for this checkpoint.
 
+## 4. X
 
 ## 5. Reset of fetchd node storage
 
@@ -91,12 +119,6 @@ Perform a complete cleanup of fetchd databases and storage:
 ```bash
 fetchd --home ~/.fetchd/ tendermint unsafe-reset-all
 ```
-> The output of the command will be similar to following:
-> ```bash
-> I[2024-06-19|10:21:55.166] Removed existing address book                file=/operator/.fetchd/config/addrbook.json
-> I[2024-06-19|10:21:55.204] Removed all blockchain history               dir=/operator/.fetchd/data
-> I[2024-06-19|10:21:55.205] Reset private validator file to genesis state keyFile=/operator/.fetchd/config/priv_validator_key.json stateFile=/operator/.fetchd/data/priv_validator_state.json
-> ```
 
 ## 6. Install NEW version `v0.12.LATEST` of the `fetchd` node
 
@@ -211,6 +233,10 @@ alternatively by using the `fetchd` CLI (see below).
 
 ## SHA256 hashes of essential files at given checkpoints
 The table below contains the **\*REFERENCE\*** hash values for essential files at important checkpoints.
+
+```bash
+
+```
 
 If hash values generated from the files at given checkpoints do not match the reference hash values provided in the
 table below, something is **\*WRONG\***, and you need to restart the upgrade process again from the
