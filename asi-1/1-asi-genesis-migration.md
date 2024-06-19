@@ -40,8 +40,8 @@ process:
 
 ### Verification Checksums
 
-**NOTE**: During this upgrade, checksum verification is **highly recommended** at three critical instances:
-- After exporting or downloading the un-upgraded `genesis.json` file.
+**NOTE**: During this upgrade, checksum verification is **highly recommended** for three critical instances:
+- After exporting or downloading the pre-upgrade `genesis.json` file.
 - The `genesis.json` file **after** the upgrade process.
 - The `asi_upgrade_manifest.json` file created by the upgrade process.
 
@@ -167,22 +167,26 @@ cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
 
 ## 4. Export `genesis.json` File:
 
+[//]: # (TODO: Update with newest version)
 Execute the following command to export the `genesis.json` file at the latest block height using the **current**
-`fetchd v0.11.3` version:
-
-> **NOTE**: This will **OVERRIDE** your original `genesis.json`.
-> If you executed the [point above](#3-not-mandatory-but-highly-recommended-backup-your-node), you should have a backup.
+`fetchd v0.12.0` version:
 
 > **REMINDER**: Ensure that the system where this command is executed has at least 16GB of memory.
-
-> **REMINDER**: Ensure that the system has the required free space and expect the output file to be approximately
-> 150-200MB.
-
 
 The process will take roughly 5-10 minutes, depending on the system.
 
 ```bash
-fetchd --home ~/.fetchd/ export > ~/.fetchd/config/genesis.json
+fetchd --home ~/.fetchd/ export > /path/to/exported/genesis.json
+```
+
+Once the export is complete, replace your original `genesis.json` with the newly exported file:
+
+
+> **NOTE**: This will **OVERRIDE** your original `genesis.json`.
+> If you executed the [point above](#3-not-mandatory-but-highly-recommended-backup-your-node), you should have a backup.
+
+```bash
+mv /path/to/exported/genesis.json ~/.fetchd/config/genesis.json
 ```
 
 ## 5. Execute Complete Cleanup of fetchd Databases/Storage:
