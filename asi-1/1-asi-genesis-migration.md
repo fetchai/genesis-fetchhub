@@ -255,10 +255,10 @@ table below:
 
 [//]: # (TODO: Replace ASI_RPC_ENDPOINT placeholder)
 
-| Requirement Level                            | Parameter  | Value              | Description                                                                                                                                                                             |
-|----------------------------------------------|------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RECOMMENDED                                  | `chain-id` | `asi-1`            | > The network chain ID                                                                                                                                                                  |
-| OPTIONAL<br>_(see the "Description" column)_ | `node`     | `ASI_RPC_ENDPOINT` | > URL of Tendermint RPC interface<br/>:point_right: Change this **ONLY** if you really need to =<br/>= only if your current RPC url explicitly points to external **old** mainnet node. |
+| Requirement Level                            | Parameter  | Value              | Description                                                                                                                                                                       |
+|----------------------------------------------|------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RECOMMENDED                                  | `chain-id` | `asi-1`            | > The network chain ID                                                                                                                                                            |
+| OPTIONAL<br>_(see the "Description" column)_ | `node`     | `ASI_RPC_ENDPOINT` | > URL of Tendermint RPC interface<br/>:point_right: Change this **ONLY** if you really need to = only if your current RPC url explicitly points to external **old** mainnet node. |
 
 <!---
 (NOTE\(pb\): It does **NOT** make sense to suggest here to change value of the `node` parameter
@@ -303,6 +303,6 @@ The table below contains the **\*REFERENCE\*** hash values for essential files a
 
 | Checkpoint                                  | Filename                                     | Reference sha256 hash value |
 |---------------------------------------------|----------------------------------------------|-----------------------------|
-| **BEFORE** the upgrade<br>(steps 4-6)       | `~/.fetchd/config/genesis.json`              | `234bcd...`                 |
+| **BEFORE** the upgrade<br>(step 3.2.2)      | `~/.fetchd/config/genesis.json`              | `234bcd...`                 |
 | **AFTER** the upgrade<br>(**AFTER** step 7) | `~/.fetchd/config/genesis.json`              | `345cdf...`                 |
 | **AFTER** the upgrade<br>(**AFTER** step 7) | `~/.fetchd/config/asi_upgrade_manifest.json` | `456dfg...`                 |
