@@ -26,6 +26,7 @@ in this guide in other contexts than just shell commands.
 ## 1. Wait for network halt 
 
 [//]: # (TODO: Replace HALT_BLOCK_HEIGHT and GOVENRANCE_PROPOSAL_NUMBER placeholders)
+
 When mainnet blockchain reaches the target upgrade block height `HALT_BLOCK_HEIGHT` defined by the ASI software upgrade
 governance proposal #GOVENRANCE_PROPOSAL_NUMBER, **ALL** nodes will automatically halt once they will reach this block
 height.
@@ -33,6 +34,7 @@ height.
 It is **expected** to have an error logged by the node, similar to:
 
 [//]: # (TODO: Replace v0.12.XX and HALT_BLOCK_HEIGHT placeholders)
+
 ```bash
 3:14PM ERR UPGRADE "v0.12.XX" NEEDED at height: HALT_BLOCK_HEIGHT: ASI Network Upgrade v0.12.XX (upgrade-info)
 3:14PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.12.XX\" NEEDED at height: HALT_BLOCK_HEIGHT"
@@ -110,6 +112,7 @@ initialised.
 Download upgrade files published by Fetch.ai:
 
 [//]: # (TODO: Verify that URLs below are active)
+
 ```shell
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/feat/asi-upgrade-documentation/asi-1/assets/genesis-upgraded-v0.12.0.json.gz -o ~/.fetchd/config/genesis-upgraded-v0.12.0.json.gz
 # The manifest file is NOT required for the upgrade, but it is suggested to be downloaded for bookkeeping purposes:
@@ -190,6 +193,7 @@ make install
 ```
 
 [//]: # (TODO: Update with latest git tag)
+
 > **ALTERNATIVELY: IF** it is required/desired to use **already existing** clone of fetchd repository:
 > ```bash
 > cd fetch
@@ -200,6 +204,7 @@ make install
 > ```
 
 [//]: # (TODO: Update with latest Docker image)
+
 ### 5.2 \*OR\* Use official docker image `fetchai/fetchd:0.12.LATEST`
 
 This is for advanced users, who are familiar with docker and related higher level infrastructure, like k8s, Helm Charts,
@@ -213,6 +218,7 @@ The following command will execute the actual ASI upgrade. As the result it will
 > NOTE: The timestamp value below will be provided later when the exact upgrade time will become known.
 
 [//]: # (TODO: Replace the ASI_GENESIS_UPGRADE_TIMESTAMP with real value)
+
 ```bash
 fetchd  --home ~/.fetchd/ asi-genesis-upgrade --genesis-time ASI_GENESIS_UPGRADE_TIMESTAMP
 ```
@@ -238,6 +244,7 @@ If hash values do not match something is wrong, and you need to start the upgrad
 > **IMPORTANT**: Ensure to provide the **NEW** p2p seeds as they are provided in the command below.<br>
 
 [//]: # (TODO: Replace the ASI_P2P_SEEDS value)
+
 ```bash
 fetchd --home ~/.fetchd start --p2p.seeds=ASI_P2P_SEEDS
 ```
@@ -247,12 +254,14 @@ The following parameters should be updated in the `~/.fetchd/config/client.toml`
 table below:
 
 [//]: # (TODO: Replace ASI_RPC_ENDPOINT placeholder)
+
 | Requirement Level                            | Parameter  | Value              | Description                                                                                                                                                                             |
 |----------------------------------------------|------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | RECOMMENDED                                  | `chain-id` | `asi-1`            | > The network chain ID                                                                                                                                                                  |
 | OPTIONAL<br>_(see the "Description" column)_ | `node`     | `ASI_RPC_ENDPOINT` | > URL of Tendermint RPC interface<br/>:point_right: Change this **ONLY** if you really need to =<br/>= only if your current RPC url explicitly points to external **old** mainnet node. |
 
-[//]: # (NOTE\(pb\): It does **NOT** make sense to suggest here to change value of the `node` parameter
+<!---
+(NOTE\(pb\): It does **NOT** make sense to suggest here to change value of the `node` parameter
 \(the `ASI_RPC_ENDPOINT`- see the commented out table line below\), since this whole upgrade quide is for node
 operators = they run their own node they are upgrading right now = they can use its **LOCAL** node RPC endpoint url,
 which is by default `tcp://127.0.0.1:26657` \(and most probably already have that configured\), to run all
@@ -265,6 +274,7 @@ the node runs\) - for example CLI command for queries or signing/broadcasting TX
 All such `fetchd` CLI commands shall be executed from **OUTSIDE** of the node poduction runtime environment -
 e.g. from a local computer, or from other docker container, which will have its **OWN & SEPARATE** `~/.fetchd` home
 directory and with is also its own `client.toml`.) 
+--->
 
 Changing parameters can be achieved either manually by editing the `~/.fetchd/config/client.toml` config file, or
 alternatively by using the `fetchd` CLI (see below).
@@ -290,6 +300,7 @@ The table below contains the **\*REFERENCE\*** hash values for essential files a
 > with real/correct values when they will become known.
 
 [//]: # (TODO: update with checksums)
+
 | Checkpoint                                  | Filename                                     | Reference sha256 hash value |
 |---------------------------------------------|----------------------------------------------|-----------------------------|
 | **BEFORE** the upgrade<br>(steps 4-6)       | `~/.fetchd/config/genesis.exported.json`     | `123abc...`                 |
