@@ -1,5 +1,9 @@
 # ASI Genesis Migration
 
+This is "genesis" upgrade, what means that the new eon will be started, and so whole history from the previous eon will
+be lost (it can be accessed from the archive node of the (previous) eon which will be ended by this upgrade).<br/>
+Only the chain's full state (at the upgrade halt block height) will be carried over to the new eon.
+
 ## Prerequisites
 
 ### Computer Resources:
@@ -12,18 +16,19 @@ process:
 - **Disk Space**: 2GB free space
 
 ### Assumptions
-For purposes of this upgrade guide, it is assumed that your node's **HOME** directory is the default `~/.fetchd`.
+For the purposes of this upgrade guide, it is assumed that your node's **HOME** directory is the default `~/.fetchd`.
 This is mostly relevant for **ALL** shell commands used in this guide, but this node home directory might also occur
 in this guide in other contexts than just shell commands.
 
 > **IF** this assumption is **NOT** correct for your particular node setup, please **REPLACE** all `~/.fetchd`
-> occurrences within this guide with the directory your nodes setup uses as its home directory.
+> occurrences within this guide with the directory your node setup uses as its home directory.
 
 ## 1. Wait for network halt 
 
 [//]: # (TODO: Replace HALT_BLOCK_HEIGHT and GOVENRANCE_PROPOSAL_NUMBER placeholders)
 When mainnet blockchain reaches the target upgrade block height `HALT_BLOCK_HEIGHT` defined by the ASI software upgrade
-governance proposal #GOVENRANCE_PROPOSAL_NUMBER, all nodes will automatically halt.
+governance proposal #GOVENRANCE_PROPOSAL_NUMBER, **ALL** nodes will automatically halt once they will reach this block
+height.
 
 It is **expected** to have an error logged by the node, similar to:
 
@@ -33,49 +38,97 @@ It is **expected** to have an error logged by the node, similar to:
 3:14PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.12.XX\" NEEDED at height: HALT_BLOCK_HEIGHT"
 ```
 
-## 2. Backup your node (HIGHLY recommended, but not mandatory)
+## 2. Backup your node
+Strictly speaking this step is not mandatory, however it is **HIGHLY** recommended to do.
 
-Strictly speaking this step is **not** mandatory, however it is **HIGHLY** recommended to do.
-
+### 2.1. \*EITHER\* Backup just ESSENTIAL files
 ```shell
-cp -rp ~/.fetchd ~/.fetchd_0.11.3_backup
+tar czf ~/.fetchd_0.11.3_backup.tgz -C ~/.fetchd/config *_key.json *.toml
+```
+> Verify the content of the backup:
+> ```shell
+> tar tzf ~/.fetchd_0.11.3_backup.tgz
+> ```
+> **EXPECTED RESULT**: You should see **AT LEAST** following files listed in the output of the command above:
+> ```shell
+> node_key.json
+> priv_validator_key.json
+> app.toml
+> client.toml
+> config.toml
+> ```
+
+### 2.2. \*OR\* Full backup
+> Note: Compression has been intentionally **omitted** preferring maximal speed of the backup process over minimal
+> resulting backup file size. 
+```shell
+tar cf ~/.fetchd_0.11.3_backup_full.tar -C ~/ --totals .fetchd
 ```
 
+> Briefly verify the backup by examining size on filesystem:
+>
+> Print sizes of both - the whole original node's home directory **AND** the backup archive file:
+> ```shell
+> du -sk ~/.fetchd ~/.fetchd_0.11.3_backup_full.tar
+> ```
+> > The output should look similar to this (except the size numbers):
+> > ```shell
+> > 5217552	/root/.fetchd
+> > 5226504	/root/.fetchd_0.11.3_backup_full.tar
+> > ```
+>
+> **EXPECTED RESULT**: The size of the backup .tar file shall be bigger than (or at least) the size reported for the
+> `~/.fetchd` node's home directory.
+
 ## 3. Choose the upgrade path
-There are two paths node operator can choose from to upgrade the node - see the 3.1 and 3.2 sections below.
+There are two paths node operator can choose from to upgrade the node - see the 3.1 and 3.2 sections below.<br/>
 These paths are mutually exclusive.
 
-### 3.1. \*EITHER\* Simplified approach
+---
+
+### 3.1. \*EITHER\* Simplified path
 
 This is the simplest method how to upgrade the node, since it bypasses execution of the whole upgrade procedure locally,
 and rather waits until Fetch.ai executes the upgrade procedure, and then downloads the resulting (upgraded)
 `genesis.json` file.
 
-This procedure does **NOT** require to have fully synced node, in fact the node can be freshly initialised.
+This path does **NOT** require to have fully synced node, in fact the node home directory can be freshly
+initialised.
 
-> NOTE: At the end, all what is actually really necessary is to get the upgraded `genesis.json` file and upgrade
-> `fetchd` node binary.<br/>
+> NOTE: At the end, all what is actually really necessary is to get the upgraded `genesis.json` file and upgrade the
+> `fetchd` node binary.
+> 
 > It does not matter who actually executes the full upgrade procedure (detailed in the 
 > [3.2. \*OR\* Execute upgrade procedure](#32-or-execute-the-whole-upgrade-procedure-locally) section), and so 
-> generates resulting upgraded `genesis.json` file, every execution of the full upgrade procedure **MUST ALWAYS**
-> lead to the very same resulting `genesis.json` file.
+> generates the resulting upgraded `genesis.json` file, since every execution of the full upgrade procedure
+> **MUST ALWAYS** lead to the very same resulting `genesis.json` file.
 
-### 3.1.1. Execute the [5. Reset of fetchd node storage](#5-reset-of-fetchd-node-storage)
-### 3.1.2. Download upgraded files
+### 3.1.1. Execute the [4. Reset of fetchd node storage](#4-reset-of-fetchd-node-storage) section
+### 3.1.2. Execute the [5. Install NEW version of the `fetchd` node](#5-install-new-version-of-the-fetchd-node) section
+### 3.1.3. Download upgraded files
 
-[//]: # (TODO: Replace the "https://genesis-v0_12_0.assets.fetch.ai" with final URL)
+Download upgrade files published by Fetch.ai:
+
+[//]: # (TODO: Verify that URLs below are active)
 ```shell
-curl https://genesis-v0_12_0.asi-upgrade.fetch.ai -o ~/.fetchd/config/genesis.json 
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/feat/asi-upgrade-documentation/asi-1/assets/genesis-upgraded-v0.12.0.json.gz -o ~/.fetchd/config/genesis-upgraded-v0.12.0.json.gz
+# The manifest file is NOT required for the upgrade, but it is suggested to be downloaded for bookkeeping purposes:
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/feat/asi-upgrade-documentation/asi-1/assets/asi_upgrade_manifest-v0.12.0.json -o ~/.fetchd/config/asi_upgrade_manifest-v0.12.0.json
+```
+### 3.1.4. Upgrade your node's `genesis.json`
+
+> NOTE: The following command will **OVERRIDE** your original `genesis.json`.
+```shell
+gzip -d -c ~/.fetchd/config/genesis-upgraded-v0.12.0.json.gz > ~/.fetchd/config/genesis.json
 ```
 
-Download upgraded `genesis.json` file created & published by Fetch.ai:
-> NOTE: The following command will **OVERRIDE** your original `genesis.json`.
+### 3.1.3. Continue with execution of ALL sections from [7. Verify sha256 hashes of resulting genesis and manifest files](#7-verify-sha256-hashes-of-resulting-genesis-and-manifest-files)
 
-and also `asi_upgrade_manifest`: 
-
+---
 
 ### 3.2. \*OR\* Execute the whole upgrade procedure locally
-This pat describes how to execute upgrade procedure locally using your local node. 
+This path describes how to execute upgrade procedure locally using your local node. 
+
 #### 3.2.1 Export `genesis.json` file
 
 Execute the following command to export the `genesis.json` file using the **current** `fetchd v0.11.3` version:
@@ -92,8 +145,6 @@ fetchd --home ~/.fetchd export > ~/.fetchd/config/genesis.exported.json
 ```
 
 **IMPORTANT**: Following step will **OVERRIDE** your original `genesis.json`.
-If you executed the [backup point above](#2-backup-your-node-highly-recommended-but-not-mandatory), you should have a backup.
-
 ```bash
 cp -p ~/.fetchd/config/genesis.exported.json ~/.fetchd/config/genesis.json
 ```
@@ -108,26 +159,21 @@ Run the following command to generate sha256 hashes for both files:
 [SHA256 hashes of essential files at given checkpoints](#sha256-hashes-of-essential-files-at-given-checkpoints) section
 for this checkpoint.
 
-## 4. X
-
-## 5. Reset of fetchd node storage
+## 4. Reset of fetchd node storage
 
 **IMPORTANT**: This command will **IRREVERSIBLY** erase all data from node's storage databases.
-If you executed the [backup point above](#2-backup-your-node-highly-recommended-but-not-mandatory), you should have a backup.
-
-Perform a complete cleanup of fetchd databases and storage:
 ```bash
 fetchd --home ~/.fetchd/ tendermint unsafe-reset-all
 ```
 
-## 6. Install NEW version `v0.12.LATEST` of the `fetchd` node
+## 5. Install NEW version of the `fetchd` node
 
-> NOTE: The `LATEST` value in the version tag will be decided & published here when it will become known.
+> NOTE: The `LATEST` placeholder used below in this section will be replaced with final git tab value when it will become known.
 
 There are two options - either do **local** installation, or using the **docker** (see the related sections below).
 The right choice only depends on how you normally run your node.
 
-### 6.1. \*EITHER\* Build & install LOCAL version of new node
+### 5.1. \*EITHER\* Build & install LOCAL version of new node
 > #### PREREQUISITE: Install Golang
 > We highly recommend to use the `go1.18.10`, which is the latest version supported by go modules `fetchd` node
 > depends on.
@@ -136,7 +182,7 @@ The right choice only depends on how you normally run your node.
 
 It is recommended to go with fresh clone of fetchd git repository rather than use the already existing one:
 
-[//]: # (TODO: Update with latest git tag)
+[//]: # (TODO: Replace the LATEST placeholder with correct git tag)
 ```shell
 git clone --depth --branch v0.12.LATEST https://github.com/fetchai/fetchd
 cd fetchd
@@ -147,19 +193,19 @@ make install
 > **ALTERNATIVELY: IF** it is required/desired to use **already existing** clone of fetchd repository:
 > ```bash
 > cd fetch
-> git checkout . #this 
+> git checkout .
 > git clean -fd
 > git checkout v0.12.LATEST
 > make install
 > ```
 
 [//]: # (TODO: Update with latest Docker image)
-### 6.2 \*OR\* Use official docker image `fetchai/fetchd:0.12.LATEST`
+### 5.2 \*OR\* Use official docker image `fetchai/fetchd:0.12.LATEST`
 
 This is for advanced users, who are familiar with docker and related higher level infrastructure, like k8s, Helm Charts,
 docker-compose, etc.
 
-## 7. Execute the ASI Upgrade
+## 6. Execute the ASI Upgrade
 
 The following command will execute the actual ASI upgrade. As the result it will modify
 `~/.fetchd/config/genesis.json` file **in place**:
@@ -171,12 +217,12 @@ The following command will execute the actual ASI upgrade. As the result it will
 fetchd  --home ~/.fetchd/ asi-genesis-upgrade --genesis-time ASI_GENESIS_UPGRADE_TIMESTAMP
 ```
 
-> ### 7.1 ASI Upgrade Manifest File
+> ### 6.1 ASI Upgrade Manifest File
 > As a side effect, the `asi-genesis-upgrade` CLI command executed above also created the 
 > `~/.fetch/config/asi_upgrade_manifest.json` file.<br>
 > This manifest file will contain all changes made to the `genesis.json` file during the ASI upgrade procedure.
 
-## 8. Verify sha256 hashes of resulting `genesis.json` and `asi_upgrade_manifest.json` files 
+## 7. Verify sha256 hashes of resulting genesis and manifest files
 Run the following command to generate sha256 hashes for both files: 
 ```bash
 ❯ shasum -a 256 ~/.fetchd_asi_mainnet_upgrade_test/config/genesis.json ~/.fetchd_asi_mainnet_upgrade_test/config/asi_upgrade_manifest.json
@@ -187,7 +233,7 @@ Run the following command to generate sha256 hashes for both files:
 If hash values do not match something is wrong, and you need to start the upgrade process again starting from the
 [3. Export 'genesis.json' File](#3-export-genesisjson-file) section.
 
-## 9. Start the new node
+## 8. Start the new node
 
 > **IMPORTANT**: Ensure to provide the **NEW** p2p seeds as they are provided in the command below.<br>
 
@@ -196,7 +242,7 @@ If hash values do not match something is wrong, and you need to start the upgrad
 fetchd --home ~/.fetchd start --p2p.seeds=ASI_P2P_SEEDS
 ```
 
-## 10. Update the node config (not mandatory, but recommended)
+## 9. Update the node config (not mandatory, but recommended)
 The following parameters should be updated in the `~/.fetchd/config/client.toml` file using new values provided in the
 table below:
 
@@ -234,15 +280,14 @@ alternatively by using the `fetchd` CLI (see below).
 ## SHA256 hashes of essential files at given checkpoints
 The table below contains the **\*REFERENCE\*** hash values for essential files at important checkpoints.
 
-```bash
+> If hash values generated from the files at given checkpoints do not match the reference hash values provided in the
+> table below, something is **\*WRONG\***, and it is necessary to restart the upgrade process again from the
+> [3.2.1. Export 'genesis.json' File](#321-export-genesisjson-file) section (including), in which case it is close to
+> certainty it will be either necessary to use the full backup (if it was made), or (**IF** the full backup was **NOT**
+> made) to recover via [3.1. Simplified path](#31-either-simplified-path).
 
-```
-
-If hash values generated from the files at given checkpoints do not match the reference hash values provided in the
-table below, something is **\*WRONG\***, and you need to restart the upgrade process again from the
-[3. Export 'genesis.json' File](#3-export-genesisjson-file) section (including), in which case it is close to
-certainty it will be necessary use backup (if it was made) to recover from 
-to use backup (if you .
+> Note: The reference hash values currently provided in the table below are just placeholders, and will be updated
+> with real/correct values when they will become known.
 
 [//]: # (TODO: update with checksums)
 | Checkpoint                                  | Filename                                     | Reference sha256 hash value |
