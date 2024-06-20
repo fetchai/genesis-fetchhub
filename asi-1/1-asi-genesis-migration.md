@@ -155,7 +155,7 @@ cp -p ~/.fetchd/config/genesis.exported.json ~/.fetchd/config/genesis.json
 #### 3.2.2. Verify sha256 hashes of `genesis.exported.json` and `genesis.json` files:
 Run the following command to generate sha256 hashes for both files:
 ```bash
-❯ shasum -a 256 ~/.fetchd_asi_mainnet_upgrade_test/config/genesis.exported.json ~/.fetchd_asi_mainnet_upgrade_test/config/genesis.json
+❯ shasum -a 256 ~/.fetchd/config/genesis.exported.json ~/.fetchd/config/genesis.json
 ```
 
 **VERIFY** the resulting hashes against the **\*REFERENCE\*** hash values provided in the
@@ -174,7 +174,7 @@ fetchd --home ~/.fetchd/ tendermint unsafe-reset-all
 > NOTE: The `LATEST` placeholder used below in this section will be replaced with final git tab value when it will become known.
 
 There are two options - either do **local** installation, or using the **docker** (see the related sections below).
-The right choice only depends on how you normally run your node.
+The right choice depends only on how you normally run your node.
 
 ### 5.1. \*EITHER\* Build & install LOCAL version of new node
 > #### PREREQUISITE: Install Golang
@@ -303,7 +303,6 @@ The table below contains the **\*REFERENCE\*** hash values for essential files a
 
 | Checkpoint                                  | Filename                                     | Reference sha256 hash value |
 |---------------------------------------------|----------------------------------------------|-----------------------------|
-| **BEFORE** the upgrade<br>(steps 4-6)       | `~/.fetchd/config/genesis.exported.json`     | `123abc...`                 |
 | **BEFORE** the upgrade<br>(steps 4-6)       | `~/.fetchd/config/genesis.json`              | `234bcd...`                 |
 | **AFTER** the upgrade<br>(**AFTER** step 7) | `~/.fetchd/config/genesis.json`              | `345cdf...`                 |
 | **AFTER** the upgrade<br>(**AFTER** step 7) | `~/.fetchd/config/asi_upgrade_manifest.json` | `456dfg...`                 |
