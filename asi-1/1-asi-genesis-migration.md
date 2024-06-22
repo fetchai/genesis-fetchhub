@@ -80,9 +80,9 @@ initialised.
 > generates the resulting upgraded `genesis.json` file, since every execution of the full upgrade procedure
 > **MUST ALWAYS** lead to the very same resulting `genesis.json` file.
 
-### 4.1.1. Execute the [5. Reset of fetchd node storage](#5-reset-of-fetchd-node-storage) section and return back here
+### 4.1.1. Execute the [5. Reset of fetchd node storage](#5-reset-of-fetchd-node-storage) section and \*RETURN BACK\* here
 
-### 4.1.2. Execute the [6. Install NEW version of the `fetchd` node](#6-install-new-version-of-the-fetchd-node) section and return back here
+### 4.1.2. Execute the [6. Install NEW version of the 'fetchd' node](#6-install-new-version-of-the-fetchd-node) section and \*RETURN BACK\* here
 
 ### 4.1.3. Download upgraded files
 **\*Wait\*** until Fetch.ai finishes the upgrade procedure and publishes resulting upgraded files.<br/>
