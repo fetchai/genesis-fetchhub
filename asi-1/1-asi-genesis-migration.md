@@ -292,9 +292,9 @@ The table below contains the **\*REFERENCE\*** hash values for essential files a
 
 [//]: # (TODO: update with checksums)
 
-| Checkpoint                                                                                                       | Filename                                     | Reference sha256 hash value |
-|------------------------------------------------------------------------------------------------------------------|----------------------------------------------|-----------------------------|
-| **BEFORE** the upgrade<br>(step [4.2.2](#422-verify-sha256-hashes-of-genesisexportedjson-and-genesisjson-files)) | `~/.fetchd/config/genesis.exported.json`     | `TO_BE_PROVIDED`            |
-| **BEFORE** the upgrade<br>(step [4.2.2](#422-verify-sha256-hashes-of-genesisexportedjson-and-genesisjson-files)) | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
-| **AFTER** the upgrade<br>(**AFTER** step 4.3.1 or step 7)                                                        | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
-| **AFTER** the upgrade<br>(**AFTER** step 4.3.1 or step 7)                                                        | `~/.fetchd/config/asi_upgrade_manifest.json` | `TO_BE_PROVIDED`            |
+| Checkpoint                                                             | Filename                                     | Reference sha256 hash value |
+|------------------------------------------------------------------------|----------------------------------------------|-----------------------------|
+| **BEFORE** the upgrade<br>(step [4.2.1](#421-export-genesisjson-file)) | `~/.fetchd/config/genesis.exported.json`     | `TO_BE_PROVIDED`            |
+| **BEFORE** the upgrade<br>(step [4.2.1](#421-export-genesisjson-file)) | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
+| **AFTER** the upgrade<br>(**AFTER** step 4.3.1 or step 7)              | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
+| **AFTER** the upgrade<br>(**AFTER** step 4.3.1 or step 7)              | `~/.fetchd/config/asi_upgrade_manifest.json` | `TO_BE_PROVIDED`            |
