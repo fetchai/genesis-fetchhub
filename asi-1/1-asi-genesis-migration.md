@@ -1,6 +1,6 @@
 # ASI Genesis Migration
 
-This is "genesis" upgrade, what means that the new eon will be started, and so whole history from the previous eon will
+This is a "genesis" upgrade, what means that a new eon will be started, and all history from the previous eon will
 be lost (it can be accessed from the archive node of the (previous) eon which will be ended by this upgrade).<br/>
 Only the chain's full state (at the upgrade halt block height) will be carried over to the new eon.
 
@@ -25,10 +25,10 @@ in this guide in other contexts than just shell commands.
 
 ## 1. Wait for network halt 
 
-[//]: # (TODO: Replace HALT_BLOCK_HEIGHT and GOVENRANCE_PROPOSAL_NUMBER placeholders)
+[//]: # (TODO: Replace HALT_BLOCK_HEIGHT and GOVERNANCE_PROPOSAL_NUMBER placeholders)
 
 When mainnet blockchain reaches the target upgrade block height `HALT_BLOCK_HEIGHT` defined by the ASI software upgrade
-governance proposal #GOVENRANCE_PROPOSAL_NUMBER, **ALL** nodes will automatically halt once they will reach this block
+governance proposal #GOVERNANCE_PROPOSAL_NUMBER, **ALL** nodes will automatically halt once they will reach this block
 height.
 
 It is **expected** to have an error logged by the node, similar to:
@@ -148,7 +148,7 @@ fetchd --home ~/.fetchd/ tendermint unsafe-reset-all
 
 ## 6. Install `v0.12.LATEST` version of the `fetchd` node
 
-> NOTE: The `LATEST` placeholder used below in this section will be replaced with final git tab value when it will become known.
+> NOTE: The `LATEST` placeholder used below in this section will be replaced with final git tag value when it becomes known.
 
 There are two options - either do **local** installation, or using the **docker** (see the related sections below).
 The right choice depends only on how you normally run your node.
@@ -171,12 +171,12 @@ make install
 
 [//]: # (TODO: Update with latest git tag)
 
-> **ALTERNATIVELY: IF** it is required/desired to use **already existing** clone of fetchd repository:
+> **ALTERNATIVELY**: **IF** it is required/desired to use **already existing** clone of fetchd repository:
 > ```bash
 > cd fetch
 > git fetch
 > git clean -fd
-> git resset .
+> git reset .
 > git checkout v0.12.LATEST
 > make install
 > ```
@@ -192,7 +192,7 @@ fetchd version
 :point_right: The above command **\*MUST\*** print the `v0.12.LATEST`! If it doesn't, please analyse the commands
 executed above in the scope of the 
 [6.1. \*EITHER\* Build & install LOCAL version of new node](#61-either-build--install-local-version-of-new-node)
-section (when you reached this point we suggest to go with fresh clone of the git repo).
+section (when you reach this point we suggest to go with fresh clone of the git repo).
 
 [//]: # (TODO: Update with latest Docker image)
 
@@ -204,7 +204,7 @@ docker-compose, etc.
 ## 7. Execute the ASI Upgrade
 
 The following command will execute the actual ASI upgrade. As the result it will modify
-`~/.fetchd/config/genesis.json` file **in place**:
+`~/.fetchd/config/genesis.json` file **IN PLACE**:
 
 > NOTE: The timestamp value below will be provided later when the exact upgrade time will become known.
 
@@ -214,10 +214,10 @@ The following command will execute the actual ASI upgrade. As the result it will
 fetchd  --home ~/.fetchd/ asi-genesis-upgrade --genesis-time ASI_GENESIS_UPGRADE_TIMESTAMP
 ```
 
-> ### 7.1 ASI Upgrade Manifest File
-> As a side effect, the `asi-genesis-upgrade` CLI command executed above also created the 
+### 7.1 ASI Upgrade Manifest File
+> As a side effect, the `asi-genesis-upgrade` CLI command above also creates the 
 > `~/.fetch/config/asi_upgrade_manifest.json` file.<br>
-> This manifest file will contain all changes made to the `genesis.json` file during the ASI upgrade procedure.
+> This manifest file will reflect all changes made to the `genesis.json` file during the ASI upgrade procedure.
 
 ## 8. Verify sha256 hashes of resulting genesis and manifest files
 Run the following command to generate sha256 hashes for both files: 
