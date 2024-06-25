@@ -97,15 +97,15 @@ Once the resulting files have been published, execute following commands to down
 ```shell
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/feat/asi-upgrade-documentation/asi-1/assets/genesis-upgraded-v0.12.0.json.gz -o ~/.fetchd/config/genesis-upgraded-v0.12.0.json.gz
 # The manifest file is NOT required for the upgrade, but it is suggested to be downloaded for bookkeeping purposes:
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/feat/asi-upgrade-documentation/asi-1/assets/asi_upgrade_manifest-v0.12.0.json -o ~/.fetchd/config/asi_upgrade_manifest-v0.12.0.json
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/feat/asi-upgrade-documentation/asi-1/assets/asi_upgrade_manifest-v0.12.0.json -o ~/.fetchd/config/asi_upgrade_manifest.json
 ```
-### 4.1.4. Upgrade your node's `genesis.json`
 
+### 4.1.4. Upgrade your node's `genesis.json`
 ```shell
 gzip -d -c ~/.fetchd/config/genesis-upgraded-v0.12.0.json.gz > ~/.fetchd/config/genesis.json
 ```
 
-### 4.1.3. Continue with execution from the [8. Verify sha256 hashes of resulting genesis and manifest files](#8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files) section
+### 4.1.5. Continue with execution from the [8. Verify sha256 hashes of resulting genesis and manifest files](#8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files) section
 
 ---
 
@@ -292,9 +292,10 @@ The table below contains the **\*REFERENCE\*** hash values for essential files a
 
 [//]: # (TODO: update with checksums)
 
-| Checkpoint                                                             | Filename                                     | Reference sha256 hash value |
-|------------------------------------------------------------------------|----------------------------------------------|-----------------------------|
-| **BEFORE** the upgrade<br>(step [4.2.1](#421-export-genesisjson-file)) | `~/.fetchd/config/genesis.exported.json`     | `TO_BE_PROVIDED`            |
-| **BEFORE** the upgrade<br>(step [4.2.1](#421-export-genesisjson-file)) | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
-| **AFTER** the upgrade<br>(**AFTER** step 4.3.1 or step 7)              | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
-| **AFTER** the upgrade<br>(**AFTER** step 4.3.1 or step 7)              | `~/.fetchd/config/asi_upgrade_manifest.json` | `TO_BE_PROVIDED`            |
+| Checkpoint                                                                                                                                                                                                                                  | Filename                                     | Reference sha256 hash value |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|-----------------------------|
+| **[Step 4.2.2.](#422-verify-sha256-hashes-of-genesisexportedjson-and-genesisjson-files)**<br/>**BEFORE** the upgrade                                                                                                                        | `~/.fetchd/config/genesis.exported.json`     | `TO_BE_PROVIDED`            |
+| **[Step 4.2.2.](#422-verify-sha256-hashes-of-genesisexportedjson-and-genesisjson-files)**)<br/>**BEFORE** the upgrade                                                                                                                       | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
+| **[Step 4.1.5.](#415-continue-with-execution-from-the-8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files-section)**<br/>**AFTER** the upgrade                                                                                   | `~/.fetchd/config/genesis-upgraded-v0.12.0.json.gz`              | `TO_BE_PROVIDED`            |
+| **[Step 4.1.5.](#415-continue-with-execution-from-the-8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files-section)** or **[step 8.](#8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files)**<br/>**AFTER** the upgrade | `~/.fetchd/config/genesis.json`              | `TO_BE_PROVIDED`            |
+| **[Step 4.1.5.](#415-continue-with-execution-from-the-8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files-section)** or **[step 8.](#8-verify-sha256-hashes-of-resulting-genesis-and-manifest-files)**<br/>**AFTER** the upgrade | `~/.fetchd/config/asi_upgrade_manifest.json` | `TO_BE_PROVIDED`            |
