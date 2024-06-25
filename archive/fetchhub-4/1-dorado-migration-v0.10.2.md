@@ -28,7 +28,7 @@ Before starting, make sure to locate the following files on your validator host:
 - FETCHD_HOME/config/**app.toml**: this configuration allows to tune the cosmos application, such as enabled apis, telemetry, pruning...
 - FETCHD_HOME/config/**client.toml**: this file stores the client config, equivalent to the legacy `fetchcli config` which is now replaced by `fetchd config`.
 
-> If needed, clone this repo and use the [./scripts/locate_home.sh](./scripts/locate_home.sh) script to help find the right folder, giving it your validator operator address and a search path:
+> If needed, clone this repo and use the [./scripts/locate_home.sh](scripts/locate_home.sh) script to help find the right folder, giving it your validator operator address and a search path:
 >
 > ```
 > ./scripts/locate_home.sh fetchvaloper1fvcepqdw4lcc4s0gmxxfhkptyasfceg69x9gsc /home/
@@ -76,7 +76,7 @@ sha256sum genesis_export_5300200.json
 ```
 
 > Expected hash `e0df0ea9b073828047afef06681b4f3f2d7f8857c71b478b2a0ecf1684f77736`
-> File available at [./data/genesis_export_5300200.json](./data/genesis_export_5300200.json)
+> File available at [./data/genesis_export_5300200.json](data/genesis_export_5300200.json)
 
 When your genesis hash matches the expected one, it's now time to update fetchd to the latest version.
 
@@ -139,7 +139,7 @@ sha256sum genesis_migrated_5300200.json
 ```
 
 > Expected hash `fe5fe42dc375ae33268c88cb03fe0c030c96f08ad96ad21921c58fd02fe711c9`
-> File available at [./data/genesis_migrated_5300200.json](./data/genesis_migrated_5300200.json)
+> File available at [./data/genesis_migrated_5300200.json](data/genesis_migrated_5300200.json)
 
 
 ## Copy genesis to your node home
