@@ -32,14 +32,14 @@
   },
   "cudos_merge": {
     "ibc_target_addr": "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
-    "remaining_staking_balance_addr" : "cudos1k9jqjvjm2jcn67jkp2tude23d0egerv5nzps0x",
-    "remaining_gravity_balance_addr" : "cudos10zdec748q8qx0vrt276sj9xau8qnff7r63ct0v",
-    "remaining_distribution_balance_addr" : "cudos1eyxaeuuu4c70zsga5lqxzm224jy49ncxkqfyvs",
-    "contract_destination_fallback_addr" : "cudos1dslwarknhfsw3pfjzxxf5mn28q3ewfectw0gta",
-    "community_pool_balance_dest_addr" : "cudos1eyxaeuuu4c70zsga5lqxzm224jy49ncxkqfyvs",
+    "remaining_staking_balance_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+    "remaining_gravity_balance_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+    "remaining_distribution_balance_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+    "contract_destination_fallback_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+    "community_pool_balance_dest_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
     "commission_fetch_addr" : "fetch15p3rl5aavw9rtu86tna5lgxfkz67zzr6ed4yhw",
-    "extra_supply_fetch_addr" : "fetch1fhjd795s7257r60dts5lmp7050lj6rnyvjfq0f",
-    "vesting_collision_dest_addr" : "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
+    "extra_supply_fetch_addr" : "fetch1nxj5ynsajxwraqvx767a6ckw9g98vy56y2ut0w",
+    "vesting_collision_dest_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
     "vesting_period": 7776000,
     "balance_conversion_constants": [
       {
@@ -51,15 +51,12 @@
     "total_fetch_supply_to_mint": "88946755672000000000000000",
     "not_vested_accounts": [
       "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
-      "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
-      "cudos1w5caj20lujq8srwxxqn3a3j780dd6x8qteug7d",
-      "cudos1qz8zchxad9n8m9zxzajt3shwxzqnt2ddslvgxn",
-      "cudos1eyxaeuuu4c70zsga5lqxzm224jy49ncxkqfyvs"
+      "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+      "cudos1qz8zchxad9n8m9zxzajt3shwxzqnt2ddslvgxn"
     ],
     "not_delegated_accounts": [
       "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
-      "cudos1w5caj20lujq8srwxxqn3a3j780dd6x8qteug7d",
-      "cudos1eyxaeuuu4c70zsga5lqxzm224jy49ncxkqfyvs"
+      "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv"
     ],
     "moved_accounts": [
       {
@@ -79,7 +76,7 @@
       },
       {
         "from": "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
-        "to": "cudos17aptzvkc2pwppqv82kp4gejsmtvvggtklpyw9v",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
         "memo": "already had testfet"
       },
       {
@@ -89,142 +86,205 @@
       },
       {
         "from": "cudos1y90axtnymce3l9avdn65jltcud7dkvlvpgskx9",
-        "to": "cudos1zdscwjvd0e3qflzjx9r4rzh8l62f08jqz8dxkq",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
         "memo": "orchestrator"
       },
       {
         "from": "cudos1vn20zy4txu2nwz7l0552h6hpqn7vgafsa6mwll",
-        "to": "cudos1zdscwjvd0e3qflzjx9r4rzh8l62f08jqz8dxkq",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
         "memo": "orchestrator"
       },
       {
         "from": "cudos17n8xtf56hxjg68q5chvwj4j99ftsxgdu8nte50",
-        "to": "cudos1zdscwjvd0e3qflzjx9r4rzh8l62f08jqz8dxkq",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
         "memo": "relayer"
       },
       {
         "from": "cudos1m4kxqu2fhh0z0af5jlkhhy7e0qlanxkhvt074v",
-        "to": "cudos1mkhymupwpkcz8050j06q35u8z8yyttejmfrd49",
+        "to": "cudos1w3kx94kqcz2rf2p5quwzzldylsmq238vpwjlk3",
         "memo": "moving balance of a smart contract admin with a contract with balance"
+      },
+      {
+        "from": "cudos1w5caj20lujq8srwxxqn3a3j780dd6x8qteug7d",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "treasury wallet 1"
+      },
+      {
+        "from": "cudos1uae7gc72n85cl73qlfqrlv0y8jy3mfkjrl06zh",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "treasury wallet 2"
+      },
+      {
+        "from": "cudos1mvg6rmp56msc5m3f877u0ltrkpzwhjjstpz5ja",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 1"
+      },
+      {
+        "from": "cudos17xng0mvfw5yh8852egglusnurea25qacl7ufmv",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 2"
+      },
+      {
+        "from": "cudos10a69lcaarckhcqf0zg04t65fuzlufel57u0608",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 3"
+      },
+      {
+        "from": "cudos1c3qgr4df6u3awsz6rqwkxcpsef7aau7p23pew5",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 4"
+      },
+      {
+        "from": "cudos1y7l29p0yrz7exw9h55urd6v6vh6kjkq8dqfuh4",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 5"
+      },
+      {
+        "from": "cudos1qryl52su3rdpqx2etmsal6sh4ky77t8pagakw6",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 6"
+      },
+      {
+        "from": "cudos1genudzpvqe2t9k64xwueua35a8kfvl3fc6uc62",
+        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "memo": "small wallet 7"
       },
       {
         "from": "cudos1r2kfvyhf3hl2juurrete54lzvtgscmhg95pve2",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000"
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 1"
       },
       {
         "from": "cudos1wx95r29g06awaspmfjlwmqnvtdvcfd8g0mkmyq",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000"
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 2"
       },
       {
         "from": "cudos19d3xeaa6fjpz262nvjlj68cdd7kkxlnml6qnjt",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
         "amount": "2000000000000000000000000",
-        "memo": "had exact, taking it all on purpose"
+        "memo": "delegation move 3"
       },
       {
         "from": "cudos140l6y2gp3gxvay6qtn70re7z2s0gn57zdg6mc5",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "1999999999999999999998816",
-        "memo": "had exact"
+        "amount": "2000000000000000000000000",
+        "memo": "delegation move 4"
       },
       {
         "from": "cudos1yqf2qj5rulkutzg9vl9vt4l3jsgknrvsxcrzud",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000"
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 5"
       },
       {
         "from": "cudos1acls2akdgau6gqltdrd3r47qdvns54ak0gcpe8",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000"
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 6"
       },
       {
         "from": "cudos159elv7tsgazc4clsn9xfnzm0f0puhwfzlfv75v",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000"
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 7"
       }
     ],
-    "validators_map": [
-      {
-        "key": "cudosvaloper1r2kfvyhf3hl2juurrete54lzvtgscmhgc80dch",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper19x6hxpuasshs80vy39j2kh2rcjhz0982wwz9r0",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper1ctcrpuyumt60733u0yd5htwzedgfae0n8gql5n",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper1lspahzx79erfkqpyfzc8q37r4yu6j288keup9j",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper1n5tuwett2ulexgg8hrhhlj6gh87vjfar3aesj8",
-        "value": "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w"
-      },
-      {
-        "key": "cudosvaloper1a025fyry0gpk0c9sec00u938jvevvvjevp5a8e",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper19qam2gca24kgd8aac22clluhe92ef4setqnvf4",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper1gj2xtqk66hy8vdw69vn9muexdczyv3agc6kacx",
-        "value": "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w"
-      },
-      {
-        "key": "cudosvaloper15kry9fkatcpytmsjscxw5pltm3stun9fxn8wr8",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper17xjnnpmqnypk5h08727kte68mm3cvwrwxrjfx7",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper1wx95r29g06awaspmfjlwmqnvtdvcfd8gjgc69a",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper17d57k9d3g306gxg5hlgfw9k86kw6x0m36nzhsy",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper16guyt456l9wd7lnem8fq7xzmyrl62wfh4gwt3m",
-        "value": "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w"
-      },
-      {
-        "key": "cudosvaloper16q3f9ech805pa995x9u5g3hqk0cvtah8mnaepp",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper1mm5nfykrrhc5zl8cv2tnkrcuctzd8dzttey0pk",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper19d3xeaa6fjpz262nvjlj68cdd7kkxlnmzfwjnk",
-        "value": "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w"
-      },
-      {
-        "key": "cudosvaloper1myyl3a0vlsqwqp0phjarqup0w3xl9wtqde4m36",
-        "value": "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k"
-      },
-      {
-        "key": "cudosvaloper140l6y2gp3gxvay6qtn70re7z2s0gn57zsm56ef",
-        "value": "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
-      },
-      {
-        "key": "cudosvaloper1yqf2qj5rulkutzg9vl9vt4l3jsgknrvsmtdras",
-        "value": "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w"
-      }
-    ],
+    "validators_map": [ {
+      "key" : "cudosvaloper1r2kfvyhf3hl2juurrete54lzvtgscmhgc80dch",
+      "value" : "fetchvaloper1evtz9f6cl2lhzjf5dwy2c647ey9uu9n35205hj"
+    }, {
+      "key" : "cudosvaloper19x6hxpuasshs80vy39j2kh2rcjhz0982wwz9r0",
+      "value" : "fetchvaloper1g7wlwa5ny5ytwj4fhtyl83xz2phfrsqnnc6sft"
+    }, {
+      "key" : "cudosvaloper1ctcrpuyumt60733u0yd5htwzedgfae0n8gql5n",
+      "value" : "fetchvaloper1ph02ux2dujl7uv4lzv6vy2y6vjstd4eplfznuw"
+    }, {
+      "key" : "cudosvaloper1lspahzx79erfkqpyfzc8q37r4yu6j288keup9j",
+      "value" : "fetchvaloper1zurz6kfq5hrjdcwpzhz25g78waeud3lk60pj8a"
+    }, {
+      "key" : "cudosvaloper1n5tuwett2ulexgg8hrhhlj6gh87vjfar3aesj8",
+      "value" : "fetchvaloper1ljaz4qqc3lzaxtas665kn85wxzaag72vc7a3y6"
+    }, {
+      "key" : "cudosvaloper1a025fyry0gpk0c9sec00u938jvevvvjevp5a8e",
+      "value" : "fetchvaloper1vs328gyxpc6hxuh67gquqcm3w3kapw4g4czaag"
+    }, {
+      "key" : "cudosvaloper19qam2gca24kgd8aac22clluhe92ef4setqnvf4",
+      "value" : "fetchvaloper1x9dec338uhew9ye9srzrctcm64c3p5ev2f54sh"
+    }, {
+      "key" : "cudosvaloper1gj2xtqk66hy8vdw69vn9muexdczyv3agc6kacx",
+      "value" : "fetchvaloper1x9dec338uhew9ye9srzrctcm64c3p5ev2f54sh"
+    }, {
+      "key" : "cudosvaloper15kry9fkatcpytmsjscxw5pltm3stun9fxn8wr8",
+      "value" : "fetchvaloper1x9dec338uhew9ye9srzrctcm64c3p5ev2f54sh"
+    }, {
+      "key" : "cudosvaloper17xjnnpmqnypk5h08727kte68mm3cvwrwxrjfx7",
+      "value" : "fetchvaloper1qwk6plvzyzwdapwarx25gg5datwu8ryepasme8"
+    }, {
+      "key" : "cudosvaloper1wx95r29g06awaspmfjlwmqnvtdvcfd8gjgc69a",
+      "value" : "fetchvaloper1das4pehks87a0yg68rhnlg7wvpgucasrv8yhz0"
+    }, {
+      "key" : "cudosvaloper17d57k9d3g306gxg5hlgfw9k86kw6x0m36nzhsy",
+      "value" : "fetchvaloper1xg7s0js445zkdh3elpvmdqk2knda7ndvfnut32"
+    }, {
+      "key" : "cudosvaloper16guyt456l9wd7lnem8fq7xzmyrl62wfh4gwt3m",
+      "value" : "fetchvaloper18tmu0lrfsdvke8e3a3jsd7fq2rs29krf8kmpsz"
+    }, {
+      "key" : "cudosvaloper16q3f9ech805pa995x9u5g3hqk0cvtah8mnaepp",
+      "value" : "fetchvaloper1ynfh6c5rzxgdqnhj72eq9dhxd93fn96tkx2jjy"
+    }, {
+      "key" : "cudosvaloper1mm5nfykrrhc5zl8cv2tnkrcuctzd8dzttey0pk",
+      "value" : "fetchvaloper1euqlyj3n4ejvd6x803mkt64ugn7c9qpa9mj9np"
+    }, {
+      "key" : "cudosvaloper19d3xeaa6fjpz262nvjlj68cdd7kkxlnmzfwjnk",
+      "value" : "fetchvaloper1euqdrhevxg6gdzaphs7d3uulagxehex3fev6m3"
+    }, {
+      "key" : "cudosvaloper1myyl3a0vlsqwqp0phjarqup0w3xl9wtqde4m36",
+      "value" : "fetchvaloper15hhma53ze7xl7r4xj5fv7ykyktemsdx5jejqn9"
+    }, {
+      "key" : "cudosvaloper140l6y2gp3gxvay6qtn70re7z2s0gn57zsm56ef",
+      "value" : "fetchvaloper140l6y2gp3gxvay6qtn70re7z2s0gn57z6q9rh3"
+    }, {
+      "key" : "cudosvaloper1yqf2qj5rulkutzg9vl9vt4l3jsgknrvsmtdras",
+      "value" : "fetchvaloper10x64dgdwxcvmvgw8x8kfmpj52ppl4gy4thv2nk"
+    }, {
+      "key" : "cudosvaloper1avnl53xv6kj7dk5u35jlk52vxwg95n9zlh3jl8",
+      "value" : "fetchvaloper1fal2sqw4lkxugr989d66ju742tfn35ss3q35yk"
+    }, {
+      "key" : "cudosvaloper1acls2akdgau6gqltdrd3r47qdvns54akjmkqc6",
+      "value" : "fetchvaloper1acls2akdgau6gqltdrd3r47qdvns54akcq8ekz"
+    }, {
+      "key" : "cudosvaloper16uz64azhwsvfxfng0w0t4mfcupqfksx3fuykw4",
+      "value" : "fetchvaloper1rz6gzypnqdehvfwl33hh7rw0fzr5ksl92fnp2j"
+    }, {
+      "key" : "cudosvaloper13le82pzxwcvs2ftkzeyjxsxwl46aaptsxhyxk7",
+      "value" : "fetchvaloper13le82pzxwcvs2ftkzeyjxsxwl46aaptsvv4lcx"
+    }, {
+      "key" : "cudosvaloper1vueg5jkqfwl5exxqnmsvlgce6v884l8mc44xkl",
+      "value" : "fetchvaloper1vueg5jkqfwl5exxqnmsvlgce6v884l8mjwylc8"
+    }, {
+      "key" : "cudosvaloper1wyv883wzp84d7hzf3q2jeq3l43aga72td8spvs",
+      "value" : "fetchvaloper12g4s5r7ak559jf6nekda0r6zwvc78m0wkz5w8l"
+    }, {
+      "key" : "cudosvaloper159elv7tsgazc4clsn9xfnzm0f0puhwfzz6zl43",
+      "value" : "fetchvaloper1qmkm2jfqtcy3kzp8auven4ljlu5s66qdsux5u0"
+    }, {
+      "key" : "cudosvaloper1jpqvfuy4hty50drksek0dw3zzlhjan3s48z6qe",
+      "value" : "fetchvaloper1zntja9step52hq3a262fd9ee4n9w7mjutru8rc"
+    }, {
+      "key" : "cudosvaloper1al7ax9c4r5n4tfcmpnm43amxknj8wfsastvc58",
+      "value" : "fetchvaloper1xk0zwa3nhd78zuxg3a8u2xncc69vhe6awpxpse"
+    }, {
+      "key" : "cudosvaloper1s5qa3dpghnre6dqfgfhudxqjhwsv0mx43xayku",
+      "value" : "fetchvaloper1f0c85eaelur6xa2qx4rkjkydmf2ak2p9zhxl72"
+    }, {
+      "key" : "cudosvaloper15wchehvk9ltzp6k45vdqzs9qtkr758pnqy63gc",
+      "value" : "fetchvaloper15wchehvk9ltzp6k45vdqzs9qtkr758pn2ltgxq"
+    } ],
     "backup_validators": [
-      "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg"
+      "fetchvaloper1x9dec338uhew9ye9srzrctcm64c3p5ev2f54sh"
     ]
   }
 }
