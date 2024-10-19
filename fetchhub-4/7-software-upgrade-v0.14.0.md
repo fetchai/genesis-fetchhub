@@ -51,7 +51,7 @@ git clean -fd
 git checkout v0.14.0
 ```
 
-Now you can install the new fetchd version:
+Now you can install the new `fetchd` version:
 
 ```bash
 make install
@@ -68,34 +68,49 @@ Make sure the version is correct before proceeding further!
 
 You're now ready to restart your node.
 
-## Executing upgrade
-First clone the correct version of  https://github.com/fetchai/genesis-fetchhub repository in ot your `$FETCHD_HOME_DIR`
-directory, and extract the CUDOS genesis file: 
+## Execute upgrade procedure steps
+
+### Set primary environment variables
+First define env variables which will be used in further commands below:
 ```shell
-cd $FETCHD_HOME_DIR
+#{==> CHANGE ME! (chain-id) <==} 
+export DESTINATION_CHAIN_ID="dorado-1"
 
-{==> CHANGE ME! (git tag) <==}
-git clone --branch v0.14.0 --depth 1 https://github.com/fetchai/genesis-fetchhub genesis-fetchhub
-
-cd genesis-fetchhub/fetchhub-4/data
-gzip -d -c e genesis.cudos.mainnet.eternal_halt.json.gz > genesis.cudos.mainnet.eternal_halt.json
-
-cd $FETCHD_HOME_DIR
+#{==> CHANGE ME! (HASH value) <==} 
+export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce"
 ```
 
-Confirm version of `fetchd` executable by executing following command: 
+### Set path env variables
+
+```shell
+export GENESIS_FETCHHUB_PATH="$FETCHD_HOME_DIR"/genesis-fetchhub
+export UPGRADE_DATA_PATH="$GENESIS_FETCHHUB_PATH"/"$DESTINATION_CHAIN_ID"/data
+```
+
+### Download merge input files
+
+Clone the correct version of  https://github.com/fetchai/genesis-fetchhub repository in to your `$FETCHD_HOME_DIR`
+directory, and extract the CUDOS genesis file:
+
+```shell
+{==> CHANGE ME! (git tag) <==}
+git clone --branch v0.14.0 --depth 1 https://github.com/fetchai/genesis-fetchhub "$GENESIS_FETCHHUB_PATH"
+
+7z e "$UPGRADE_DATA_PATH/genesis.cudos.json.7z" -o"$UPGRADE_DATA_PATH" 
+```
+
+### Confirm fetchd version
+Confirm version of `fetchd` executable by executing following command:
 ```shell
 fetchd version
 ```
-It **MUST** print `v0.14.0`. 
+> It **MUST** print `v0.14.0`. 
 
+### Execute actual upgrade command
 Then finally execute the upgrade - you **MUST** use the following commandline = the **VERY 1st** start of the **NEW**
 `v0.14.0` version of `fetchd` node executable.
 ```shell
-{==> CHANGE ME! (HASH values) <==}
-cd genesis-fetchhub/fetchhub-4/data
- 
-fetchd --home $FETCHD_HOME_DIR start --cudos-genesis-path genesis.cudos.mainnet.eternal_halt.json --cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-path cudos_merge_config.json --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce
+fetchd --home $FETCHD_HOME_DIR start --cudos-genesis-path $UPGRADE_DATA_PATH/genesis.cudos.json --cudos-migration-config-path $UPGRADE_DATA_PATH/cudos_merge_config.json $UPGRADE_SHA256_PARAMS
 ```
 , where the `FETCHD_HOME_DIR` variable contains path to the home directory,
   and all following flags of the `start` command are **MANDATORY** (= **must** be provided) for the very 1st run of
@@ -139,8 +154,8 @@ progress of the upgrade procedure:
 ```log
 {==> CHANGE ME! <==}
 
-5:12AM INF cudos merge: loading merge source genesis json expected sha256=5751b1428d22471435940d93127675dfc14a287cfaa2fc87edf112a8050ff96c file=cudos_pubtn_2024_09_12.json
-5:12AM INF cudos merge: loading network config expected sha256=8b0df35b60b4fdd459150a9674b9f07b5d9e79d51a7fa5f7e72bea179a1ca1b7 file=dorado-1__NetworkConfig__for_private_cudos_merge_test__2024.10.04_17.30.00.json
+5:12AM INF cudos merge: loading merge source genesis json expected sha256=5751b1428d22471435940d93127675dfc14a287cfaa2fc87edf112a8050ff96c file=genesis.cudos.json
+5:12AM INF cudos merge: loading network config expected sha256=8b0df35b60b4fdd459150a9674b9f07b5d9e79d51a7fa5f7e72bea179a1ca1b7 file=cudos_migration_config.json
 5:12AM INF cudos merge: remaining bonded pool balance amount=183acudos
 5:12AM INF cudos merge: remaining not-bonded pool balance amount=6241acudos
 5:12AM INF cudos merge: remaining dist balance amount=51acudos
@@ -159,7 +174,7 @@ After this point, node is just waiting until enough validators have upgraded & j
 of the global stake), after which the mainnet consensus will resume block generation on its own, and the mainnet
 upgrade procedure is finished from the conceptual standpoint.
 
-## Verify upgrade completed
+### Verify upgrade completed
 
 You can now query your **local** RPC endpoint to verify that the right version is running and the node properly
 restarted:
