@@ -73,10 +73,10 @@ You're now ready to restart your node.
 ### Set primary environment variables
 First define env variables which will be used in further commands below:
 ```shell
-#{==> CHANGE ME! (chain-id) <==} 
-export DESTINATION_CHAIN_ID="dorado-1"
+export DESTINATION_CHAIN_ID="fetchhub-4"
 
-#{==> CHANGE ME! (HASH value) <==} 
+{==> CHANGE ME! (HASH value) <==}
+
 export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce"
 ```
 
