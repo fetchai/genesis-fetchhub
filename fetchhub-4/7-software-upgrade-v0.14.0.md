@@ -1,9 +1,9 @@
 
 # Software upgrade
 
-This guide is describing the procedure to upgrade to the [{==> CHANGE ME! <==} v0.14.0-rc8](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc8) following the [{==> CHANGE ME! <==} ASI Governance Proposal: Integration of CUDOS into the ASI Alliancel #31](https://www.mintscan.io/fetchai/proposals/31) software upgrade governance proposal.
+This guide is describing the procedure to upgrade to the [{==> CHANGE ME! <==} v0.14.0-rc9](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc9) following the [{==> CHANGE ME! <==} CUDOS mainnet migration #32](https://www.mintscan.io/fetchai/proposals/32) software upgrade governance proposal.
 
-We kindly ask all the validators to read through the following document, and then wait for the upgrade block height `XXXX` to be reached *before* executing the upgrade steps in order to upgrade their nodes.
+We kindly ask all the validators to read through the following document, and then wait until chain reaches upgrade block height `{==> CHANGE ME! <==}` *before* executing the upgrade steps.
 
 In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), or Telegram [@v0idptr](https://t.me/v0idptr).
 
@@ -28,7 +28,7 @@ When mainnet blockchain reaches the target upgrade block height `{==> CHANGE ME!
 
 ```
 {==> CHANGE ME! <==}
-1:16PM ERR UPGRADE "v0.14.0" NEEDED at height: XXX: Municipal Inflation v0.14.0 (upgrade-info)
+1:16PM ERR UPGRADE "v0.14.0" NEEDED at height: XXX: CUDOS mainnet migration v0.14.0 (upgrade-info)
 1:16PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.14.0\" NEEDED at height: XXX"
 ```
 
@@ -73,8 +73,14 @@ First clone the correct version of  https://github.com/fetchai/genesis-fetchhub 
 directory, and extract the CUDOS genesis file: 
 ```shell
 cd $FETCHD_HOME_DIR
+
+{==> CHANGE ME! (git tag) <==}
 git clone --branch v0.14.0 --depth 1 https://github.com/fetchai/genesis-fetchhub genesis-fetchhub
-7z e genesis-fetchhub/dorado-1/data/genesis.cudos.testnet__eternal_halt_height_16128170__2024.10.10_14.04.27Z.json.7z -o genesis-fetchhub/dorado-1/data
+
+cd genesis-fetchhub/fetchhub-4/data
+gzip -d -c e genesis.cudos.mainnet.eternal_halt.json.gz > genesis.cudos.mainnet.eternal_halt.json
+
+cd $FETCHD_HOME_DIR
 ```
 
 Confirm version of `fetchd` executable by executing following command: 
@@ -86,9 +92,10 @@ It **MUST** print `v0.14.0`.
 Then finally execute the upgrade - you **MUST** use the following commandline = the **VERY 1st** start of the **NEW**
 `v0.14.0` version of `fetchd` node executable.
 ```shell
-{==> CHANGE ME! <==}
-
-fetchd --home $FETCHD_HOME_DIR start --cudos-genesis-path genesis-fetchhub/fetchhub-4/data/genesis.cudos.testnet__eternal_halt_height_16128170__2024.10.10_14.04.27Z.json --cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-path genesis-fetchhub/fetchhub-4/data/cudos_merge_config.json --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce
+{==> CHANGE ME! (HASH values) <==}
+cd genesis-fetchhub/fetchhub-4/data
+ 
+fetchd --home $FETCHD_HOME_DIR start --cudos-genesis-path genesis.cudos.mainnet.eternal_halt.json --cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-path cudos_merge_config.json --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce
 ```
 , where the `FETCHD_HOME_DIR` variable contains path to the home directory,
   and all following flags of the `start` command are **MANDATORY** (= **must** be provided) for the very 1st run of
