@@ -71,19 +71,26 @@ You're now ready to restart your node.
 ## Execute upgrade procedure steps
 
 ### Set primary environment variables
-First define env variables which will be used in further commands below:
-> :exclamation: Variables set in this section determine which upgrade you are going to do.
->
-> :exclamation: **\*IMPORTANT\***: Variables set in this section are subject of **\*SUBSTITUTION\*** - they can be 
-> replaced by values from **\*other\*** documents which refer to this document, like for example
-> [upgrade procedure document for Dorado testnet](../dorado-1/7-software-upgrade-v0.14.0.md#set-primary-environment-variables).
+First define env variables which will be used in further commands below.
 
-> :exclamation: Please **\*VERIFY\*** value of the FETCHD_HOME_DIR variable below and adjust it to correct directory of
-> ***\your*\*** node **\IF*\*** it differs from default! 
+> :exclamation: Variables set in this section determine which upgrade you are going to do.
+
+> :exclamation: **\*IMPORTANT\***: Variables set in this section are subject of **\*SUBSTITUTION\*** - they can be 
+> replaced by values from **\*other\*** documents which refer to this document, like for example the 
+> [upgrade procedure document for Dorado testnet](../dorado-1/7-software-upgrade-v0.14.0.md#set-primary-environment-variables).
+> 
+> :point_right: So the env variables as they are defined in this section in **\*this document\***, are valid **\*only
+> for mainnet\*** (= for `fetchhub-4` chain-id), and will need to be replaced by values from other documents which
+> **\*refer\*** to this document.
+
+> :exclamation: Please **\*VERIFY\*** value of the `FETCHD_HOME_DIR` variable below and adjust it to correct directory
+> of **\*your\*** node **\*IF\*** it differs from default!
 ```shell
 # Please do *NOT* enclose value of this variable with double quotes, or with any quotation characters:
 export FETCHD_HOME_DIR=~/.fetchd
+```
 
+```shell
 export DESTINATION_CHAIN_ID=fetchhub-4
 export GENESIS_FETCHUB_GIT_REVISION=v0.14.0
 
