@@ -12,8 +12,7 @@ used **\*exclusively\*** for testing purposes, since it is *not* the final genes
 **\*INSTEAD\*** use the following commands to set values of the primary variables:
    ```shell
    export DESTINATION_CHAIN_ID="fetchhub-cudos-test-4"
+   export GENESIS_FETCHUB_GIT_REVISION="cudos-merger-private-mainnet-test"
 
-   {==> CHANGE ME! (HASH value) <==}
-   
    export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 a3a00569e4ece61051e12355d47ad345576dba6a10c72c54e6985f46da37ee77 --cudos-migration-config-sha256 a070402dd3fb79e67bc3b6a044b91380c874a566ce6f287bfe2406d0caa1711a"
    ```
