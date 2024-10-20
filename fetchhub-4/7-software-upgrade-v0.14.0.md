@@ -155,7 +155,7 @@ progress of the upgrade procedure:
 {==> CHANGE ME! <==}
 
 5:12AM INF cudos merge: loading merge source genesis json expected sha256=5751b1428d22471435940d93127675dfc14a287cfaa2fc87edf112a8050ff96c file=genesis.cudos.json
-5:12AM INF cudos merge: loading network config expected sha256=8b0df35b60b4fdd459150a9674b9f07b5d9e79d51a7fa5f7e72bea179a1ca1b7 file=cudos_migration_config.json
+5:12AM INF cudos merge: loading network config expected sha256=8b0df35b60b4fdd459150a9674b9f07b5d9e79d51a7fa5f7e72bea179a1ca1b7 file=cudos_merge_config.json
 5:12AM INF cudos merge: remaining bonded pool balance amount=183acudos
 5:12AM INF cudos merge: remaining not-bonded pool balance amount=6241acudos
 5:12AM INF cudos merge: remaining dist balance amount=51acudos
