@@ -74,13 +74,14 @@ You're now ready to restart your node.
 First define env variables which will be used in further commands below:
 ```shell
 export DESTINATION_CHAIN_ID="fetchhub-4"
+export GENESIS_FETCHUB_GIT_REVISION="v0.14.0"
 
 {==> CHANGE ME! (HASH value) <==}
 
 export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce"
 ```
 
-### Set path env variables
+### Set derived path env variables
 
 ```shell
 export GENESIS_FETCHHUB_PATH="$FETCHD_HOME_DIR"/genesis-fetchhub
@@ -90,12 +91,17 @@ export UPGRADE_DATA_PATH="$GENESIS_FETCHHUB_PATH"/"$DESTINATION_CHAIN_ID"/data
 ### Download merge input files
 
 Clone the correct version of  https://github.com/fetchai/genesis-fetchhub repository in to your `$FETCHD_HOME_DIR`
-directory, and extract the CUDOS genesis file:
-
+directory:
+> **\*IF\*** the "$GENESIS_FETCHHUB_PATH" directory **\*exists already\***, please **delete it first** (if needed, backup it before deletion).
+> ```shell
+> rm -rf "$GENESIS_FETCHHUB_PATH"
+> ```
 ```shell
-{==> CHANGE ME! (git tag) <==}
-git clone --branch v0.14.0 --depth 1 https://github.com/fetchai/genesis-fetchhub "$GENESIS_FETCHHUB_PATH"
+git clone --branch $GENESIS_FETCHUB_GIT_REVISION --depth 1 https://github.com/fetchai/genesis-fetchhub "$GENESIS_FETCHHUB_PATH"
+```
 
+And finally **extract** the CUDOS genesis file:
+```
 7z e "$UPGRADE_DATA_PATH/genesis.cudos.json.7z" -o"$UPGRADE_DATA_PATH" 
 ```
 
