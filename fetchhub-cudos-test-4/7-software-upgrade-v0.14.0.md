@@ -13,12 +13,14 @@ Halt height of the **\*private\*** Fetch Mainnet **test** network is `18787814`
 ## Set primary environment variables
 In the [Set primary environment variables](../fetchhub-4/7-software-upgrade-v0.14.0.md#set-primary-environment-variables) section,
 **\*INSTEAD\*** use the following commands to set values of the primary variables:
-> :exclamation: Please **\*VERIFY\*** value of the FETCHD_HOME_DIR variable below and adjust it to correct directory of
-> **\*your\*** node **\*IF\*** it differs from default!
+> :exclamation: Please **\*VERIFY\*** value of the `FETCHD_HOME_DIR` variable below and adjust it to correct directory
+> of **\*your\*** node **\*IF\*** it differs from default!
 ```shell
 # Please do *NOT* enclose value of this variable with double quotes, or with any quotation characters:
 export FETCHD_HOME_DIR=~/.fetchd
+```
 
+```shell
 export DESTINATION_CHAIN_ID="fetchhub-cudos-test-4"
 export GENESIS_FETCHUB_GIT_REVISION="cudos-merger-private-mainnet-test"
 
