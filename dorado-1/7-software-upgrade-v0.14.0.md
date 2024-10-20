@@ -11,6 +11,7 @@ following differences:
 **\*INSTEAD\*** use the following commands to set values of the primary variables:
    ```shell
    export DESTINATION_CHAIN_ID="dorado-1"
+   export GENESIS_FETCHUB_GIT_REVISION="v0.14.0"
 
    {==> CHANGE ME! (HASH value) <==}
    
