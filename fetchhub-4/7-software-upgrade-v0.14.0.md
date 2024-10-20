@@ -72,9 +72,20 @@ You're now ready to restart your node.
 
 ### Set primary environment variables
 First define env variables which will be used in further commands below:
+> :exclamation: Variables set in this section determine which upgrade you are going to do.
+>
+> :exclamation: **\*IMPORTANT\***: Variables set in this section are subject of **\*SUBSTITUTION\*** - they can be 
+> replaced by values from **\*other\*** documents which refer to this document, like for example
+> [upgrade procedure document for Dorado testnet](../dorado-1/7-software-upgrade-v0.14.0.md#set-primary-environment-variables).
+
+> :exclamation: Please **\*VERIFY\*** value of the FETCHD_HOME_DIR variable below and adjust it to correct directory of
+> ***\your*\*** node **\IF*\*** it differs from default! 
 ```shell
-export DESTINATION_CHAIN_ID="fetchhub-4"
-export GENESIS_FETCHUB_GIT_REVISION="v0.14.0"
+# Please do *NOT* enclose value of this variable with double quotes, or with any quotation characters:
+export FETCHD_HOME_DIR=~/.fetchd
+
+export DESTINATION_CHAIN_ID=fetchhub-4
+export GENESIS_FETCHUB_GIT_REVISION=v0.14.0
 
 {==> CHANGE ME! (HASH value) <==}
 
@@ -84,15 +95,15 @@ export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d
 ### Set derived path env variables
 
 ```shell
-export GENESIS_FETCHHUB_PATH="$FETCHD_HOME_DIR"/genesis-fetchhub
-export UPGRADE_DATA_PATH="$GENESIS_FETCHHUB_PATH"/"$DESTINATION_CHAIN_ID"/data
+export GENESIS_FETCHHUB_PATH=$FETCHD_HOME_DIR/genesis-fetchhub
+export UPGRADE_DATA_PATH=$GENESIS_FETCHHUB_PATH/$DESTINATION_CHAIN_ID/data
 ```
 
 ### Download merge input files
 
 Clone the correct version of  https://github.com/fetchai/genesis-fetchhub repository in to your `$FETCHD_HOME_DIR`
 directory:
-> **\*IF\*** the "$GENESIS_FETCHHUB_PATH" directory **\*exists already\***, please **delete it first** (if needed, backup it before deletion).
+> **\*IF\*** the $GENESIS_FETCHHUB_PATH directory **\*exists already\***, please **delete it first** (if needed, backup it before deletion).
 > ```shell
 > rm -rf "$GENESIS_FETCHHUB_PATH"
 > ```
@@ -101,8 +112,8 @@ git clone --branch $GENESIS_FETCHUB_GIT_REVISION --depth 1 https://github.com/fe
 ```
 
 And finally **extract** the CUDOS genesis file:
-```
-7z e "$UPGRADE_DATA_PATH/genesis.cudos.json.7z" -o"$UPGRADE_DATA_PATH" 
+```shell
+7z e "$UPGRADE_DATA_PATH/genesis.cudos.json.7z" -o"$UPGRADE_DATA_PATH"
 ```
 
 ### Confirm fetchd version
@@ -116,7 +127,7 @@ fetchd version
 Then finally execute the upgrade - you **MUST** use the following commandline = the **VERY 1st** start of the **NEW**
 `v0.14.0` version of `fetchd` node executable.
 ```shell
-fetchd --home $FETCHD_HOME_DIR start --cudos-genesis-path $UPGRADE_DATA_PATH/genesis.cudos.json --cudos-migration-config-path $UPGRADE_DATA_PATH/cudos_merge_config.json $UPGRADE_SHA256_PARAMS
+fetchd --home "$FETCHD_HOME_DIR" start --cudos-genesis-path "$UPGRADE_DATA_PATH/genesis.cudos.json" --cudos-migration-config-path "$UPGRADE_DATA_PATH/cudos_merge_config.json" $UPGRADE_SHA256_PARAMS
 ```
 , where the `FETCHD_HOME_DIR` variable contains path to the home directory,
   and all following flags of the `start` command are **MANDATORY** (= **must** be provided) for the very 1st run of
