@@ -188,11 +188,41 @@
       }
     ],
     "validators_map": [ {
-      "key" : "cudosvaloper1r2kfvyhf3hl2juurrete54lzvtgscmhgc80dch",
+      "key" : "cudosvaloper13le82pzxwcvs2ftkzeyjxsxwl46aaptsxhyxk7",
       "value" : "fetchvaloper1ynt0dr7zjmauwz7kekqgjm8pyph7a6zq0z2khs"
     }, {
       "key" : "cudosvaloper19x6hxpuasshs80vy39j2kh2rcjhz0982wwz9r0",
       "value" : "fetchvaloper1camyjrd5n7eze3pz5waktzsllsqvpn0kc0lklu"
+    }, {
+      "key" : "cudosvaloper1gj2xtqk66hy8vdw69vn9muexdczyv3agc6kacx",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper1avnl53xv6kj7dk5u35jlk52vxwg95n9zlh3jl8",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper1n5tuwett2ulexgg8hrhhlj6gh87vjfar3aesj8",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper16guyt456l9wd7lnem8fq7xzmyrl62wfh4gwt3m",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper1s5qa3dpghnre6dqfgfhudxqjhwsv0mx43xayku",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper15kry9fkatcpytmsjscxw5pltm3stun9fxn8wr8",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper19qam2gca24kgd8aac22clluhe92ef4setqnvf4",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper1myyl3a0vlsqwqp0phjarqup0w3xl9wtqde4m36",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper1r2kfvyhf3hl2juurrete54lzvtgscmhgc80dch",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }, {
+      "key" : "cudosvaloper1mm5nfykrrhc5zl8cv2tnkrcuctzd8dzttey0pk",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
     } ],
     "backup_validators": [
       "fetchvaloper1camyjrd5n7eze3pz5waktzsllsqvpn0kc0lklu", "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5", "fetchvaloper1x9dec338uhew9ye9srzrctcm64c3p5ev2f54sh"
