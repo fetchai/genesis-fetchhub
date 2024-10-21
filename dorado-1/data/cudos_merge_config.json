@@ -7,6 +7,8 @@
   "contracts" : {
     "reconciliation" : {
       "addr" : "fetch1g5ur2wc5xnlc7sw9wd895lw7mmxz04r5syj3s6ew8md6pvwuweqqavkgt0",
+      "new_admin": "fetch1x77wq7m9pxyd0y3w8uk47rh8ex7q8qhdps4jut",
+      "new_label": "reconciliation-contract",
       "new_contract_version" : {
         "cw_2_version" : {
           "contract" : "contract-fetch-reconciliation",
