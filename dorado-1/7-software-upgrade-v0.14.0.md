@@ -82,15 +82,15 @@ export FETCHD_HOME_DIR=~/.fetchd
 
 ```shell
 export DESTINATION_CHAIN_ID=fetchhub-4
-export GENESIS_FETCHUB_GIT_REVISION=v0.14.0-rc10
+export GENESIS_FETCHUB_GIT_REVISION=tags/v0.14.0-rc10
 export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-sha256 930dc21af917ec8f2f8820ff393c1a276297fe91d4f585757143acb2727cd6d2"
 ```
 
 ### Download merge input files
 
 ```shell
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/heads/$GENESIS_FETCHUB_GIT_REVISION/dorado-1/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/heads/$GENESIS_FETCHUB_GIT_REVISION/dorado-1/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
+curl -O https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHUB_GIT_REVISION/dorado-1/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
+curl -O https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHUB_GIT_REVISION/dorado-1/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
 ```
 
 And finally **extract** the CUDOS genesis file:
