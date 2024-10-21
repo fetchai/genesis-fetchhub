@@ -1,5 +1,8 @@
 
 # Software upgrade
+> :exclamation: :no_entry_sign: This guide is **NOT** finalised yet. It is subject to further changes, since some required information
+> will become known later (e.g. final halt block heights for chains involved, git tags, content of exported
+> `genesis.cudos.json` file, etc. ...).
 
 This guide is describing the procedure to upgrade to the [{==> CHANGE ME! <==} v0.14.0-rc9](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc9) following the [{==> CHANGE ME! <==} CUDOS mainnet migration #32](https://www.mintscan.io/fetchai/proposals/32) software upgrade governance proposal.
 
@@ -10,7 +13,6 @@ In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), 
 ## About the upgrade
 
 The primary feature of this release is merge of CUDOS network in to Fetch network (detailed description of the feature is provided in the [ {==> CHANGE ME! <==} PR #XXX @ YYY](https://github.com/fetchai/CHANGE_ME)).
-In this release, the Municipal Inflation is configured for the MOBX (3% APR) and NOMX (3% APR) tokens.
 
 The secondary features are:
  * Reconciliation,
@@ -75,14 +77,6 @@ First define env variables which will be used in further commands below.
 
 > :exclamation: Variables set in this section determine which upgrade you are going to do.
 
-> :exclamation: **\*IMPORTANT\***: Variables set in this section are subject of **\*SUBSTITUTION\*** - they can be 
-> replaced by values from **\*other\*** documents which refer to this document, like for example the 
-> [upgrade procedure document for Dorado testnet](../dorado-1/7-software-upgrade-v0.14.0.md#set-primary-environment-variables).
-> 
-> :point_right: So the env variables as they are defined in this section in **\*this document\***, are valid **\*only
-> for mainnet\*** (= for `fetchhub-4` chain-id), and will need to be replaced by values from other documents which
-> **\*refer\*** to this document.
-
 > :exclamation: Please **\*VERIFY\*** value of the `FETCHD_HOME_DIR` variable below and adjust it to correct directory
 > of **\*your\*** node **\*IF\*** it differs from default!
 ```shell
@@ -99,28 +93,17 @@ export GENESIS_FETCHUB_GIT_REVISION=v0.14.0
 export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-sha256 2c48a252a051fb90a6401dffb718892084047a3f00dc99481d3692063cf65cce"
 ```
 
-### Set derived path env variables
-
-```shell
-export GENESIS_FETCHHUB_PATH=$FETCHD_HOME_DIR/genesis-fetchhub
-export UPGRADE_DATA_PATH=$GENESIS_FETCHHUB_PATH/$DESTINATION_CHAIN_ID/data
-```
 
 ### Download merge input files
 
-Clone the correct version of  https://github.com/fetchai/genesis-fetchhub repository in to your `$FETCHD_HOME_DIR`
-directory:
-> **\*IF\*** the $GENESIS_FETCHHUB_PATH directory **\*exists already\***, please **delete it first** (if needed, backup it before deletion).
-> ```shell
-> rm -rf "$GENESIS_FETCHHUB_PATH"
-> ```
 ```shell
-git clone --branch $GENESIS_FETCHUB_GIT_REVISION --depth 1 https://github.com/fetchai/genesis-fetchhub "$GENESIS_FETCHHUB_PATH"
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/heads/$GENESIS_FETCHUB_GIT_REVISION/dorado-1/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/heads/$GENESIS_FETCHUB_GIT_REVISION/dorado-1/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
 ```
 
 And finally **extract** the CUDOS genesis file:
 ```shell
-7z e "$UPGRADE_DATA_PATH/genesis.cudos.json.7z" -o"$UPGRADE_DATA_PATH"
+gzip -d -c "$FETCHD_HOME_DIR/genesis.cudos.json.gz" > "$FETCHD_HOME_DIR/genesis.cudos.json"
 ```
 
 ### Confirm fetchd version
@@ -134,7 +117,7 @@ fetchd version
 Then finally execute the upgrade - you **MUST** use the following commandline = the **VERY 1st** start of the **NEW**
 `v0.14.0` version of `fetchd` node executable.
 ```shell
-fetchd --home "$FETCHD_HOME_DIR" start --cudos-genesis-path "$UPGRADE_DATA_PATH/genesis.cudos.json" --cudos-migration-config-path "$UPGRADE_DATA_PATH/cudos_merge_config.json" $UPGRADE_SHA256_PARAMS
+fetchd --home "$FETCHD_HOME_DIR" start --cudos-genesis-path "$FETCHD_HOME_DIR/genesis.cudos.json" --cudos-migration-config-path "$FETCHD_HOME_DIR/cudos_merge_config.json" $UPGRADE_SHA256_PARAMS
 ```
 , where the `FETCHD_HOME_DIR` variable contains path to the home directory,
   and all following flags of the `start` command are **MANDATORY** (= **must** be provided) for the very 1st run of
