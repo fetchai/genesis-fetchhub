@@ -27,19 +27,19 @@
     },
     "token_bridge": {
       "addr": "fetch1qxxlalvsdjd07p07y3rc5fu6ll8k4tmetpha8n",
-      "new_admin": "fetch15p3rl5aavw9rtu86tna5lgxfkz67zzr6ed4yhw"
+      "new_admin": "fetch14g7vxdjpdhevfu50ed2skfu3ga8l6j95vd07x8"
     }
   },
   "cudos_merge": {
-    "ibc_target_addr": "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
-    "remaining_staking_balance_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
-    "remaining_gravity_balance_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
-    "remaining_distribution_balance_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
-    "contract_destination_fallback_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
-    "community_pool_balance_dest_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
-    "commission_fetch_addr" : "fetch15p3rl5aavw9rtu86tna5lgxfkz67zzr6ed4yhw",
-    "extra_supply_fetch_addr" : "fetch1nxj5ynsajxwraqvx767a6ckw9g98vy56y2ut0w",
-    "vesting_collision_dest_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+    "ibc_target_addr": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "remaining_staking_balance_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "remaining_gravity_balance_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "remaining_distribution_balance_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "contract_destination_fallback_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "community_pool_balance_dest_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "commission_fetch_addr" : "fetch14g7vxdjpdhevfu50ed2skfu3ga8l6j95vd07x8",
+    "extra_supply_fetch_addr" : "fetch1htsnzy0quzh076cgdferm7v60em8xmp2vmsy5p",
+    "vesting_collision_dest_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
     "vesting_period": 7776000,
     "new_max_validators": 91,
     "balance_conversion_constants": [
@@ -51,13 +51,12 @@
     "total_cudos_supply": "10000000000000000000000000000",
     "total_fetch_supply_to_mint": "88946755672000000000000000",
     "not_vested_accounts": [
-      "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
-      "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
-      "cudos1qz8zchxad9n8m9zxzajt3shwxzqnt2ddslvgxn"
+      "cudos14g7vxdjpdhevfu50ed2skfu3ga8l6j957p0969",
+      "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr"
     ],
     "not_delegated_accounts": [
-      "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
-      "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv"
+      "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+      "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl"
     ],
     "moved_accounts": [
       {
@@ -77,7 +76,7 @@
       },
       {
         "from": "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "already had testfet"
       },
       {
@@ -87,17 +86,17 @@
       },
       {
         "from": "cudos1y90axtnymce3l9avdn65jltcud7dkvlvpgskx9",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "orchestrator"
       },
       {
         "from": "cudos1vn20zy4txu2nwz7l0552h6hpqn7vgafsa6mwll",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "orchestrator"
       },
       {
         "from": "cudos17n8xtf56hxjg68q5chvwj4j99ftsxgdu8nte50",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "relayer"
       },
       {
@@ -107,47 +106,47 @@
       },
       {
         "from": "cudos1w5caj20lujq8srwxxqn3a3j780dd6x8qteug7d",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "treasury wallet 1"
       },
       {
         "from": "cudos1uae7gc72n85cl73qlfqrlv0y8jy3mfkjrl06zh",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "treasury wallet 2"
       },
       {
         "from": "cudos1mvg6rmp56msc5m3f877u0ltrkpzwhjjstpz5ja",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 1"
       },
       {
         "from": "cudos17xng0mvfw5yh8852egglusnurea25qacl7ufmv",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 2"
       },
       {
         "from": "cudos10a69lcaarckhcqf0zg04t65fuzlufel57u0608",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 3"
       },
       {
         "from": "cudos1c3qgr4df6u3awsz6rqwkxcpsef7aau7p23pew5",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 4"
       },
       {
         "from": "cudos1y7l29p0yrz7exw9h55urd6v6vh6kjkq8dqfuh4",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 5"
       },
       {
         "from": "cudos1qryl52su3rdpqx2etmsal6sh4ky77t8pagakw6",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 6"
       },
       {
         "from": "cudos1genudzpvqe2t9k64xwueua35a8kfvl3fc6uc62",
-        "to": "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small wallet 7"
       },
       {
