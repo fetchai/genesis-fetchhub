@@ -41,6 +41,7 @@
     "extra_supply_fetch_addr" : "fetch1nxj5ynsajxwraqvx767a6ckw9g98vy56y2ut0w",
     "vesting_collision_dest_addr" : "cudos1nxj5ynsajxwraqvx767a6ckw9g98vy56kxusnv",
     "vesting_period": 7776000,
+    "new_max_validators": 91,
     "balance_conversion_constants": [
       {
         "key": "acudos",
