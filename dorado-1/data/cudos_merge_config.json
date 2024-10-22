@@ -2,12 +2,13 @@
   "merge_source_chain_id" : "cudos-testnet-public-4",
   "destination_chain_id" : "dorado-1",
   "reconciliation_info" : {
-    "target_address" : "fetch1g5ur2wc5xnlc7sw9wd895lw7mmxz04r5syj3s6ew8md6pvwuweqqavkgt0",
-    "input_csv_records" : [ [ "0x0b3777b5Dbea0C579c05898E7160351F114B9E08", "0490657da13c62de6495a39958aa864d0a1beff1f4cf65ad1a86c67362b94eb1f35eff0eb1f9ccba919d909707adda21531d286fdff74f9a94f2d63e7979ce26c5", "fetch1uvye96zkp86egcwrnsff22ama3c0m8h2aemmsd", "", "", "" ], [ "0x6ACBEDc7616dA8AB5Cf0bB04fC3aA8CbB2629675", "04b049b9a4e0745990f1dd2f95c0940f6ef6e34e6a61735de007faef914698ccdc9d0503cf00558819f744554bfd33895aeada4357b2a6bfb44332b08da8a52c14", "fetch1kydzrk0ylc60zt34m00qttev5h3dgz72scl79d", "", "", "" ], [ "0x3Ffa3598647e93136cf02434629b500E5a40473A", "04f40cc694aa1f42b5eaa97ba9500001573f5aa4ef06114837bc972538bf0a67a93d9507472d4562532d9344767bffa20db3034653f34f20958aef135d97afc622", "fetch1753h55um54pnskd77x0pfpv3le2e4cdhf3dhqc", "", "", "" ] ]
+    "target_address" : "fetch1g5ur2wc5xnlc7sw9wd895lw7mmxz04r5syj3s6ew8md6pvwuweqqavkgt0"
   },
   "contracts" : {
     "reconciliation" : {
       "addr" : "fetch1g5ur2wc5xnlc7sw9wd895lw7mmxz04r5syj3s6ew8md6pvwuweqqavkgt0",
+      "new_admin": "fetch1x77wq7m9pxyd0y3w8uk47rh8ex7q8qhdps4jut",
+      "new_label": "reconciliation-contract",
       "new_contract_version" : {
         "cw_2_version" : {
           "contract" : "contract-fetch-reconciliation",
@@ -25,7 +26,7 @@
     }
   },
   "cudos_merge" : {
-    "ibc_target_addr" : "cudos1c3qgr4df6u3awsz6rqwkxcpsef7aau7p23pew5",
+    "ibc_target_addr" : "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
     "remaining_staking_balance_addr" : "cudos1k9jqjvjm2jcn67jkp2tude23d0egerv5nzps0x",
     "remaining_gravity_balance_addr" : "cudos10zdec748q8qx0vrt276sj9xau8qnff7r63ct0v",
     "remaining_distribution_balance_addr" : "cudos1eyxaeuuu4c70zsga5lqxzm224jy49ncxkqfyvs",
@@ -42,13 +43,12 @@
     "total_cudos_supply" : "22530000000000000000000000000",
     "total_fetch_supply_to_mint" : "88946755672000000000000000",
     "not_vested_accounts" : [
+      "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
       "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
-      "cudos15jpukx39rtkt8w3u3gzwwvyptdeyejcjade6he",
-      "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv" ],
+      "cudos10zdec748q8qx0vrt276sj9xau8qnff7r63ct0v" ],
     "not_delegated_accounts" : [
       "cudos1dslwarknhfsw3pfjzxxf5mn28q3ewfectw0gta",
-      "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
-      "cudos15jpukx39rtkt8w3u3gzwwvyptdeyejcjade6he" ],
+      "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5" ],
     "moved_accounts" : [ {
       "from" : "cudos196nrmandtwz67d8h4h0ux7amlcluecglx00wlw",
       "to" : "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5"
@@ -60,31 +60,6 @@
       "to" : "cudos1tfmkdzx9hm8g28vpgc3xhhxjjn460wzkwtayxr",
       "amount" : "2000000000000000000000000",
       "memo" : "moving all self-delegation"
-    }, {
-      "from" : "cudos1ejmf96efvjp6pmsaj8djv3gpmnsvmpnctger4v",
-      "to" : "cudos15p3rl5aavw9rtu86tna5lgxfkz67zzr6tp4ltv",
-      "amount": "81029720903928698660",
-      "memo": "from: Delegation is 3000000000000000000acudos + liquid balance 78550269365994074314acudos(balance+rewards+unboding) = 81550269365994074314acudos. All numbers before commission. To: brand new account - it does not exist on CUDOS testnet nor Fetch Dorado testnet."
-    }, {
-      "from" : "cudos1tjr8jjztvwgapj8f9pmjpdqy2v68z9jtvmecyq",
-      "to" : "cudos1tjrdq53ksrtqres8asrpx0t2t9c337jyvyvhfj",
-      "amount": "5000000000000010000",
-      "memo": "Both from & to accnts do not have any delegations on either chain. From acc has liquid alance 5005000000000000010000acudos, To acc has liquid balance 1000000000000acudos."
-    }, {
-      "from" : "cudos1tjr8jjztvwgapj8f9pmjpdqy2v68z9jtvmecyq",
-      "to" : "cudos1tjy0sra0aj35t4cuq5xzrcfn0ujpaql0tx809p",
-      "amount": "5005000000000000010000",
-      "memo": "From acc do not have any delegations on either chain. At this point the From acc should have liquid alance 5000000000000000000000acudos, what means the the everything from acc From will be moved to acc To. The To acc has delegations."
-    }, {
-      "from" : "cudos1skj8uwra89tjqwdasnne4kzdw3hse9puddjlps",
-      "to" : "cudos1yfa92hlkxmzxxqkwd84drjp7ne4ddzd4jhyvul",
-      "amount": "5000000000000000000",
-      "memo": "The From acc has liquid balance e (356386412522750462acudos + presumably also rewards + perhaps UNbonding delegations) + approx. 10163446788420516312acudos worth of delegations. We are going to move here amount worth about half of what the delegations are worth."
-    }, {
-      "from" : "cudos1skj8uwra89tjqwdasnne4kzdw3hse9puddjlps",
-      "to" : "cudos1tjy0sra0aj35t4cuq5xzrcfn0ujpaql0tx809p",
-      "amount": "5000000000000000000",
-      "memo": "The From acc has liquid balance (356386412522750462acudos + presumably also rewards + perhaps UNbonding delegations) + approx. 4807060375897765850acudos worth of delegations. We are going to move here amount  which is lightly *HIGHER** than what the reminig the delegations are worth. Expected end result here is that *ALL* delegations on From account *AND* part of its liquid balance is supposed to be moved over to the To acc."
     } ],
     "validators_map" : [ {
       "key" : "cudosvaloper198qaeg4wkf9tn7y345dhk2wyjmm0krdm68jp09",
@@ -108,6 +83,6 @@
       "key" : "cudosvaloper1n738v30yvnge2cc3lq773d8vyvqj3rejnspa3r",
       "value" : "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w"
     } ],
-    "backup_validators" : [ "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg" ]
+    "backup_validators" : [ "fetchvaloper1je7r8yuqgaf5f2tx4z2f9008wp4jx0ct6msnzg", "fetchvaloper1rsane988vksrgp2mlqzclmt8wucxv0ej4hrn2k", "fetchvaloper1edqmkwy4rh87020rvf9xn7kktyu7x894led46w" ]
   }
 }
