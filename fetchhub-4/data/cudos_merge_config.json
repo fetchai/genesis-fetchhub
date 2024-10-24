@@ -70,6 +70,48 @@
         "memo": "anvil validator tokens recovery to send to the family"
       },
       {
+        "from": "cudos1r2kfvyhf3hl2juurrete54lzvtgscmhg95pve2",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 1"
+      },
+      {
+        "from": "cudos1wx95r29g06awaspmfjlwmqnvtdvcfd8g0mkmyq",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 2"
+      },
+      {
+        "from": "cudos19d3xeaa6fjpz262nvjlj68cdd7kkxlnml6qnjt",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo": "delegation move 3"
+      },
+      {
+        "from": "cudos140l6y2gp3gxvay6qtn70re7z2s0gn57zdg6mc5",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo": "delegation move 4"
+      },
+      {
+        "from": "cudos1yqf2qj5rulkutzg9vl9vt4l3jsgknrvsxcrzud",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 5"
+      },
+      {
+        "from": "cudos1acls2akdgau6gqltdrd3r47qdvns54ak0gcpe8",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 6"
+      },
+      {
+        "from": "cudos159elv7tsgazc4clsn9xfnzm0f0puhwfzlfv75v",
+        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
+        "amount": "2000000000000000000000000",
+        "memo" : "delegation move 7"
+      },
+      {
         "from": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
         "to": "cudos1x9dec338uhew9ye9srzrctcm64c3p5evaptdlj",
         "memo": "merge cluster-1-validator into the cudos validator in the fetch mainnet"
@@ -268,48 +310,6 @@
         "from": "cudos1m4kxqu2fhh0z0af5jlkhhy7e0qlanxkhvt074v",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
         "memo": "small team wallet 9"
-      },
-      {
-        "from": "cudos1r2kfvyhf3hl2juurrete54lzvtgscmhg95pve2",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo" : "delegation move 1"
-      },
-      {
-        "from": "cudos1wx95r29g06awaspmfjlwmqnvtdvcfd8g0mkmyq",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo" : "delegation move 2"
-      },
-      {
-        "from": "cudos19d3xeaa6fjpz262nvjlj68cdd7kkxlnml6qnjt",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo": "delegation move 3"
-      },
-      {
-        "from": "cudos140l6y2gp3gxvay6qtn70re7z2s0gn57zdg6mc5",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo": "delegation move 4"
-      },
-      {
-        "from": "cudos1yqf2qj5rulkutzg9vl9vt4l3jsgknrvsxcrzud",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo" : "delegation move 5"
-      },
-      {
-        "from": "cudos1acls2akdgau6gqltdrd3r47qdvns54ak0gcpe8",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo" : "delegation move 6"
-      },
-      {
-        "from": "cudos159elv7tsgazc4clsn9xfnzm0f0puhwfzlfv75v",
-        "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
-        "amount": "2000000000000000000000000",
-        "memo" : "delegation move 7"
       }
     ],
     "validators_map": [ {
