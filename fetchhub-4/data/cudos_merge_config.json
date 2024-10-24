@@ -62,92 +62,97 @@
       {
         "from": "cudos18w2ugnf72rm80dl3vy5l257zuju8l4yda88cks",
         "to": "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
-        "memo": "anvil tokens recovery to send to the family"
+        "memo": "anvil ledger tokens recovery to send to the family"
+      },
+      {
+        "from": "cudos1jxyc7lny4q7te6sj5xyt9j86kyz82vlfdprl4a",
+        "to": "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
+        "memo": "anvil validator tokens recovery to send to the family"
       },
       {
         "from": "cudos1gj2xtqk66hy8vdw69vn9muexdczyv3ag9fcuem",
         "to": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
-        "memo": "cudos val2 merged to val1"
+        "memo": "merge cluster-2-validator into cluster-1-validator"
       },
       {
         "from": "cudos15kry9fkatcpytmsjscxw5pltm3stun9fmqf0z6",
         "to": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
-        "memo": "cudos val3 merged to val1"
-      },
-      {
-        "from": "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
-        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "already had testfet"
+        "memo": "merge cluster-3-validator into cluster-1-validator"
       },
       {
         "from": "cudos1d0573tj2ka44dkzf2em7sw02ryxwfpncw76t76",
         "to": "cudos1w63ph9e4l07vpx7xdnje43cr2tlnr4jsfm4mvq",
-        "memo": "joining two big delegators"
+        "memo": "merge two big delegators"
       },
       {
         "from": "cudos1y90axtnymce3l9avdn65jltcud7dkvlvpgskx9",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "orchestrator"
+        "memo": "cudos bridge orchestrator"
       },
       {
         "from": "cudos1vn20zy4txu2nwz7l0552h6hpqn7vgafsa6mwll",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "orchestrator"
+        "memo": "cudos bridge orchestrator"
       },
       {
         "from": "cudos17n8xtf56hxjg68q5chvwj4j99ftsxgdu8nte50",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "relayer"
-      },
-      {
-        "from": "cudos1m4kxqu2fhh0z0af5jlkhhy7e0qlanxkhvt074v",
-        "to": "cudos1w3kx94kqcz2rf2p5quwzzldylsmq238vpwjlk3",
-        "memo": "moving balance of a smart contract admin with a contract with balance"
+        "memo": "cudos-managed ibc relayer"
       },
       {
         "from": "cudos1w5caj20lujq8srwxxqn3a3j780dd6x8qteug7d",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "treasury wallet 1"
+        "memo": "team treasury wallet 1"
       },
       {
         "from": "cudos1uae7gc72n85cl73qlfqrlv0y8jy3mfkjrl06zh",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "treasury wallet 2"
+        "memo": "team treasury wallet 2"
       },
       {
         "from": "cudos1mvg6rmp56msc5m3f877u0ltrkpzwhjjstpz5ja",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 1"
+        "memo": "small team wallet 1"
       },
       {
         "from": "cudos17xng0mvfw5yh8852egglusnurea25qacl7ufmv",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 2"
+        "memo": "small team wallet 2"
       },
       {
         "from": "cudos10a69lcaarckhcqf0zg04t65fuzlufel57u0608",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 3"
+        "memo": "small team wallet 3"
       },
       {
         "from": "cudos1c3qgr4df6u3awsz6rqwkxcpsef7aau7p23pew5",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 4"
+        "memo": "small team wallet 4"
       },
       {
         "from": "cudos1y7l29p0yrz7exw9h55urd6v6vh6kjkq8dqfuh4",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 5"
+        "memo": "small team wallet 5"
       },
       {
         "from": "cudos1qryl52su3rdpqx2etmsal6sh4ky77t8pagakw6",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 6"
+        "memo": "small team wallet 6"
       },
       {
         "from": "cudos1genudzpvqe2t9k64xwueua35a8kfvl3fc6uc62",
         "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
-        "memo": "small wallet 7"
+        "memo": "small team wallet 7"
+      },
+      {
+        "from": "cudos1nj49l56x7sss5hqyvfmctxr3mq64whg273g3x5",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+        "memo": "small team wallet 8"
+      },
+      {
+        "from": "cudos1m4kxqu2fhh0z0af5jlkhhy7e0qlanxkhvt074v",
+        "to": "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+        "memo": "small team wallet 9"
       },
       {
         "from": "cudos1r2kfvyhf3hl2juurrete54lzvtgscmhg95pve2",
