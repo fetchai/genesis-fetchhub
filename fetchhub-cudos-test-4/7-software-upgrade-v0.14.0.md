@@ -5,15 +5,19 @@
 > It takes the CUDOS mainnet [genesis.cudos.json.gz](data/genesis.cudos.json.gz) file has been exported at the
 > `12332095` block height (block timestamp after the block execution is `2024-10-24T12:09:12.036983053Z`).
 > 
-> :exclamation: The [cudos_merge_config.json](data/cudos_merge_config.json) is copy of the production mainet one
-> [cudos_merge_config.json](../fetchhub-4/data/cudos_merge_config.json) (at git commit
-> `273466d605dc026372baf01a5f95485588210eab`) .
-> :exclamation: That config file is **\*going to be\*** modified slightly to fit the private mainent configuration, what
-> hasn't happened just yet - it will happen in follow-up commit, during which this comment will be dropped.
+> :exclamation: The [cudos_merge_config.json](data/cudos_merge_config.json) is copy of the production mainnet one
+> [cudos_merge_config.json](../fetchhub-4/data/cudos_merge_config.json) (git commit 
+> `273466d605dc026372baf01a5f95485588210eab`), and it has been modified to reflect that fact, that private mainnet has
+> different set of active validators then production grade mainnet.
 
-This guide is describing the procedure to upgrade to the [v0.14.0-rc14](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc14) following the [#33. Cudos Merge Upgrade](https://www.mintscan.io/fetchai/proposals/33) software upgrade governance proposal.
+This guide is describing the procedure to upgrade to the [v0.14.0-rc14](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc14)
+following the "Cudos migration private test (#34)" software upgrade governance proposal, with halt height `18885253`.
+Run the following command to query the full proposal data:
+```shell
+fetchd query gov proposal 34
+```
 
-We kindly ask all the validators to read through the following document, and then wait until chain reaches upgrade block height `14603003` *before* executing the upgrade steps.
+We kindly ask all the validators to read through the following document, and then wait until chain reaches upgrade block height `18885253` *before* executing the upgrade steps.
 
 In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), or Telegram [@v0idptr](https://t.me/v0idptr).
 
@@ -33,11 +37,11 @@ However, this upgrade does **not** change API whatsoever (static definition wise
 
 ## Upgrade procedure
 
-When blockchain reaches the target upgrade block height `14603003`, all nodes will halt - it is **\*expected\*** to have an error logged by the node, similar to:
-
+When blockchain reaches the target upgrade block height `18885253`, all nodes will halt - it is **\*expected\*** to
+have an error logged by the node, similar to:
 ```
-1:16PM ERR UPGRADE "v0.14.0" NEEDED at height: XXX: CUDOS mainnet migration v0.14.0 (upgrade-info)
-1:16PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.14.0\" NEEDED at height: 14603003"
+1:16PM ERR UPGRADE "v0.14.0" NEEDED at height: 18885253: CUDOS mainnet migration v0.14.0 (upgrade-info)
+1:16PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.14.0\" NEEDED at height: 18885253"
 ```
 
 Once this happens, node operators can proceed with installation of the new `v0.14.0-rc14` version of the `fetchd` executable.
@@ -92,8 +96,8 @@ export FETCHD_HOME_DIR=~/.fetchd
 
 ```shell
 export DESTINATION_CHAIN_ID="fetchhub-cudos-test-4"
-export GENESIS_FETCHUB_GIT_REVISION="cudos-merger-private-mainnet-test"
-export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 d90c131938493ade36ac727dfbdd21a43583903fcf2fedf1fb91b74eec432eb7 --cudos-migration-config-sha256 XXX"
+export GENESIS_FETCHUB_GIT_REVISION="heads/cudos-merger-private-mainnet-test"
+export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 d90c131938493ade36ac727dfbdd21a43583903fcf2fedf1fb91b74eec432eb7 --cudos-migration-config-sha256 1bc9142b87f4fbfa713cbf6c0a480620ad17492acfba7db964174690e287b295"
 ```
 
 ### Download merge input files
@@ -146,7 +150,7 @@ The line, like the one right below, must appear in the log, indicating that you 
 `fetchd` node executable.
 
 ```
-1:31PM INF applying upgrade "v0.14.0" at height: 14603003
+1:31PM INF applying upgrade "v0.14.0" at height: 18885253
 ```
 
 
@@ -158,10 +162,9 @@ The line, like the one right below, must appear in the log, indicating that you 
 If input files and hashes are correct, your node starts executing the upgrade procedure which might take up anything
 from 5 to 30 seconds, during which you should see lines, like the ones below, being printed in the log, indicating
 progress of the upgrade procedure:
-
 ```log
-5:12AM INF cudos merge: loading merge source genesis json expected sha256=906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e file=genesis.cudos.json
-5:12AM INF cudos merge: loading network config expected sha256=930dc21af917ec8f2f8820ff393c1a276297fe91d4f585757143acb2727cd6d2 file=cudos_merge_config.json
+5:12AM INF cudos merge: loading merge source genesis json expected sha256=d90c131938493ade36ac727dfbdd21a43583903fcf2fedf1fb91b74eec432eb7 file=genesis.cudos.json
+5:12AM INF cudos merge: loading network config expected sha256=1bc9142b87f4fbfa713cbf6c0a480620ad17492acfba7db964174690e287b295 file=cudos_merge_config.json
 5:12AM INF cudos merge: remaining bonded pool balance amount=183acudos
 5:12AM INF cudos merge: remaining not-bonded pool balance amount=6241acudos
 5:12AM INF cudos merge: remaining dist balance amount=51acudos
@@ -173,7 +176,7 @@ Once you see the lines like below being printed in the log, the upgrade procedur
 5:12AM INF minted coins from module account amount=480989277nanomobx from=mint module=x/bank
 5:12AM INF minted coins from module account amount=4795384342nanonomx from=mint module=x/bank
 5:12AM INF minted coins from module account amount=6296428529541965571atestfet from=mint module=x/bank
-5:12AM INF executed block height=14272900 module=consensus num_invalid_txs=0 num_valid_txs=0
+5:12AM INF executed block height=18885253 module=consensus num_invalid_txs=0 num_valid_txs=0
 ```
 
 After this point, node is just waiting until enough validators have upgraded & joined the network (with at least 2/3

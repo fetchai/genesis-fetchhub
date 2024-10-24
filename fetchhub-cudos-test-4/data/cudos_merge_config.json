@@ -1,6 +1,6 @@
 {
   "merge_source_chain_id": "cudos-1",
-  "destination_chain_id": "fetchhub-4",
+  "destination_chain_id": "fetchhub-cudos-test-4",
   "reconciliation_info": {
     "target_address": "fetch1tynmzk68pq6kzawqffrqdhquq475gw9ccmlf9gk24mxjjy6ugl3q70aeyd",
     "input_csv_records": null
@@ -252,10 +252,48 @@
     },
     {
       "key" : "cudosvaloper15wchehvk9ltzp6k45vdqzs9qtkr758pnqy63gc",
-      "value" : "fetchvaloper12y7pcfjnqxkk2dwyref7d94dqqkvywn6qcr5du"
-    } ],
+      "value" : "fetchvaloper1ant5h2zl3aqv2kggj008w2q7rd8zhg6glm87j6"
+    },
+    {
+      "key" : "cudosvaloper1gj2xtqk66hy8vdw69vn9muexdczyv3agc6kacx",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper1avnl53xv6kj7dk5u35jlk52vxwg95n9zlh3jl8 ",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper1n5tuwett2ulexgg8hrhhlj6gh87vjfar3aesj8",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper16guyt456l9wd7lnem8fq7xzmyrl62wfh4gwt3m",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper1s5qa3dpghnre6dqfgfhudxqjhwsv0mx43xayku",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper15kry9fkatcpytmsjscxw5pltm3stun9fxn8wr8",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper19qam2gca24kgd8aac22clluhe92ef4setqnvf4",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper1myyl3a0vlsqwqp0phjarqup0w3xl9wtqde4m36",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    },
+    {
+      "key" : "cudosvaloper1r2kfvyhf3hl2juurrete54lzvtgscmhgc80dch",
+      "value" : "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+    }
+
+    ],
     "backup_validators": [
-      "fetchvaloper1wurz7uwmvchhc8x0yztc7220hxs9jxdjg5urg5"
+      "fetchvaloper12y7pcfjnqxkk2dwyref7d94dqqkvywn6qcr5du"
     ]
   }
 }
