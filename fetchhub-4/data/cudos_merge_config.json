@@ -70,14 +70,129 @@
         "memo": "anvil validator tokens recovery to send to the family"
       },
       {
+        "from": "cudos15kry9fkatcpytmsjscxw5pltm3stun9fmqf0z6",
+        "to": "cudos1x9dec338uhew9ye9srzrctcm64c3p5evaptdlj",
+        "memo": "merge cluster-1-validator into the cudos validator in the fetch mainnet"
+      },
+      {
         "from": "cudos1gj2xtqk66hy8vdw69vn9muexdczyv3ag9fcuem",
-        "to": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
-        "memo": "merge cluster-2-validator into cluster-1-validator"
+        "to": "cudos1x9dec338uhew9ye9srzrctcm64c3p5evaptdlj",
+        "memo": "merge cluster-2-validator into the cudos validator in the fetch mainnet"
       },
       {
         "from": "cudos15kry9fkatcpytmsjscxw5pltm3stun9fmqf0z6",
-        "to": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
-        "memo": "merge cluster-3-validator into cluster-1-validator"
+        "to": "cudos1x9dec338uhew9ye9srzrctcm64c3p5evaptdlj",
+        "memo": "merge cluster-3-validator into the cudos validator in the fetch mainnet"
+      },
+      {
+        "from": "cudos1r2kfvyhf3hl2juurrete54lzvtgscmhg95pve2",
+        "to": "cudos1evtz9f6cl2lhzjf5dwy2c647ey9uu9n3rzsvch",
+        "memo": "merge 5.0 validator self-delegation address in cudos to 5.0 validator self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos19x6hxpuasshs80vy39j2kh2rcjhz0982navyzj",
+        "to": "cudos1g7wlwa5ny5ytwj4fhtyl83xz2phfrsqnys9gxw",
+        "memo": "merge amsterdam node self-delegation address in cudos to amsterdam node self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1ctcrpuyumt60733u0yd5htwzedgfae0n6mw74w",
+        "to": "cudos1ph02ux2dujl7uv4lzv6vy2y6vjstd4epgpatnt",
+        "memo": "merge auto stake self-delegation address in cudos to auto stake self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1lspahzx79erfkqpyfzc8q37r4yu6j288t2jqy0",
+        "to": "cudos1zurz6kfq5hrjdcwpzhz25g78waeud3lkd872gc",
+        "memo": "merge blockscape self-delegation address in cudos to blockscape self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1n5tuwett2ulexgg8hrhhlj6gh87vjfarvwh3n6",
+        "to": "cudos1ljaz4qqc3lzaxtas665kn85wxzaag72v0kzftl",
+        "memo": "merge chainstaking self-delegation address in cudos to chainstaking self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1a025fyry0gpk0c9sec00u938jvevvvje3j6uxy",
+        "to": "cudos1vs328gyxpc6hxuh67gquqcm3w3kapw4gzsa9jd",
+        "memo": "merge charifycudos self-delegation address in cudos to charifycudos self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos17xjnnpmqnypk5h08727kte68mm3cvwrwmsug8r",
+        "to": "cudos1qwk6plvzyzwdapwarx25gg5datwu8ryek40rkz",
+        "memo": "merge PoS Node self-delegation address in cudos to PoS Node self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1wx95r29g06awaspmfjlwmqnvtdvcfd8g0mkmyq",
+        "to": "cudos1das4pehks87a0yg68rhnlg7wvpgucasrm0m0d2",
+        "memo": "merge coinscrum self-delegation address in cudos to coinscrum self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos17d57k9d3g306gxg5hlgfw9k86kw6x0m38qvk3e",
+        "to": "cudos1xg7s0js445zkdh3elpvmdqk2knda7ndv7mrn70",
+        "memo": "merge consensus one self-delegation address in cudos to consensus one self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos16guyt456l9wd7lnem8fq7xzmyrl62wfhgmq2sx",
+        "to": "cudos18tmu0lrfsdvke8e3a3jsd7fq2rs29krfs7yel8",
+        "memo": "merge cosmostation self-delegation address in cudos to cosmostation self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos16q3f9ech805pa995x9u5g3hqk0cvtah8xqncqu",
+        "to": "cudos1ynfh6c5rzxgdqnhj72eq9dhxd93fn96tpw42ap",
+        "memo": "merge crytech self-delegation address in cudos to crytech self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1mm5nfykrrhc5zl8cv2tnkrcuctzd8dztk22wqt",
+        "to": "cudos1euqlyj3n4ejvd6x803mkt64ugn7c9qpajndauy",
+        "memo": "merge imperator self-delegation address in cudos to imperator self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos19d3xeaa6fjpz262nvjlj68cdd7kkxlnml6qnjt",
+        "to": "cudos1euqdrhevxg6gdzaphs7d3uulagxehex373nz55",
+        "memo": "merge kleomedes self-delegation address in cudos to kleomedes self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1myyl3a0vlsqwqp0phjarqup0w3xl9wtqs2m6s8",
+        "to": "cudos15hhma53ze7xl7r4xj5fv7ykyktemsdx593dcuq",
+        "memo": "merge klever self-delegation address in cudos to klever self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1yqf2qj5rulkutzg9vl9vt4l3jsgknrvsxcrzud",
+        "to": "cudos10x64dgdwxcvmvgw8x8kfmpj52ppl4gy4ulnjun",
+        "memo": "merge ottersync self-delegation address in cudos to ottersync self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1avnl53xv6kj7dk5u35jlk52vxwg95n9zzyln76",
+        "to": "cudos1fal2sqw4lkxugr989d66ju742tfn35ssxgwvtn",
+        "memo": "merge staking4all self-delegation address in cudos to staking4all self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos16uz64azhwsvfxfng0w0t4mfcupqfksx3502h0g",
+        "to": "cudos1rz6gzypnqdehvfwl33hh7rw0fzr5ksl9apve9h",
+        "memo": "merge tessellated self-delegation address in cudos to tessellated self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1wyv883wzp84d7hzf3q2jeq3l43aga72ts57qdd",
+        "to": "cudos12g4s5r7ak559jf6nekda0r6zwvc78m0wp2tkg6",
+        "memo": "merge virtual hive self-delegation address in cudos to virtual hive self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos159elv7tsgazc4clsn9xfnzm0f0puhwfzlfv75v",
+        "to": "cudos1qmkm2jfqtcy3kzp8auven4ljlu5s66qd85evn2",
+        "memo": "merge web3world self-delegation address in cudos to web3world self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1jpqvfuy4hty50drksek0dw3zzlhjan3sg5vmpy",
+        "to": "cudos1zntja9step52hq3a262fd9ee4n9w7mjuutrlva",
+        "memo": "merge meria self-delegation address in cudos to meria self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1al7ax9c4r5n4tfcmpnm43amxknj8wfsadcze46",
+        "to": "cudos1xk0zwa3nhd78zuxg3a8u2xncc69vhe6aefeelu",
+        "memo": "merge bitjuice self-delegation address in cudos to bitjuice self-delegation address in the fetch mainnet"
+      },
+      {
+        "from": "cudos1s5qa3dpghnre6dqfgfhudxqjhwsv0mx4v4n9hp",
+        "to": "cudos1f0c85eaelur6xa2qx4rkjkydmf2ak2p94le830",
+        "memo": "merge hindsight self-delegation address in cudos to hindsight self-delegation address in the fetch mainnet"
       },
       {
         "from": "cudos1d0573tj2ka44dkzf2em7sw02ryxwfpncw76t76",
