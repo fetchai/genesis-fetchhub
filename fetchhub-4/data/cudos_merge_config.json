@@ -60,16 +60,6 @@
     ],
     "moved_accounts": [
       {
-        "from": "cudos18w2ugnf72rm80dl3vy5l257zuju8l4yda88cks",
-        "to": "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
-        "memo": "anvil ledger tokens recovery to send to the family"
-      },
-      {
-        "from": "cudos1jxyc7lny4q7te6sj5xyt9j86kyz82vlfdprl4a",
-        "to": "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
-        "memo": "anvil validator tokens recovery to send to the family"
-      },
-      {
         "from": "cudos1r2kfvyhf3hl2juurrete54lzvtgscmhg95pve2",
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
         "amount": "2000000000000000000000000",
@@ -110,6 +100,16 @@
         "to": "cudos1h6r6g0pwq7kcys5jcvfm9r7gcj3n2753hvk2ym",
         "amount": "2000000000000000000000000",
         "memo" : "delegation move 7"
+      },
+      {
+        "from": "cudos18w2ugnf72rm80dl3vy5l257zuju8l4yda88cks",
+        "to": "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
+        "memo": "anvil ledger tokens recovery to send to the family"
+      },
+      {
+        "from": "cudos1jxyc7lny4q7te6sj5xyt9j86kyz82vlfdprl4a",
+        "to": "cudos139tj98udp8qc6vyujg30qxax62ve6pp3265npl",
+        "memo": "anvil validator tokens recovery to send to the family"
       },
       {
         "from": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
