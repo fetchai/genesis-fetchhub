@@ -70,7 +70,7 @@
         "memo": "anvil validator tokens recovery to send to the family"
       },
       {
-        "from": "cudos15kry9fkatcpytmsjscxw5pltm3stun9fmqf0z6",
+        "from": "cudos19qam2gca24kgd8aac22clluhe92ef4seknadgg",
         "to": "cudos1x9dec338uhew9ye9srzrctcm64c3p5evaptdlj",
         "memo": "merge cluster-1-validator into the cudos validator in the fetch mainnet"
       },
