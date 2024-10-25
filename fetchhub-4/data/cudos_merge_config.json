@@ -37,11 +37,18 @@
     "remaining_distribution_balance_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
     "contract_destination_fallback_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
     "community_pool_balance_dest_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+    "generic_module_remaining_balance" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
     "commission_fetch_addr" : "fetch14g7vxdjpdhevfu50ed2skfu3ga8l6j95vd07x8",
     "extra_supply_fetch_addr" : "fetch1htsnzy0quzh076cgdferm7v60em8xmp2vmsy5p",
     "vesting_collision_dest_addr" : "cudos1htsnzy0quzh076cgdferm7v60em8xmp27hslgr",
+
     "vesting_period": 7776000,
     "new_max_validators": 91,
+
+    "max_remaining_distribution_module_balance": "1000000000000000000",
+    "max_remaining_staking_module_balance" : "100000000",
+    "max_remaining_mint_module_balance": "100000000",
+
     "balance_conversion_constants": [
       {
         "key": "acudos",
