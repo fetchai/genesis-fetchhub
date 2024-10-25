@@ -97,7 +97,7 @@ export FETCHD_HOME_DIR=~/.fetchd
 ```shell
 export DESTINATION_CHAIN_ID="fetchhub-cudos-test-4"
 export GENESIS_FETCHUB_GIT_REVISION="heads/cudos-merger-private-mainnet-test"
-export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 d90c131938493ade36ac727dfbdd21a43583903fcf2fedf1fb91b74eec432eb7 --cudos-migration-config-sha256 1bc9142b87f4fbfa713cbf6c0a480620ad17492acfba7db964174690e287b295"
+export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 d90c131938493ade36ac727dfbdd21a43583903fcf2fedf1fb91b74eec432eb7 --cudos-migration-config-sha256 005fc6e5935d8120f8e285673cd9e32c3cd99a33a6ee2afad1f9801f02bb01dd"
 ```
 
 ### Download merge input files
