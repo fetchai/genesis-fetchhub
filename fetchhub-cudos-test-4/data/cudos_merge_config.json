@@ -134,19 +134,14 @@
         "memo" : "lavender five self-delegation" 
       },
       {
-        "from" : "cudos16uz64azhwsvfxfng0w0t4mfcupqfksx3502h0g",
+        "from" : "cudos13le82pzxwcvs2ftkzeyjxsxwl46aaptsmy28hr",
         "to" : "cudos1spqgkntpqtv48k0amfsz30096gczg4ycjgvvk2",
         "memo" : "validatrium self-delegation" 
       },
       {
-        "from" : "cudos16uz64azhwsvfxfng0w0t4mfcupqfksx3502h0g",
+        "from" : "cudos1al7ax9c4r5n4tfcmpnm43amxknj8wfsadcze46",
         "to" : "cudos1spqgkntpqtv48k0amfsz30096gczg4ycjgvvk2",
         "memo" : "bitjuice self-delegation" 
-      },
-      {
-        "from" : "cudos16uz64azhwsvfxfng0w0t4mfcupqfksx3502h0g",
-        "to" : "cudos1x48ufht5m75dg365ldqfdwlmqasnj4c6fyr2gt",
-        "memo" : "validatrium self-delegation" 
       },
       {
         "from" : "cudos17d57k9d3g306gxg5hlgfw9k86kw6x0m38qvk3e",
@@ -154,7 +149,7 @@
         "memo" : "consensus one self-delegation" 
       },{
         "from" : "cudos15wchehvk9ltzp6k45vdqzs9qtkr758pnah5sf9",
-        "to" : "cudos12y7pcfjnqxkk2dwyref7d94dqqkvywn6hsuvze",
+        "to" : "cudos1ant5h2zl3aqv2kggj008w2q7rd8zhg6ggncxal",
         "memo" : "nexgen self-delegation" 
       },      
       {
