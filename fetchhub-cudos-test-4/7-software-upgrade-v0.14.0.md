@@ -10,7 +10,7 @@
 > `273466d605dc026372baf01a5f95485588210eab`), and it has been modified to reflect that fact, that private mainnet has
 > different set of active validators then production grade mainnet.
 
-This guide is describing the procedure to upgrade to the [v0.14.0-rc14](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc14)
+This guide is describing the procedure to upgrade to the [v0.14.0-rc15](https://github.com/fetchai/fetchd/releases/tag/v0.14.0-rc15)
 following the "Cudos migration private test (#34)" software upgrade governance proposal, with halt height `18885253`.
 Run the following command to query the full proposal data:
 ```shell
@@ -44,15 +44,15 @@ have an error logged by the node, similar to:
 1:16PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.14.0\" NEEDED at height: 18885253"
 ```
 
-Once this happens, node operators can proceed with installation of the new `v0.14.0-rc14` version of the `fetchd` executable.
+Once this happens, node operators can proceed with installation of the new `v0.14.0-rc15` version of the `fetchd` executable.
 
 ## Install new fetchd version
 
 You may already have the fetchd repository on your machine from the previous installation. If not, you can:
 
 ```bash
-git clone --branch v0.14.0-rc14 https://github.com/fetchai/fetchd fetchd_v0.14.0-rc14
-cd fetchd_v0.14.0-rc14
+git clone --branch v0.14.0-rc15 https://github.com/fetchai/fetchd fetchd_v0.14.0-rc15
+cd fetchd_v0.14.0-rc15
 ```
 
 If you already have an existing clone, place yourself in and:
@@ -60,7 +60,7 @@ If you already have an existing clone, place yourself in and:
 ```bash
 git fetch
 git clean -fd
-git checkout v0.14.0-rc14
+git checkout v0.14.0-rc15
 ```
 
 Now you can install the new `fetchd` version:
@@ -73,7 +73,7 @@ fetchd -h
 # must print fetchd help message
 
 fetchd version
-# MUST print v0.14.0-rc14
+# MUST print v0.14.0-rc15
 ```
 
 Make sure the version is correct before proceeding further!
@@ -117,17 +117,17 @@ Confirm version of `fetchd` executable by executing following command:
 ```shell
 fetchd version
 ```
-> It **MUST** print `v0.14.0-rc14`. 
+> It **MUST** print `v0.14.0-rc15`. 
 
 ### Execute actual upgrade command
 Then finally execute the upgrade - you **MUST** use the following commandline = the **VERY 1st** start of the **NEW**
-`v0.14.0-rc14` version of `fetchd` node executable.
+`v0.14.0-rc15` version of `fetchd` node executable.
 ```shell
 fetchd --home "$FETCHD_HOME_DIR" start --cudos-genesis-path "$FETCHD_HOME_DIR/genesis.cudos.json" --cudos-migration-config-path "$FETCHD_HOME_DIR/cudos_merge_config.json" $UPGRADE_SHA256_PARAMS
 ```
 , where the `FETCHD_HOME_DIR` variable contains path to the home directory,
   and all following flags of the `start` command are **MANDATORY** (= **must** be provided) for the very 1st run of
-  the new version `v0.14.0-rc14` of the `fetchd` executable = when upgrade procedure is actually executed:
+  the new version `v0.14.0-rc15` of the `fetchd` executable = when upgrade procedure is actually executed:
 * `--cudos-genesis-path <PATH_TO_CUDOS_GENESIS_JSON_FILE>`
 * `--cudos-migration-config-path <PATH_TO_CUDOS_MERGE_CONFIG_JSON_FILE>`
 * `--cudos-genesis-sha256 <HASH>`
@@ -190,8 +190,8 @@ restarted:
 
 ```bash
 curl -s http://localhost:26657/abci_info | jq -r '.result.response.version'
-v0.14.0-rc14
+v0.14.0-rc15
 ```
 
-> Make sure this print exactly the `v0.14.0-rc14` version. If not, double check you're on the right git tag in the `fetchd`
+> Make sure this print exactly the `v0.14.0-rc15` version. If not, double check you're on the right git tag in the `fetchd`
 repository, that the `make install` didn't produce errors, and that your properly restarted your node.
