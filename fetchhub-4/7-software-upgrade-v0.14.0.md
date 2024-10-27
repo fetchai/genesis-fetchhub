@@ -50,7 +50,7 @@ If you already have an existing clone, place yourself in and:
 ```bash
 git fetch
 git clean -fd
-git checkout v0.14.0
+git checkout v0.14.0-rc14
 ```
 
 Now you can install the new `fetchd` version:
