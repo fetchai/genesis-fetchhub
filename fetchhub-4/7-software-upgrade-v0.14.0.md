@@ -6,7 +6,7 @@ We kindly ask all the validators to read through the following document, and the
 
 In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), or Telegram [@v0idptr](https://t.me/v0idptr).
 
-This upgrade uses eternal CUDOS mainnet genesis file as input - it was exported from CUDOS mainnet at height `12385628`, sha256 of the file is `5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b`.
+This upgrade uses eternal CUDOS mainnet genesis file as the input - it was exported from CUDOS mainnet at height `12385627`, sha256 of the file is `5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b`.
 
 # About the upgrade
 
