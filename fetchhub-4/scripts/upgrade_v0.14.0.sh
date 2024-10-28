@@ -27,9 +27,7 @@ export FETCHD_HOME_DIR
 export DESTINATION_CHAIN_ID="fetchhub-4"
 export GENESIS_FETCHHUB_GIT_REVISION="tags/v0.14.0"
 
-echo WARNING: The sha256 value for CUDOS geneis file mut be provided in environment variable below. Once it is done, this warning and the \"exit\" cmmand below must be removed. Exiting ...
-exit
-export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 XXX --cudos-migration-config-sha256 e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee"
+export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b --cudos-migration-config-sha256 e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee"
 
 # Downloading necessary files for the upgrade:
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/fetchhub-4/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"

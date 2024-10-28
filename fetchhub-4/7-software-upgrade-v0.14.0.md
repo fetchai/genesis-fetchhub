@@ -1,14 +1,12 @@
 
 # Software upgrade
-> :exclamation: :no_entry_sign: This guide is **NOT** finalised yet. It is subject to further changes, since some required information
-> will become known later (e.g. final halt block heights for chains involved, git tags, content of exported
-> `genesis.cudos.json` file, etc. ...).
-
 This guide is describing the procedure to upgrade to the [v0.14.0](https://github.com/fetchai/fetchd/releases/tag/v0.14.0) following the [#33. CUDOS mainnet migration](https://www.mintscan.io/fetchai/proposals/33) software upgrade governance proposal.
 
 We kindly ask all the validators to read through the following document, and then wait until chain reaches upgrade block height `18938999` *before* executing the upgrade steps.
 
 In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), or Telegram [@v0idptr](https://t.me/v0idptr).
+
+This upgrade uses eternal CUDOS mainnet genesis file as input - it was exported from CUDOS mainnet at height `12385628`, sha256 of the file is `5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b`.
 
 # About the upgrade
 
@@ -120,7 +118,7 @@ export GENESIS_FETCHHUB_GIT_REVISION="tags/v0.14.0"
 
 {==> CHANGE ME! (HASH value) <==}
 
-export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 906ea6ea5b1ab5936bb9a5f350d11084eb92cba249e65e11c460ab251b27fb0e --cudos-migration-config-sha256 e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee"
+export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b --cudos-migration-config-sha256 e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee"
 ```
 
 
@@ -196,7 +194,7 @@ being printed in the log, indicating progress of the upgrade procedure:
 ```log
 {==> CHANGE ME! <==}
 
-5:12AM INF cudos merge: loading merge source genesis json expected sha256=5751b1428d22471435940d93127675dfc14a287cfaa2fc87edf112a8050ff96c file=genesis.cudos.json
+5:12AM INF cudos merge: loading merge source genesis json expected sha256=5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b file=genesis.cudos.json
 5:12AM INF cudos merge: loading network config expected sha256=e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee file=cudos_merge_config.json
 5:12AM INF cudos merge: remaining bonded pool balance amount=183acudos
 5:12AM INF cudos merge: remaining not-bonded pool balance amount=6241acudos
