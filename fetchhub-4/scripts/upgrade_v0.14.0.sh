@@ -32,8 +32,8 @@ exit
 export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 XXX --cudos-migration-config-sha256 e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee"
 
 # Downloading necessary files for the upgrade:
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/dorado-1/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/dorado-1/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/fetchhub-4/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/fetchhub-4/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
 
 # Decompressing the CUDOS genesis file:
 gzip -d -c "$FETCHD_HOME_DIR/genesis.cudos.json.gz" > "$FETCHD_HOME_DIR/genesis.cudos.json"
