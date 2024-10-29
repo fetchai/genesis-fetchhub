@@ -110,23 +110,16 @@ First define env variables which will be used in further commands below.
 > expansion variable), please do **\*not\*** include the ~ tilde expansion character in between quotes.
 ```shell
 export FETCHD_HOME_DIR=~/.fetchd
-```
-
-```shell
 export DESTINATION_CHAIN_ID="fetchhub-4"
 export GENESIS_FETCHHUB_GIT_REVISION="tags/v0.14.0"
-
-{==> CHANGE ME! (HASH value) <==}
-
 export UPGRADE_SHA256_PARAMS="--cudos-genesis-sha256 5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b --cudos-migration-config-sha256 e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee"
 ```
-
 
 ### Download merge input files
 
 ```shell
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/fetchhub-4/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
-curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/fetchhub-4/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/$DESTINATION_CHAIN_ID/data/cudos_merge_config.json -o "$FETCHD_HOME_DIR/cudos_merge_config.json"
+curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/refs/$GENESIS_FETCHHUB_GIT_REVISION/$DESTINATION_CHAIN_ID/data/genesis.cudos.json.gz -o "$FETCHD_HOME_DIR/genesis.cudos.json.gz"
 ```
 
 And finally **extract** the CUDOS genesis file:
@@ -192,8 +185,6 @@ executed (mainly disk speed, number of CPUs and memory). During the execution yo
 being printed in the log, indicating progress of the upgrade procedure:
 
 ```log
-{==> CHANGE ME! <==}
-
 5:12AM INF cudos merge: loading merge source genesis json expected sha256=5eec16016006524b40f7777dece37ad07e3a514c20718e9cf0dca3082693e74b file=genesis.cudos.json
 5:12AM INF cudos merge: loading network config expected sha256=e1631e27629f9e32a5ec6c8fdd56d0d8ec31d7cd6b6a5e2662ce107b56f623ee file=cudos_merge_config.json
 5:12AM INF cudos merge: remaining bonded pool balance amount=183acudos
