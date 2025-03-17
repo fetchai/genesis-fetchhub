@@ -110,7 +110,7 @@ restarted:
 
 ```bash
 curl -s http://localhost:26657/abci_info | jq -r '.result.response.version'
-v0.14.0-rc10
+v0.14.1
 ```
 
 > Make sure this print exactly the `v0.14.1` version. If not, double check you're on the right git tag in the `fetchd`
