@@ -1,7 +1,7 @@
 
 # Software upgrade
 
-This guide is describing the procedure to upgrade to the [v0.14.1](https://github.com/fetchai/fetchd/releases/tag/v0.14.1) following the [ASA-2025-004 vulnerability in IBC module (#34)](https://explore-dorado.fetch.ai/proposals/34) software upgrade governance proposal.
+This guide is describing the procedure to upgrade to the [v0.14.1](https://github.com/fetchai/fetchd/releases/tag/v0.14.1) following the [Fix for the ASA-2025-004 vulnerability in IBC module (#34)](https://www.mintscan.io/fetchai/proposals/35) software upgrade governance proposal.
 
 We kindly ask all the validators to read through the following document, and then wait until chain reaches upgrade block height defined in the gov proposal mentioned above *before* executing the upgrade steps.
 
@@ -22,7 +22,7 @@ Also, this upgrade does **not** change API whatsoever (static definition wise no
 When blockchain reaches the target upgrade block height `14603003`, all nodes will halt - it is **\*expected\*** to have an error logged by the node, similar to:
 
 ```
-1:16PM ERR UPGRADE "v0.14.1" NEEDED at height: XXX: Fix for the ASA-2025-004 vulnerability in IBC module v0.14.1 (upgrade-info)
+1:16PM ERR UPGRADE "v0.14.1" NEEDED at height: XXX: Fix for the ASA-2025-004 vulnerability in IBC module
 1:16PM ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.14.1\" NEEDED at height: XXX"
 ```
 
@@ -92,11 +92,10 @@ The line, like the one right below, must appear in the log, indicating that you 
 
 Once you see the lines like below being printed in the log, the upgrade procedure **has finished**:
 ```log
-5:12AM INF minted coins from module account amount=88946755672000000000000000atestfet from=mint module=x/bank
-5:12AM INF minted coins from module account amount=480989277nanomobx from=mint module=x/bank
-5:12AM INF minted coins from module account amount=4795384342nanonomx from=mint module=x/bank
-5:12AM INF minted coins from module account amount=6296428529541965571atestfet from=mint module=x/bank
-5:12AM INF executed block height=YYY module=consensus num_invalid_txs=0 num_valid_txs=0
+11:36AM INF minted coins from module account amount=486881463nanomobx from=mint module=x/bank
+11:36AM INF minted coins from module account amount=4854128476nanonomx from=mint module=x/bank
+11:36AM INF minted coins from module account amount=6374048957362866375afet from=mint module=x/bank
+11:36AM INF executed block height=YYY module=consensus num_invalid_txs=0 num_valid_txs=0
 ```
 
 After this point, node is just waiting until enough validators have upgraded & joined the network (with at least 2/3
