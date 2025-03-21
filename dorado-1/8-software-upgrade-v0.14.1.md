@@ -9,10 +9,12 @@ In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), 
 
 ## About the upgrade
 
-The primary feature of this upgrade is fixing the ASA-2025-004 vulnerability in IBC module.
+The primary feature of this upgrade is fixing the ASA-2025-004 vulnerability in IBC module:
+* (`ibc-go`) [Merge the fix for the ASA-2025-004 vulnerability in IBC module #2](https://github.com/fetchai/ibc-go/pull/2)
+* (`fetchd`) [fix: ASA-2025-004 vulnerability in IBC module #419](https://github.com/fetchai/fetchd/pull/419)
 
-The secondary features are:
- * Support for importing unarmored key (secp256k1 & ed25519 algos) #417
+The secondary feature is:
+* (`fetchd`) [feat: Support for importing unarmored key (secp256k1 & ed25519 algos) #417](https://github.com/fetchai/fetchd/pull/417)
 
 In principle this should not be breaking change upgrade, since it shall not affect state of the chain.
 Also, this upgrade does **not** change API whatsoever (static definition wise nor behavioural wise), since versions of underlying components (cosmos-sdk & tendermint) remains the same.
