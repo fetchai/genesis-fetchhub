@@ -120,8 +120,8 @@ At that point, all nodes will halt.
 It is **\*expected\*** to see an upgrade-required error in the logs similar to:
 
 ```log
-ERR UPGRADE "v0.15.0" NEEDED at height: `23387874`
-ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.15.0\" NEEDED at height: `23387874`"
+ERR UPGRADE "v0.15.0" NEEDED at height: 23387874
+ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.15.0\" NEEDED at height: 23387874"
 ```
 
 Once this happens, node operators can proceed with installation of the new `v0.15.0` version of the `fetchd` executable.
@@ -238,7 +238,7 @@ After startup, the node will begin the migration process. The exact upgrade name
 ```log
 INF starting node with ABCI CometBFT in-process module=server
 INF ABCI Handshake App Info ... software-version=v0.15.0
-INF applying upgrade "v0.15.0..." at height: `23387874` module=x/upgrade
+INF applying upgrade "v0.15.0..." at height: 23387874 module=x/upgrade
 ```
 
 During the migration, it is expected to see many module migrations and new module registrations, including entries such as:
@@ -265,9 +265,9 @@ In the observed upgrade run, these messages appeared before the actual migration
 Once the upgrade migration finishes, logs similar to the following should appear:
 
 ```log
-INF finalized block ... height=`23387874` module=consensus ...
-INF executed block ... height=`23387874` module=consensus
-INF committed state ... height=`23387874` module=consensus
+INF finalized block ... height=23387874 module=consensus ...
+INF executed block ... height=23387874 module=consensus
+INF committed state ... height=23387874 module=consensus
 INF Completed ABCI Handshake - CometBFT and App are synced ...
 INF Version info ... tendermint_version=0.38.x
 ```
