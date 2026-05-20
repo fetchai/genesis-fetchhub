@@ -260,14 +260,18 @@ The test upgrade logs also showed transient consensus-parameter lookup messages 
 ERR failed to get consensus params err="collections: not found: key 'no_key' of type github.com/cosmos/gogoproto/tendermint.types.ConsensusParams" module=baseapp
 ```
 
-These messages are **expected for this upgrade path** and do **not** indicate that the upgrade has failed. The network is migrating from an older Cosmos SDK generation, where consensus parameters were stored differently, to the newer format used by the upgraded stack. During the first replay/pre-block stage, the new consensus-parameter store may therefore not yet contain the migrated value.
-
-This case is explicitly handled in the underlying Fetch.ai Cosmos SDK code: [`baseapp.go`, lines 546–550](https://github.com/fetchai/cosmos-sdk/blob/v0.20.0/baseapp/baseapp.go#L546-L550). The code intentionally logs the lookup failure, returns empty consensus parameters temporarily, and allows the upgrade plan to execute so that the consensus parameters can be written in the new format during migration.
-
-Operators should therefore treat this specific message as **informational and expected** during the `v0.15.0` upgrade. The important check is that the node continues into the module migration, applies the upgrade plan, and reaches the successful block finalization stage shown below.
+> This error message **is expected** for this upgrade path and does **not** indicate that the upgrade has failed.<br/>
+The upgrade migrates from an older Cosmos-SDK version, where consensus parameters were stored differently, to the format used by the newer Cosmos-SDK release.<br/>
+During the initial replay/pre-block stage, the migrated consensus parameters may not yet be available in the new store.
+>
+> This scenario is explicitly handled in the underlying Fetch.ai Cosmos SDK implementation:
+[`baseapp.go`, lines 546–550](https://github.com/fetchai/cosmos-sdk/blob/v0.20.0/baseapp/baseapp.go#L546-L550).<br/>
+The code intentionally logs the lookup failure, temporarily returns empty consensus parameters, and continues executing the upgrade plan so the parameters can be migrated and written in the new format.
+>
+> Node operators should therefore treat this specific message as **expected** and informational during the `v0.15.0` upgrade.<br/>
+The important verification is that the node proceeds with module migration, applies the upgrade plan, and reaches the successful block finalization stage shown below.<br/>
 
 Once the upgrade migration finishes, logs similar to the following should appear:
-
 ```log
 INF finalized block ... height=23387874 module=consensus ...
 INF executed block ... height=23387874 module=consensus
