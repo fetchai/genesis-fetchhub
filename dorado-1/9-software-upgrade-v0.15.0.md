@@ -260,7 +260,11 @@ The test upgrade logs also showed transient consensus-parameter lookup messages 
 ERR failed to get consensus params err="collections: not found: key 'no_key' of type github.com/cosmos/gogoproto/tendermint.types.ConsensusParams" module=baseapp
 ```
 
-In the observed upgrade run, these messages appeared before the actual migration proceeded and completed successfully. Operators should primarily verify that the node continues into the upgrade migration and reaches the successful block finalization stage.
+These messages are **expected for this upgrade path** and do **not** indicate that the upgrade has failed. The network is migrating from an older Cosmos SDK generation, where consensus parameters were stored differently, to the newer format used by the upgraded stack. During the first replay/pre-block stage, the new consensus-parameter store may therefore not yet contain the migrated value.
+
+This case is explicitly handled in the underlying Fetch.ai Cosmos SDK code: [`baseapp.go`, lines 546–550](https://github.com/fetchai/cosmos-sdk/blob/v0.20.0/baseapp/baseapp.go#L546-L550). The code intentionally logs the lookup failure, returns empty consensus parameters temporarily, and allows the upgrade plan to execute so that the consensus parameters can be written in the new format during migration.
+
+Operators should therefore treat this specific message as **informational and expected** during the `v0.15.0` upgrade. The important check is that the node continues into the module migration, applies the upgrade plan, and reaches the successful block finalization stage shown below.
 
 Once the upgrade migration finishes, logs similar to the following should appear:
 
