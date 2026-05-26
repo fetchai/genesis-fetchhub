@@ -1,6 +1,6 @@
 # Software upgrade
 
-This guide describes the procedure to upgrade to `fetchd v0.15.0` following the corresponding software upgrade governance proposal.
+This guide describes the procedure to upgrade to `fetchd v0.15.0` following the [#39: Upgrade to fetchai Cosmos-SDK v0.20.0 (canonical v0.53.7)](https://www.mintscan.io/fetchai/proposals/39) software upgrade governance proposal.
 
 We kindly ask all validators and node operators to read through the following document carefully, and then wait until the chain reaches the upgrade block height defined in the governance proposal *before* executing the upgrade steps.
 
@@ -50,13 +50,21 @@ export FETCHD_HOME_DIR=~/.fetchd
 
 The `v0.15.0` upgrade performs a large in-place state migration and has materially higher temporary resource requirements than routine patch upgrades.
 
+> The main factor influencing the necessary node resources (mainly memory) is the size of the node storage.
+> Run the following command to determine size of the node storage (command below **\*requires\*** the
+> `FETCHD_HOME_DIR` env variable from the [Set primary environment variables](#set-primary-environment-variables)
+> section to be set as node home dir):
+> ```shell
+> du -sh $FETCHD_HOME_DIR
+> ```
+
 Observed upgrade resource requirements are:
 
-| Node profile | Approximate storage | Peak memory during upgrade | Approximate upgrade duration |
-|---|---:|---:|---:|
-| Validator-like node | ~500 GB | ~13 GB | ~50 minutes |
-| Archive node | ~1.5 TB | ~21 GB | ~1 hour 20 minutes |
-
+| Node profile               | Node storage size | Peak memory during upgrade | Approximate upgrade duration |
+|----------------------------|------------------:|---------------------------:|-----------------------------:|
+| Pruned Validator like node |           ~500 GB |                     ~13 GB |                  ~50 minutes |
+| Pruned RPC like node       |           ~1.5 TB |                     ~21 GB |           ~1 hour 20 minutes |
+| Archive node               |           ~5.6 TB |     ~48 GB (? - estimated) |                     ~6 hours |
 All nodes may temporarily use up to approximately **2 CPU cores** during the upgrade.
 
 ### Recommended Kubernetes / VM sizing
@@ -64,9 +72,9 @@ All nodes may temporarily use up to approximately **2 CPU cores** during the upg
 For upgrade execution, we strongly recommend provisioning at least:
 
 | Node type | Recommended memory request | CPU |
-|---|---:|---:|
-| Archive nodes | **32 GB RAM** | **2 CPU cores** |
-| Validators, RPC, internal, sentry, and similar nodes | **22 GB RAM** | **2 CPU cores** |
+|---|---------------------------:|---:|
+| Archive nodes |              **48 GB RAM** | **2 CPU cores** |
+| Validators, RPC, internal, sentry, and similar nodes |              **22 GB RAM** | **2 CPU cores** |
 
 For Kubernetes deployments:
 
@@ -115,15 +123,13 @@ fetchd --home $FETCHD_HOME_DIR start --minimum-gas-prices 0afet
 
 ## Chain halt
 
-> The `HALT_BLOCK_HEIGHT` placeholder will be replaced with the final block height value once it will become to be known.
-
-Wait until the blockchain reaches the target upgrade block height `HALT_BLOCK_HEIGHT` defined in the governance proposal [[#43] Upgrade to fetchai CosmosSDK v0.20.0 (canonical v0.53.7)](https://www.mintscan.io/fetchai/proposals/39).
+Wait until the blockchain reaches the target upgrade block height `27628333` defined in the governance proposal [#39: Upgrade to fetchai Cosmos-SDK v0.20.0 (canonical v0.53.7)](https://www.mintscan.io/fetchai/proposals/39).
 At that point, all nodes will halt.
 It is **\*expected\*** to see an upgrade-required error in the logs similar to:
 
 ```log
-ERR UPGRADE "v0.15.0" NEEDED at height: HALT_BLOCK_HEIGHT
-ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.15.0\" NEEDED at height: HALT_BLOCK_HEIGHT"
+ERR UPGRADE "v0.15.0" NEEDED at height: 27628333
+ERR CONSENSUS FAILURE!!! err="UPGRADE \"v0.15.0\" NEEDED at height: 27628333"
 ```
 
 Once this happens, node operators can proceed with installation of the new `v0.15.0` version of the `fetchd` executable.
@@ -240,7 +246,7 @@ After startup, the node will begin the migration process. The exact upgrade name
 ```log
 INF starting node with ABCI CometBFT in-process module=server
 INF ABCI Handshake App Info ... software-version=v0.15.0
-INF applying upgrade "v0.15.0..." at height: HALT_BLOCK_HEIGHT module=x/upgrade
+INF applying upgrade "v0.15.0..." at height: 27628333 module=x/upgrade
 ```
 
 During the migration, it is expected to see many module migrations and new module registrations, including entries such as:
@@ -275,9 +281,9 @@ The important verification is that the node proceeds with module migration, appl
 
 Once the upgrade migration finishes, logs similar to the following should appear:
 ```log
-INF finalized block ... height=HALT_BLOCK_HEIGHT module=consensus ...
-INF executed block ... height=HALT_BLOCK_HEIGHT module=consensus
-INF committed state ... height=HALT_BLOCK_HEIGHT module=consensus
+INF finalized block ... height=27628333 module=consensus ...
+INF executed block ... height=27628333 module=consensus
+INF committed state ... height=27628333 module=consensus
 INF Completed ABCI Handshake - CometBFT and App are synced ...
 INF Version info ... tendermint_version=0.38.x
 ```
