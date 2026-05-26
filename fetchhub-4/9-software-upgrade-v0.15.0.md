@@ -51,7 +51,7 @@ export FETCHD_HOME_DIR=~/.fetchd
 The `v0.15.0` upgrade performs a large in-place state migration and has materially higher temporary resource requirements than routine patch upgrades.
 
 > The main factor influencing the necessary node resources (mainly memory) is the size of the node storage.
-> Run the following command to determine size of the node storage (command below **\*requires\*** the
+> Run the following command to determine the size of the node storage (command below **\*requires\*** the
 > `FETCHD_HOME_DIR` env variable from the [Set primary environment variables](#set-primary-environment-variables)
 > section to be set as node home dir):
 > ```shell
