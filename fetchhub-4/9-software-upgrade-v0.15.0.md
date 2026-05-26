@@ -1,6 +1,6 @@
 # Software upgrade
 
-This guide describes the procedure to upgrade to `fetchd v0.15.0` following the [#39: Upgrade to fetchai Cosmos-SDK v0.20.0 (canonical v0.53.7)](https://www.mintscan.io/fetchai/proposals/39) software upgrade governance proposal.
+This guide describes the procedure to upgrade to the `fetchd v0.15.0` following the [#39: Upgrade to fetchai Cosmos-SDK v0.20.0 (canonical v0.53.7)](https://www.mintscan.io/fetchai/proposals/39) software upgrade governance proposal.
 
 We kindly ask all validators and node operators to read through the following document carefully, and then wait until the chain reaches the upgrade block height defined in the governance proposal *before* executing the upgrade steps.
 
@@ -50,7 +50,8 @@ export FETCHD_HOME_DIR=~/.fetchd
 
 The `v0.15.0` upgrade performs a large in-place state migration and has materially higher temporary resource requirements than routine patch upgrades.
 
-> The main factor influencing the necessary node resources (mainly memory) is the size of the node storage.
+> The size of the node storage is main factor influencing the necessary node resources - mainly memory and duration of
+> the upgrade time.
 > Run the following command to determine the size of the node storage (command below **\*requires\*** the
 > `FETCHD_HOME_DIR` env variable from the [Set primary environment variables](#set-primary-environment-variables)
 > section to be set as node home dir):
@@ -64,7 +65,9 @@ Observed upgrade resource requirements are:
 |----------------------------|------------------:|---------------------------:|-----------------------------:|
 | Pruned Validator like node |           ~500 GB |                     ~13 GB |                  ~50 minutes |
 | Pruned RPC like node       |           ~1.5 TB |                     ~21 GB |           ~1 hour 20 minutes |
-| Archive node               |           ~5.6 TB |     ~48 GB (? - estimated) |                     ~6 hours |
+| Archive node               |           ~5.6 TB |     ~48 GB (? - estimated) |     ~6 hours (? - estimated) |
+
+
 All nodes may temporarily use up to approximately **2 CPU cores** during the upgrade.
 
 ### Recommended Kubernetes / VM sizing
@@ -83,11 +86,12 @@ For Kubernetes deployments:
 
 > :exclamation: Please make sure that the infrastructure sizing is adjusted **before** restarting nodes with `fetchd v0.15.0`.
 
-## Configure minimum gas prices
+## Configure `minimum-gas-prices`
 
-Starting with `fetchd v0.15.0`, the node must have `minimum-gas-prices` configured.
+Starting with `fetchd v0.15.0`, the node must have `minimum-gas-prices` explicitly configured, and it must be set to
+non-empty value.
 
-If this setting is missing, the node will fail to start with an error similar to:
+If this setting is missing or is set to empty value, the node will fail to start with an error similar to:
 
 ```log
 Error: set min gas price in app.toml or flag or env variable: error in app.toml
@@ -95,29 +99,33 @@ Error: set min gas price in app.toml or flag or env variable: error in app.toml
 
 ### Recommended configuration
 
-We recommend setting this permanently in:
+:exclamation: Although the `minimum-gas-prices` setting falls solely under each validator’s jurisdiction, we highly recommend setting it to a **non-zero** value. We suggest using the following value:
 
-```shell
-$FETCHD_HOME_DIR/config/app.toml
+```text
+1000000000afet
 ```
 
-For example:
+There are several ways to configure this parameter:
 
-```toml
-minimum-gas-prices = "0afet"
-```
+1. We recommend setting it permanently in the `$FETCHD_HOME_DIR/config/app.toml` configuration file.
 
-Alternatively, the node can be started by providing the flag explicitly:
+   Example:
+   ```toml
+   minimum-gas-prices = "1000000000afet"
+   ```
 
-```shell
-fetchd start --minimum-gas-prices 0afet
-```
+2. Alternatively, the node can be started with the flag provided via the command line:
 
-or, when using a non-default home directory:
+   ```shell
+   fetchd start --minimum-gas-prices 1000000000afet
+   ```
 
-```shell
-fetchd --home $FETCHD_HOME_DIR start --minimum-gas-prices 0afet
-```
+   Or, when using a non-default home directory:
+
+   ```shell
+   fetchd --home $FETCHD_HOME_DIR start --minimum-gas-prices 1000000000afet
+   ```
+   
 
 # Upgrade procedure
 
