@@ -148,6 +148,8 @@ You can either build the `fetchd` executable locally, or use the Docker image pr
 
 ### Local build
 
+You need to use `go` lang version `1.25.7` or higher.
+
 You may already have the `fetchd` repository on your machine from the previous installation. If not, you can clone it as follows:
 
 ```bash
