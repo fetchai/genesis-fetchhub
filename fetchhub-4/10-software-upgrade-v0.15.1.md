@@ -168,6 +168,17 @@ $UPGRADE_TEMP_DIR/fetchd version
 > v0.15.1-0-gae12a4f
 > ```
 
+## Verify the version of the libwasmvm library 
+Verify the version of the libwasmvm library built-in the new (not yet installed) `fetchd` binary:
+```shell
+$UPGRADE_TEMP_DIR/fetchd query wasm libwasmvm-version
+```
+> :exclamation: It **\*MUST\*** print exactly:
+> ```
+> 3.0.8-rc.3
+> ```
+
+
 ## Install the new fetchd binary
 
 ### Locate the current (old) fetchd binary
