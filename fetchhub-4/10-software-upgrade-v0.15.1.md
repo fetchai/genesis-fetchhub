@@ -21,20 +21,9 @@ The precompiled static binaries are exactly the same (= identical) as the binari
 
 # Pre-requisites
 
-## Set environment variables
-We would suggest to set the following environment variables, since they are used in the commands below:
-> :warning: If you need to use quotes "..." in a value of the env var below **\*and\*** at the same time the ~ (tilde
-> expansion variable), please do **\*not\*** include the ~ tilde expansion character in between quotes.
-```shell
-export FETCHD_HOME_DIR=~/.fetchd
-export FETCHD_VERSION=v0.15.1
-export FETCHD_TAG=v0.15.1-ae12a4f
-export UPGRADE_TEMP_DIR=$(mktemp -d)
-```
+## Enable full ASLR on the machine running your chain's executable [Not Mandatory, but highly recommended]
+This is **\*not\*** a mandatory step, but we highly recommend to enable full ASLR (Address Space Layout Randomization) on the machine running your chain's executable, since it is a security feature that makes it harder for attackers to exploit memory corruption vulnerabilities.
 
-> :information_source: The `FETCHD_HOME_DIR` env variable is only needed if your node home directory is **\*not\*** the default (`~/.fetchd`) one, see the [Execute the upgrade](#execute-the-upgrade) section below.
-
-## Enable full ASLR on the machine running your chain's executable
 To check if full ASLR is enabled on your node's machine, run the following command:
 
 ```shell
@@ -66,9 +55,21 @@ sudo sysctl -w kernel.randomize_va_space=2
 > sudo sysctl --system
 > ```
 
-
-
 > :exclamation: Make sure that full ASLR (value `2`) is still enabled after rebooting the node's machine (e.g. verify the setting persists across reboots, or simply re-check it with the `sysctl kernel.randomize_va_space` command once the node is back up).
+
+## Set environment variables
+We would suggest to set the following environment variables, since they are used in the commands below:
+> :warning: If you need to use quotes "..." in a value of the env var below **\*and\*** at the same time the ~ (tilde
+> expansion variable), please do **\*not\*** include the ~ tilde expansion character in between quotes.
+```shell
+export FETCHD_HOME_DIR=~/.fetchd
+export FETCHD_VERSION=v0.15.1
+export FETCHD_TAG=v0.15.1-ae12a4f
+export UPGRADE_TEMP_DIR=$(mktemp -d)
+```
+
+> :information_source: The `FETCHD_HOME_DIR` env variable is only needed if your node home directory is **\*not\*** the default (`~/.fetchd`) one, see the [Execute the upgrade](#execute-the-upgrade) section below.
+
 
 # Upgrade procedure
 
