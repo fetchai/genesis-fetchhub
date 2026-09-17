@@ -10,14 +10,15 @@ In case of questions or issues, feel free to reach me on Discord (`@v0id.ptr`), 
 
 The primary feature of this upgrade is the update of the `wasmvm` & `wasmd` libraries to the latest `rc3` versions.
 
-> :warning: This is **\*binary-only\*** release. At this moment, it is **\*not\*** possible to build the node binary from the source code - the only way how to upgrade is to use either the provided docker image, or the precompiled binaries attached to the [v0.15.1 release](https://github.com/fetchai/fetchd/releases/tag/v0.15.1).
+> :warning: This is **\*binary-only\*** release. At this moment, it is **\*not\*** possible to build the node binary from the publicly accessible source code.
+> The only way how to upgrade is to use either the provided docker image, or the precompiled binaries attached to the [v0.15.1 release](https://github.com/fetchai/fetchd/releases/tag/v0.15.1).
 
 The node binary is provided only as **\*static (musl) linux build\*** for `x86_64` & `aarch64` CPU architectures, and is available in 2 forms:
 
  1. As publicly accessible docker image `fetchai/fetchd:v0.15.1-ae12a4f-musl` (it is a multi-platform image for both above mentioned CPU architectures)
  2. As precompiled static binaries attached to the [v0.15.1 release](https://github.com/fetchai/fetchd/releases/tag/v0.15.1) (for both above mentioned CPU architectures)
 
-The precompiled static binaries are exactly the same (= identical) as the binaries baked in the multi-platform docker images.
+The precompiled static binaries attached in the [v0.15.1 release](https://github.com/fetchai/fetchd/releases/tag/v0.15.1) are **exactly the same (= identical)** as the binaries baked in the multi-platform docker image.
 
 # Pre-requisites
 
